@@ -1,0 +1,36 @@
+[submodule "vim-bundles/vimtodo"]
+	path = vim-bundles/vimtodo
+	url = git@github.com:mivok/vimtodo.git
+[submodule "vim-bundles/vim-pathogen"]
+	path = vim-bundles/vim-pathogen
+	url = git@github.com:tpope/vim-pathogen.git
+[submodule "vim-bundles/vim-align"]
+	path = vim-bundles/vim-align
+	url = git@github.com:tsaleh/vim-align.git
+[submodule "vim-bundles/vim-project"]
+	path = vim-bundles/vim-project
+	url = git@github.com:ntd/vim-project.git
+[submodule "vim-bundles/vim-ledger"]
+	path = vim-bundles/vim-ledger
+	url = git@github.com:cypok/vim-ledger.git
+[submodule "vim-bundles/gtk-vim-syntax"]
+	path = vim-bundles/gtk-vim-syntax
+	url = git@github.com:vim-scripts/gtk-vim-syntax.git
+[submodule "vim-bundles/clibs.vim"]
+	path = vim-bundles/clibs.vim
+	url = git@github.com:vim-scripts/clibs.vim.git
+[submodule "vim-bundles/gnome-doc.vim"]
+	path = vim-bundles/gnome-doc.vim
+	url = git@github.com:vim-scripts/gnome-doc.vim.git
+[submodule "vim-bundles/PHP-Indenting-for-VIm"]
+	path = vim-bundles/PHP-Indenting-for-VIm
+	url = git@github.com:2072/PHP-Indenting-for-VIm.git
+[submodule "vim-bundles/matchit.zip"]
+	path = vim-bundles/matchit.zip
+	url = git@github.com:vim-scripts/matchit.zip.git
+[submodule "vim-bundles/vim-wombat"]
+	path = vim-bundles/vim-wombat
+	url = git@github.com:cschlueter/vim-wombat.git
+[submodule "vim-bundles/vimux"]
+	path = vim-bundles/vimux
+	url = git@github.com:benmills/vimux.git
