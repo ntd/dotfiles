@@ -1,0 +1,20 @@
+[roxterm profile]
+colour_scheme=
+font=Terminus 14
+maximise=1
+hide_menubar=1
+show_resize_grip=0
+show_add_tab_btn=0
+always_show_tabs=0
+audible_bell=0
+bell_highlights_tab=0
+login_shell=1
+scrollback_lines=10000
+scrollbar_pos=0
+scroll_on_keystroke=1
+disable_menu_shortcuts=1
+show_tab_num=0
+tab_close_btn=0
+new_tabs_adjacent=1
+wrap_switch_tab=1
+term=screen-256color
