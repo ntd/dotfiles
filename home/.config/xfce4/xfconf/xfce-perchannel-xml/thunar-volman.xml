@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="thunar-volman" version="1.0">
+  <property name="autokeyboard" type="empty">
+    <property name="enabled" type="bool" value="false"/>
+  </property>
+  <property name="autoprinter" type="empty">
+    <property name="enabled" type="bool" value="false"/>
+  </property>
+  <property name="autophoto" type="empty">
+    <property name="enabled" type="bool" value="false"/>
+  </property>
+  <property name="automount-drives" type="empty">
+    <property name="enabled" type="bool" value="false"/>
+  </property>
+  <property name="autoplay-video-cds" type="empty">
+    <property name="enabled" type="bool" value="true"/>
+    <property name="command" type="string" value="mpv --dvd-device=%d"/>
+  </property>
+  <property name="autoplay-audio-cds" type="empty">
+    <property name="command" type="string" value="mpv --cdrom-device=%d"/>
+    <property name="enabled" type="bool" value="true"/>
+  </property>
+</channel>
