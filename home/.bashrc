@@ -27,4 +27,4 @@ source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 # Source local customizations here, if present, so
 # they can override any previous setting.
-[ -r "$HOME/.bashrc-private ] && source "$HOME/.bashrc-private"
+[ -r "$HOME/.bashrc-private" ] && source "$HOME/.bashrc-private"
