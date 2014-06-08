@@ -1,0 +1,47 @@
+alignment bottom_left
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color #AAA
+default_outline_color #AAA
+default_shade_color #AAA
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont Sans:size=8
+gap_x 8
+gap_y 8
+minimum_size 222 5
+net_avg_samples 2
+no_buffers yes
+double_buffer yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type normal
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+ own_window_transparent yes
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+TEXT
+${color #999}Memory    $color$alignr${membar 8,150}
+${color #999}CPU $cpu% $color$alignr${cpugraph 40,150}
+${color #999}/         $color$alignr${fs_bar 8,150 /}
+${color #999}/home     $color$alignr${fs_bar 8,150 /home}
+
+${color #999}Uptime    $color$alignr$uptime
+${color #999}Network   $color$alignr${upspeed eth0}/${downspeed eth0}
+
+${color #999}TOP RAM PROCESSES $hr$color
+ ${top_mem name 1}$alignr${top_mem mem_res 1}
+ ${top_mem name 2}$alignr${top_mem mem_res 2}
+ ${top_mem name 3}$alignr${top_mem mem_res 3}
