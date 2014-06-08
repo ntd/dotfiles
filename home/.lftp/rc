@@ -1,0 +1,2 @@
+alias ll "cls -hl --filesize"
+set ftp:list-options -a
