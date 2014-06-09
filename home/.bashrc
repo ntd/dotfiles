@@ -47,6 +47,9 @@ add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
 add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
 add_path XDG_DATA_DIRS   /usr/local/share
 
+# Add $HOME/bin to path if $HOME is defined
+[ -n "$HOME" ] && add_path PATH $HOME/bin
+
 # Show all GLib log messages for debugging purpose
 export G_MESSAGES_DEBUG=all
 
