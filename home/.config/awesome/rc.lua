@@ -315,15 +315,26 @@ awful.button({ modkey }, 3, awful.mouse.client.resize))
 -- Set keys
 root.keys(globalkeys)
 
+do
+    -- Override the focus filter to skip Conky and XNots clients too
+    local old_filter = awful.client.focus.filter
+    function awful.client.focus.filter(c)
+	-- c.focusable ~= false is not enough, god knows why
+	if c.class ~= 'Conky' and c.class ~= 'XNots' then
+	    return old_filter(c)
+	end
+    end
+end
+
 -- Rules to apply to new clients (through the 'manage' signal).
 awful.rules.rules = {
     {
 	rule_any = { class = { 'Conky', 'XNots' } },
 	properties = {
 	    floating = true,
+	    focusable = false,
 	    sticky = true,
 	    width = side_strut,
-	    type = 'desktop',
 	    border_width = 0,
 	    buttons = clientbuttons
 	}
