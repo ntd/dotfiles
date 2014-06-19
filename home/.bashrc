@@ -3,9 +3,9 @@ alias ll='ls -hl --color'
 export CFLAGS="-O2 -Wall"
 export CXXFLAGS="$CFLAGS"
 
-[ -x $(which vimpager) ] && export PAGER=vimpager
-[ -x $(which vim) ] && export EDITOR=vim
-[ -x $(which lua) ] && export LUA=lua
+[ -x $(which vimpager) ] && export PAGER=$(which vimpager)
+[ -x $(which vim) ]      && export EDITOR=$(which vim)
+[ -x $(which lua) ]      && export LUA=$(which lua)
 
 # By default I use two Wine directories instead of $HOME/.wine:
 # $HOME/.win32 (32 bit) and $HOME/.win64 (64 bit, seldomly used).
@@ -66,8 +66,8 @@ if [ -x "$LUA" ]; then
     export LUA_CPATH=$(prefix_lua_path package.cpath)
 fi
 
-# Add $HOME/bin to path if $HOME is defined
-[ -n "$HOME" ] && add_path PATH $HOME/bin
+# Add $HOME/bin to path
+add_path PATH $HOME/bin
 
 # Show all GLib log messages for debugging purpose
 export G_MESSAGES_DEBUG=all
