@@ -42,10 +42,14 @@ add_path() {
 prefix_lua_path() {
     local var=$1
 
-    # Prepend /usr/local only if not yet present
-    $LUA -e "if not $var:find('/usr/local') then
-		$var = $var:gsub('/usr(/[^;]+)', '/usr/local%1;/usr%1')
-	     end print($var)"
+    # Remove duplicates and prepend every item
+    # with its /usr/local/ version (if relevant)
+    $LUA -e "local k, v = {}, {}
+	     for p in $var:gmatch('[^;]+') do
+		 local l = (p:gsub('/usr/local/', '/usr/'):gsub('/usr/', '/usr/local/'))
+		 if not k[l] then k[l] = true v[#v+1] = l end
+		 if not k[p] then k[p] = true v[#v+1] = p end
+	     end print(table.concat(v, ';'))"
 }
 
 # Not all distros give precedence to /usr/local
@@ -56,9 +60,11 @@ add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
 add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
 add_path XDG_DATA_DIRS   /usr/local/share
 
-# Prepend /usr/local also to the Lua paths
-export LUA_PATH=$(prefix_lua_path package.path)
-export LUA_CPATH=$(prefix_lua_path package.cpath)
+# Prepend /usr/local/ also to Lua paths, if relevant
+if [ -x "$LUA" ]; then
+    export LUA_PATH=$(prefix_lua_path package.path)
+    export LUA_CPATH=$(prefix_lua_path package.cpath)
+fi
 
 # Add $HOME/bin to path if $HOME is defined
 [ -n "$HOME" ] && add_path PATH $HOME/bin
