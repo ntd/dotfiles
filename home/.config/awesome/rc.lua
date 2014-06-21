@@ -226,11 +226,11 @@ awful.key({ modkey }, 'p', function() menubar.show() end)
 )
 
 local function sendToTagAt(client, delta)
-    local tag = c:tags()[1]
+    local tag = client:tags()[1]
     if not tag then return end
 
     local idx
-    for n, t in ipairs(tags[c.screen]) do
+    for n, t in ipairs(tags[client.screen]) do
 	if t.name == tag.name then
 	    idx = n
 	    break
@@ -239,9 +239,9 @@ local function sendToTagAt(client, delta)
     if not idx then return end
 
     idx = idx + delta
-    if idx <= 0 then idx = #tags[c.screen] end
+    if idx <= 0 then idx = #tags[client.screen] end
 
-    awful.client.movetotag(tags[c.screen][idx])
+    awful.client.movetotag(tags[client.screen][idx])
 end
 
 clientkeys = awful.util.table.join(
