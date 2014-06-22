@@ -201,6 +201,7 @@ awful.key({ modkey,           }, 'w', function () awful.util.spawn(browser) end)
 awful.key({ modkey,           }, 'm', function () awful.util.spawn(email) end),
 awful.key({ modkey,           }, 'f', function () awful.util.spawn(filer) end),
 awful.key({ modkey,           }, 'e', function () awful.util.spawn(editor) end),
+awful.key({ modkey,           }, '.', function () awful.util.spawn('galculator') end),
 
 -- Standard program
 awful.key({ modkey, 'Control' }, 'r', awesome.restart),
@@ -326,6 +327,13 @@ do
     end
 end
 
+-- Callback for centering clients
+local function centering(c)
+    awful.client.floating.set(c, true)
+    c.maximized = false
+    awful.placement.centered(c)
+end
+
 -- Rules to apply to new clients (through the 'manage' signal).
 awful.rules.rules = {
     {
@@ -386,6 +394,9 @@ awful.rules.rules = {
 	properties = {
 	    tag = tags[1][3],
 	}
+    }, {
+	rule = { class = 'Galculator' },
+	callback = centering
     }, {
 	rule = { class = 'gimp' },
 	properties = { floating = true }
