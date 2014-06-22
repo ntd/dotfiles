@@ -463,8 +463,21 @@ end)
 client.connect_signal('focus', function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_normal end)
 
-awful.util.spawn('conky')
-awful.util.spawn('xnots')
-awful.util.spawn(terminal)
-awful.util.spawn(browser)
-awful.util.spawn(email)
+local function run_once(process, cmd)
+    local found = false
+    local h = io.popen('nl /proc/*/cmdline')
+    for l in h:lines() do
+	found = l:find(process)
+	if found then break end
+    end
+    h:close()
+
+    -- Do not spawn the process if already started
+    return not found and awful.util.spawn(cmd or process)
+end
+
+run_once('conky')
+run_once('xnots')
+run_once(terminal)
+run_once(browser)
+run_once(email)
