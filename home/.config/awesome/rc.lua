@@ -373,27 +373,15 @@ awful.rules.rules = {
 	},
 	callback = function (c)
 	    if c.transient_for then return end
-
 	    c.floating = false
 	    c.maximized = false
-
-	    --[[
-	    -- Zoom to the size of the workarea
-	    c.size_hints_honor = false
-	    local w_area = screen[c.screen].workarea
-	    c:geometry(w_area)
-	    ]]
 	end
     }, {
 	rule = { class = 'Firefox' },
-	properties = {
-	    tag = tags[1][2],
-	}
+	properties = { tag = tags[1][2] }
     }, {
 	rule = { class = 'Sylpheed' },
-	properties = {
-	    tag = tags[1][3],
-	}
+	properties = { tag = tags[1][3] }
     }, {
 	rule = { class = 'Galculator' },
 	callback = centering
