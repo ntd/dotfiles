@@ -17,4 +17,4 @@ show_tab_num=0
 tab_close_btn=0
 new_tabs_adjacent=1
 wrap_switch_tab=1
-term=screen-256color
+term=xterm-256color
