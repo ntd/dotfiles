@@ -1,4 +1,8 @@
-alias ll='ls -hl --color'
+if ls --color >/dev/null 2>&1; then
+    alias ll='ls -hl --color'
+else
+    alias ll='ls -GhlF'
+fi
 
 export CFLAGS="-O2 -Wall"
 export CXXFLAGS="$CFLAGS"
