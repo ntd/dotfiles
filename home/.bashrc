@@ -10,7 +10,6 @@ fi
 [ -z "$CXXFLAGS" ]   && export CXXFLAGS="$CFLAGS"
 [ -z "$PAGER" ]      && export PAGER=$(command -v 2>/dev/null vimpager)
 [ -z "$EDITOR" ]     && export EDITOR=$(command -v 2>/dev/null vim)
-[ -z "$LUA" ]        && export LUA=$(command -v 2>/dev/null lua)
 
 # By default I use two Wine directories instead of $HOME/.wine:
 # $HOME/.win32 (32 bit) and $HOME/.win64 (64 bit, seldomly used).
@@ -73,13 +72,14 @@ switch_to_lua () {
 
     # Unset the Lua environment here, so if the Lua binary is not found
     # the variables are left unset
-    unset LUA_PATH LUA_CPATH
+    unset LUA LUA_PATH LUA_CPATH
 
-    # Use the absolute path to the binary, if not yet specified
+    # Use the absolute path to the binary, if not specified
     [ -x "$lua" ] || lua=$(command -v 2>/dev/null $lua)
     [ -x "$lua" ] || return 1
 
     # Redefine the relevant environmental variables
+    export LUA="$lua"
     export LUA_PATH=$(_prefix_lua_path $lua package.path)
     export LUA_CPATH=$(_prefix_lua_path $lua package.cpath)
 }
@@ -93,8 +93,8 @@ _add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
 _add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
 _add_path XDG_DATA_DIRS   /usr/local/share
 
-# Enable the proper Lua version, prepending /usr/local/ also to Lua paths
-switch_to_lua "$LUA"
+# Enable the default lua binary, prepending /usr/local/ to its paths
+switch_to_lua lua
 
 # Add $HOME/bin to path
 _add_path PATH $HOME/bin
