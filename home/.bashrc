@@ -14,7 +14,7 @@ export WINEARCH=win32
 export WINEPREFIX=$HOME/.win32
 
 # Add a path ($2) to a variable ($1) with a `:' separated list of paths
-add_path() {
+_add_path () {
     local var=$1
     local path=$2
     local paths=${!1}
@@ -39,7 +39,7 @@ add_path() {
     export $var
 }
 
-prefix_lua_path () {
+_prefix_lua_path () {
     local lua=$1
     local var=$2
 
@@ -72,24 +72,24 @@ switch_to_lua () {
 
     # Redefine the relevant environmental variables
     unset LUA_PATH LUA_CPATH
-    export LUA_PATH=$(prefix_lua_path $lua package.path)
-    export LUA_CPATH=$(prefix_lua_path $lua package.cpath)
+    export LUA_PATH=$(_prefix_lua_path $lua package.path)
+    export LUA_CPATH=$(_prefix_lua_path $lua package.cpath)
 }
 
 
 # Not all distros give precedence to /usr/local
-add_path PATH            /usr/local/bin
-add_path LD_LIBRARY_PATH /usr/local/lib
-add_path PKG_CONFIG_PATH /usr/local/lib/pkgconfig
-add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
-add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
-add_path XDG_DATA_DIRS   /usr/local/share
+_add_path PATH            /usr/local/bin
+_add_path LD_LIBRARY_PATH /usr/local/lib
+_add_path PKG_CONFIG_PATH /usr/local/lib/pkgconfig
+_add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
+_add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
+_add_path XDG_DATA_DIRS   /usr/local/share
 
 # Enable the proper Lua version, prepending /usr/local/ also to Lua paths
 switch_to_lua "$LUA"
 
 # Add $HOME/bin to path
-add_path PATH $HOME/bin
+_add_path PATH $HOME/bin
 
 # Show all GLib log messages for debugging purpose
 export G_MESSAGES_DEBUG=all
