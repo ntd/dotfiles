@@ -67,12 +67,15 @@ _prefix_lua_path () {
 switch_to_lua () {
     local lua=$1
 
+    # Unset the Lua environment here, so if the Lua binary is not found
+    # the variables are left unset
+    unset LUA_PATH LUA_CPATH
+
     # Use the absolute path to the binary, if not yet specified
     [ -x "$lua" ] || lua=$(command -v 2>/dev/null $lua)
     [ -x "$lua" ] || return 1
 
     # Redefine the relevant environmental variables
-    unset LUA_PATH LUA_CPATH
     export LUA_PATH=$(_prefix_lua_path $lua package.path)
     export LUA_CPATH=$(_prefix_lua_path $lua package.cpath)
 }
