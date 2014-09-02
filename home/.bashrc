@@ -1,17 +1,18 @@
 alias ll='ls -hl --color'
 
-export CFLAGS="-O2 -Wall"
-export CXXFLAGS="$CFLAGS"
-
-[ -z "$PAGER" ]  && export PAGER=$(command -v 2>/dev/null vimpager)
-[ -z "$EDITOR" ] && export EDITOR=$(command -v 2>/dev/null vim)
-[ -z "$LUA" ]    && export LUA=$(command -v 2>/dev/null lua)
+# Set some environmental variables with fallback values. They must be
+# set only if not previously set.
+[ -z "$CFLAGS" ]     && export CFLAGS="-O2 -Wall"
+[ -z "$CXXFLAGS" ]   && export CXXFLAGS="$CFLAGS"
+[ -z "$PAGER" ]      && export PAGER=$(command -v 2>/dev/null vimpager)
+[ -z "$EDITOR" ]     && export EDITOR=$(command -v 2>/dev/null vim)
+[ -z "$LUA" ]        && export LUA=$(command -v 2>/dev/null lua)
 
 # By default I use two Wine directories instead of $HOME/.wine:
 # $HOME/.win32 (32 bit) and $HOME/.win64 (64 bit, seldomly used).
 # This falls back on using the 32 bit version.
-export WINEARCH=win32
-export WINEPREFIX=$HOME/.win32
+[ -z "$WINEARCH" ]   && export WINEARCH=win32
+[ -z "$WINEPREFIX" ] && export WINEPREFIX=$HOME/.win32
 
 # Add a path ($2) to a variable ($1) with a `:' separated list of paths
 _add_path () {
