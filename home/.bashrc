@@ -3,9 +3,9 @@ alias ll='ls -hl --color'
 export CFLAGS="-O2 -Wall"
 export CXXFLAGS="$CFLAGS"
 
-[ -x $(which vimpager) ] && export PAGER=$(which vimpager)
-[ -x $(which vim) ]      && export EDITOR=$(which vim)
-[ -x $(which lua) ]      && export LUA=$(which lua)
+[ -z "$PAGER" ]  && export PAGER=$(command -v 2>/dev/null vimpager)
+[ -z "$EDITOR" ] && export EDITOR=$(command -v 2>/dev/null vim)
+[ -z "$LUA" ]    && export LUA=$(command -v 2>/dev/null lua)
 
 # By default I use two Wine directories instead of $HOME/.wine:
 # $HOME/.win32 (32 bit) and $HOME/.win64 (64 bit, seldomly used).
