@@ -39,18 +39,43 @@ add_path() {
     export $var
 }
 
-prefix_lua_path() {
-    local var=$1
+prefix_lua_path () {
+    local lua=$1
+    local var=$2
 
     # Remove duplicates and prepend every item
     # with its /usr/local/ version (if relevant)
-    $LUA -e "local k, v = {}, {}
+    $lua -e "local k, v = {}, {}
 	     for p in $var:gmatch('[^;]+') do
 		 local l = (p:gsub('/usr/local/', '/usr/'):gsub('/usr/', '/usr/local/'))
 		 if not k[l] then k[l] = true v[#v+1] = l end
 		 if not k[p] then k[p] = true v[#v+1] = p end
 	     end print(table.concat(v, ';'))"
 }
+
+# The following function is intended to be used also interactively
+# when you want to change the Lua version currently active, e.g.:
+#
+#     $ switch_to_lua lua5.1
+#     $ echo $LUA_CPATH
+#     ./?.so;/usr/local/lib/lua/5.1/?.so;/usr/lib/lua/5.1/?.so;...
+#     $ switch_to_lua lua
+#     $ echo $LUA_CPATH
+#     /usr/local/lib/lua/5.2/?.so;/usr/lib/lua/5.2/?.so;...
+#
+switch_to_lua () {
+    local lua=$1
+
+    # Use the absolute path to the binary, if not yet specified
+    [ -x "$lua" ] || lua=$(command -v 2>/dev/null $lua)
+    [ -x "$lua" ] || return 1
+
+    # Redefine the relevant environmental variables
+    unset LUA_PATH LUA_CPATH
+    export LUA_PATH=$(prefix_lua_path $lua package.path)
+    export LUA_CPATH=$(prefix_lua_path $lua package.cpath)
+}
+
 
 # Not all distros give precedence to /usr/local
 add_path PATH            /usr/local/bin
@@ -60,11 +85,8 @@ add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
 add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
 add_path XDG_DATA_DIRS   /usr/local/share
 
-# Prepend /usr/local/ also to Lua paths, if relevant
-if [ -x "$LUA" ]; then
-    export LUA_PATH=$(prefix_lua_path package.path)
-    export LUA_CPATH=$(prefix_lua_path package.cpath)
-fi
+# Enable the proper Lua version, prepending /usr/local/ also to Lua paths
+switch_to_lua "$LUA"
 
 # Add $HOME/bin to path
 add_path PATH $HOME/bin
