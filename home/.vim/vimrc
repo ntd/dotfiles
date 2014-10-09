@@ -68,5 +68,9 @@ set nowritebackup
 filetype plugin indent on
 syntax enable
 
+if filereadable(expand("\~/.vimrc-private"))
+    source \~/.vimrc-private
+endif
+
 let &cpo=s:cpo_save
 unlet s:cpo_save
