@@ -394,7 +394,13 @@ awful.rules.rules = {
 	    floating = true,
 	    x = 40, y = 24
 	},
-}}
+    }, {
+	rule = { instance = 'plugin-container' },
+	properties = {
+	    floating = true
+	}
+    },
+}
 
 -- Signal function to execute when a new client appears.
 client.connect_signal('manage', function (c, startup)
