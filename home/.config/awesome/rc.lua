@@ -356,6 +356,7 @@ awful.rules.rules = {
 	    size_hints = { win_gravity = 'north_west' },
 	},
     }, {
+	rule = {},
 	except_any = { class = { 'Conky', 'XNots' } },
 	properties = {
 	    border_width = beautiful.border_width,
