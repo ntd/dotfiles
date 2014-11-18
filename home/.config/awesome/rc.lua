@@ -378,28 +378,35 @@ awful.rules.rules = {
 	end
     }, {
 	rule = { class = 'Firefox' },
-	properties = { tag = tags[1][2] }
+	properties = {
+	    tag = tags[1][2],
+	}
     }, {
 	rule = { class = 'Sylpheed' },
-	properties = { tag = tags[1][3] }
+	properties = {
+	    tag = tags[1][3],
+	}
     }, {
 	rule = { class = 'Galculator' },
 	callback = centering
     }, {
-	rule = { class = 'gimp' },
-	properties = { floating = true }
+	rule = { class = 'Gimp' },
+	properties = {
+	    floating = true,
+	    tag = tags[1][4],
+	}
     }, {
 	rule = { class = 'Xfce4-appfinder' },
 	properties = {
 	    floating = true,
-	    x = 40, y = 24
+	    x = 40, y = 24,
 	},
     }, {
 	rule = { instance = 'plugin-container' },
 	properties = {
-	    floating = true
+	    floating = true,
 	}
-    },
+    }
 }
 
 -- Signal function to execute when a new client appears.
