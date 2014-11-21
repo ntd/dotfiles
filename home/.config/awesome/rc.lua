@@ -203,6 +203,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, 'f', function () awful.util.spawn(filer) end),
     awful.key({ modkey,           }, 'e', function () awful.util.spawn(editor) end),
     awful.key({ modkey,           }, '.', function () awful.util.spawn('galculator') end),
+    awful.key({ modkey,           }, 'g', function () awful.util.spawn('gimp') end),
 
     -- Standard program
     awful.key({ modkey, 'Control' }, 'r', awesome.restart),
@@ -394,13 +395,13 @@ awful.rules.rules = {
 	    tag = tags[1][3],
 	}
     }, {
-	rule = { class = 'Gimp' },
+	rule_any = { class = { 'Gimp', 'Cinelerra' } },
 	properties = {
 	    floating = true,
 	    tag = tags[1][4],
 	}
     }, {
-	rule_any = { class = { 'Galculator', 'Lua' } },
+	rule_any = { class = { 'Galculator', 'Lua', 'adg%-demo', 'cpml%-demo' } },
 	callback = function (c)
 	    awful.client.floating.set(c, true)
 	    c.maximized = false
