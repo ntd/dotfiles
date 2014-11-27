@@ -395,7 +395,7 @@ awful.rules.rules = {
 	    tag = tags[1][3],
 	}
     }, {
-	rule_any = { class = { 'Gimp', 'Cinelerra' } },
+	rule_any = { class = { 'Gimp', 'Cinelerra', 'Blender' } },
 	properties = {
 	    floating = true,
 	    tag = tags[1][4],
