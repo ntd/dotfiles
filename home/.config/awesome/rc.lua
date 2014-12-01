@@ -204,6 +204,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, 'e', function () awful.util.spawn(editor) end),
     awful.key({ modkey,           }, '.', function () awful.util.spawn('galculator') end),
     awful.key({ modkey,           }, 'g', function () awful.util.spawn('gimp') end),
+    awful.key({ modkey,           }, 'b', function () awful.util.spawn('blender') end),
 
     -- Standard program
     awful.key({ modkey, 'Control' }, 'r', awesome.restart),
@@ -353,7 +354,7 @@ awful.rules.rules = {
     }, {
 	rule = { class = 'XNots' },
 	properties = {
-	    height = 500,
+	    height = 700,
 	    size_hints = { win_gravity = 'north_west' },
 	},
     }, {
