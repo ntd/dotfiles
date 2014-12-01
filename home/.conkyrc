@@ -37,7 +37,7 @@ TEXT
 ${color #ddd}Memory    $color$alignr${membar 10,150}
 ${color #ddd}CPU $cpu% $color$alignr${cpugraph 40,150}
 ${color #ddd}/         $color$alignr${fs_bar 10,150 /}
-${color #ddd}/home     $color$alignr${fs_bar 10,150 /home}
+${color #ddd}/var      $color$alignr${fs_bar 10,150 /var}
 
 ${color #ddd}Uptime    $color$alignr$uptime
 ${color #ddd}Network   $color$alignr${upspeed eth0}/${downspeed eth0}
