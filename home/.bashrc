@@ -15,3 +15,6 @@ source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 # Source local customizations here, if present, so
 # they can override any previous setting
 [ -r "$HOME/.bashrc-private" ] && source "$HOME/.bashrc-private"
+
+# OpenResty customizations
+export PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
