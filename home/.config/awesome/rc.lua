@@ -396,6 +396,11 @@ awful.rules.rules = {
 	    tag = tags[1][3],
 	}
     }, {
+	rule = { class = 'Ekiga' },
+	properties = {
+	    hidden = true,
+	}
+    }, {
 	rule_any = { class = { 'Gimp', 'Cinelerra', 'Blender' } },
 	properties = {
 	    floating = true,
@@ -507,3 +512,4 @@ run_once(terminal)
 run_once(browser)
 run_once(email)
 run_once('liferea')
+run_once('ekiga')
