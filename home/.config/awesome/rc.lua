@@ -396,11 +396,6 @@ awful.rules.rules = {
 	    tag = tags[1][3],
 	}
     }, {
-	rule = { class = 'Ekiga' },
-	properties = {
-	    hidden = true,
-	}
-    }, {
 	rule_any = { class = { 'Gimp', 'Cinelerra', 'Blender' } },
 	properties = {
 	    floating = true,
@@ -412,6 +407,13 @@ awful.rules.rules = {
 	    awful.client.floating.set(c, true)
 	    c.maximized = false
 	    awful.placement.centered(c)
+	end
+    }, {
+	rule = { class = 'Ekiga' },
+	callback = function (c)
+	    awful.client.floating.set(c, true)
+	    c.maximized = false
+	    c.skip_taskbar = true
 	end
     }, {
 	rule = { instance = 'plugin-container' },
