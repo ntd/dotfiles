@@ -34,3 +34,9 @@
 [submodule "vim-bundles/vimux"]
 	path = vim-bundles/vimux
 	url = git://github.com/benmills/vimux.git
+[submodule "vim-bundles/vim-misc"]
+	path = vim-bundles/vim-misc
+	url = git@github.com:xolox/vim-misc.git
+[submodule "vim-bundles/vim-lua-ftplugin"]
+	path = vim-bundles/vim-lua-ftplugin
+	url = git@github.com:xolox/vim-lua-ftplugin.git
