@@ -1,1 +1,6 @@
-set gui=addons,nobookmarks,nomenu,nonavigation,tabs
+"3.8.3 (created: 2014/11/09 13:19:01)
+
+set defsearch=duckduckgo
+source! /home/nicola/.vimperatorrc.local
+
+" vim: set ft=vimperator:
