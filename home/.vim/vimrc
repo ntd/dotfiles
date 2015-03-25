@@ -7,7 +7,9 @@ set dir=/tmp                    " Directory for temporary files
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()          " Enable pathogen 'package manager'
 
-set t_ti= t_te=                 " Avoid restoring screen at end of session
+" I cannot avoid the screen restore when exiting because of
+" https://bugzilla.gnome.org/show_bug.cgi?id=746767
+"set t_ti= t_te=                 " Avoid restoring screen at end of session
 set mouse=                      " Let copy&paste with mouse work on SSH
 
                                 " Custom bindings for Vimux
