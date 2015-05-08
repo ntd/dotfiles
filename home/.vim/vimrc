@@ -2,7 +2,7 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 
-set dir=/tmp                    " Directory for temporary files
+set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()          " Enable pathogen 'package manager'
@@ -64,8 +64,9 @@ set textwidth=72
 set hidden
 set backspace=indent,eol,start
 
-set nobackup
-set nowritebackup
+set backupdir=$HOME/.vim/tmp/backup
+set backup
+set writebackup
 
 filetype plugin indent on
 syntax enable
