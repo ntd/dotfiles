@@ -402,14 +402,14 @@ awful.rules.rules = {
 	    tag = tags[1][4],
 	}
     }, {
-	rule_any = { class = { 'Galculator', 'Lua', 'adg%-demo', 'cpml%-demo' } },
+	rule_any = { class = { 'Galculator', 'Lua', 'adg%-demo', 'cpml%-demo', 'Wine' } },
 	callback = function (c)
 	    awful.client.floating.set(c, true)
 	    c.maximized = false
 	    awful.placement.centered(c)
 	end
     }, {
-	rule = { class = 'Ekiga' },
+	rule_any = { class = { 'Ekiga', 'Skype', 'Linphone' } },
 	callback = function (c)
 	    awful.client.floating.set(c, true)
 	    c.maximized = false
@@ -514,4 +514,4 @@ run_once(terminal)
 run_once(browser)
 run_once(email)
 run_once('liferea')
-run_once('ekiga')
+run_once('skype')
