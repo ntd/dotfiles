@@ -3,7 +3,7 @@ local side_strut = 240
 
 local terminal	 = 'roxterm'
 local browser	 = 'firefox'
-local email	 = 'sylpheed'
+local email	 = 'claws-mail'
 local filer	 = 'thunar'
 local editor	 = 'gvim +Project'
 
@@ -391,7 +391,7 @@ awful.rules.rules = {
 	    tag = tags[1][2],
 	}
     }, {
-	rule = { class = 'Sylpheed' },
+	rule_any = { class = { 'Sylpheed', 'Claws-mail' } },
 	properties = {
 	    tag = tags[1][3],
 	}
@@ -513,5 +513,4 @@ run_once('xnots')
 run_once(terminal)
 run_once(browser)
 run_once(email)
-run_once('liferea')
 run_once('skype')
