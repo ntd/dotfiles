@@ -8,13 +8,22 @@ else
     alias ll='ls -GhlF'
 fi
 
+# Set a decent TERM for xfce4-terminal
+if [ "$COLORTERM" = "xfce4-terminal" ]; then
+    export TERM=xterm-256color
+fi
+
 # Homeshick scripts
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
+    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+    source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+fi
+
+# OpenResty customizations
+if [ -d "/opt/openresty" ]; then
+    export PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
+fi
 
 # Source local customizations here, if present, so
 # they can override any previous setting
 [ -r "$HOME/.bashrc-private" ] && source "$HOME/.bashrc-private"
-
-# OpenResty customizations
-export PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
