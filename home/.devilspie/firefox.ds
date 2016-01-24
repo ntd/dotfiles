@@ -1,1 +1,5 @@
-(if (is (application_name) "Firefox") (begin (undecorate) (maximize)))
+(if (is (application_name) "Firefox") (begin
+    (undecorate)
+    (maximize)
+    (set_workspace 2))
+)
