@@ -25,8 +25,9 @@ if class == 'Roxterm' or class == 'Xfce4-terminal' then
     set_window_workspace(1)
     -- The 'Pref' check is a hack to avoid maximizing the preference
     -- dialog of xfce4-terminal (which BTW is *not* a dialog).
-    -- Better would be to check for the WM_TRANSIENT_FOR property...
-    -- to be implemented on devilspie2 side though
+    -- Better would be to check for a transient parent... after having
+    -- implemented that on devilspie2 I would use something like:
+    -- if get_window_property('WM_TRANSIENT_FOR') ~= '' then
     if type ~= 'WINDOW_TYPE_DIALOG' and name:sub(1,4) ~= 'Pref' then
         undecorate_window()
         maximize()
@@ -44,4 +45,8 @@ if class == 'Claws-mail' then
         undecorate_window()
         maximize()
     end
+end
+
+if class == 'crawl-tiles' then
+    maximize()
 end
