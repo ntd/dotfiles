@@ -50,3 +50,9 @@ end
 if class == 'crawl-tiles' then
     maximize()
 end
+
+if class == 'Zim' then
+    set_window_workspace(4)
+    change_workspace(4)
+    maximize_horizontally()
+end
