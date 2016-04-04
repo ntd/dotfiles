@@ -75,5 +75,16 @@ if filereadable($HOME . "/.vimrc-private")
     source $HOME/.vimrc-private
 endif
 
+" Append the git active branch to the status line
+let g:lightline = {
+\     'active': {
+\         'left': [ [ 'mode', 'paste' ],
+\                   [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+\     },
+\     'component_function': {
+\         'gitbranch': 'gitbranch#name',
+\     },
+\ }
+
 let &cpo=s:cpo_save
 unlet s:cpo_save
