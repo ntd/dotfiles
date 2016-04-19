@@ -1,10 +1,8 @@
 " Vim filetype plugin
-" Language:     PHP
+" Language:     JavaScript
 " Maintainer:   Nicola Fontana <ntd at entidi.it>
-" Last Change:  06 May 2009
+" Last Change:  13 april 2016
 " Version:      1.0
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
