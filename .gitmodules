@@ -43,3 +43,6 @@
 [submodule "vim-bundles/lightline.vim"]
 	path = vim-bundles/lightline.vim
 	url = git://github.com/itchyny/lightline.vim.git
+[submodule "vim-bundles/vim-gitbranch"]
+	path = vim-bundles/vim-gitbranch
+	url = git://github.com/itchyny/vim-gitbranch.git
