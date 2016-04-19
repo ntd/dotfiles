@@ -46,3 +46,6 @@
 [submodule "vim-bundles/vim-gitbranch"]
 	path = vim-bundles/vim-gitbranch
 	url = git://github.com/itchyny/vim-gitbranch.git
+[submodule "vim-bundles/vim-phpqa"]
+	path = vim-bundles/vim-phpqa
+	url = git://github.com/joonty/vim-phpqa.git
