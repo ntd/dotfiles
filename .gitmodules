@@ -49,3 +49,6 @@
 [submodule "vim-bundles/vim-phpqa"]
 	path = vim-bundles/vim-phpqa
 	url = git://github.com/joonty/vim-phpqa.git
+[submodule "vim-bundles/vim-ss"]
+	path = vim-bundles/vim-ss
+	url = git://github.com/phalkunz/vim-ss.git
