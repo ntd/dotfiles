@@ -40,3 +40,6 @@
 [submodule "vim-bundles/vim-lua-ftplugin"]
 	path = vim-bundles/vim-lua-ftplugin
 	url = git@github.com:xolox/vim-lua-ftplugin.git
+[submodule "vim-bundles/lightline.vim"]
+	path = vim-bundles/lightline.vim
+	url = git://github.com/itchyny/lightline.vim.git
