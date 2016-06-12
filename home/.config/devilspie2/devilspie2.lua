@@ -56,3 +56,9 @@ if class == 'Zim' then
     change_workspace(4)
     maximize_horizontally()
 end
+
+if class == 'xpad' and role then
+    set_window_above(true)
+    pin_window()
+    stick_window()
+end
