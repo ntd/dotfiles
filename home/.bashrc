@@ -8,11 +8,6 @@ else
     alias ll='ls -GhlF'
 fi
 
-# Set a decent TERM for xfce4-terminal
-if [ "$COLORTERM" = "xfce4-terminal" ]; then
-    export TERM=xterm-256color
-fi
-
 # Homeshick scripts
 if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
     source "$HOME/.homesick/repos/homeshick/homeshick.sh"
