@@ -36,10 +36,10 @@
 	url = git://github.com/benmills/vimux.git
 [submodule "vim-bundles/vim-misc"]
 	path = vim-bundles/vim-misc
-	url = git@github.com:xolox/vim-misc.git
+	url = git://github.com/xolox/vim-misc.git
 [submodule "vim-bundles/vim-lua-ftplugin"]
 	path = vim-bundles/vim-lua-ftplugin
-	url = git@github.com:xolox/vim-lua-ftplugin.git
+	url = git://github.com/xolox/vim-lua-ftplugin.git
 [submodule "vim-bundles/lightline.vim"]
 	path = vim-bundles/lightline.vim
 	url = git://github.com/itchyny/lightline.vim.git
