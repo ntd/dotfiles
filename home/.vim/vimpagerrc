@@ -1,9 +1,35 @@
+" Enable pathogen 'package manager'
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()          " Enable pathogen 'package manager'
+call pathogen#infect()
 
-if &t_Co >= 88
+if has("gui_running") || &t_Co >= 88
     set cursorline              " Highlight the current line
 endif
 
-set background=dark
 colorscheme wombat256
+set background=dark
+set mouse=                      " Let copy&paste with mouse work
+set helplang=en
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set tabstop=8
+
+" Snippet taken from http://stackoverflow.com/a/5795441/186347
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+endif
+
+" Make the primary selection ("* register) persistent on exit.
+" Requires xsel installed.
+if executable("xsel")
+    autocmd VimLeave * call system("xsel -i", getreg('*'))
+endif
+
+" Load local customizations, if any
+runtime vimpagerrc-private

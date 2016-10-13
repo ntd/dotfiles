@@ -4,38 +4,14 @@ set cpo&vim
 
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()          " Enable pathogen 'package manager'
-
-" I cannot avoid the screen restore when exiting because of
-" https://bugzilla.gnome.org/show_bug.cgi?id=746767
-"set t_ti= t_te=                 " Avoid restoring screen at end of session
-set mouse=                      " Let copy&paste with mouse work on SSH
-
-                                " Custom bindings for Vimux
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
-map <Leader>vx :VimuxInterruptRunner<CR>
+" Common (view) settings go into vimpagerrc
+runtime vimpagerrc
 
 set modeline
 set notimeout                   " Don't timeout on mappings
 set ttimeout                    " Do timeout on terminal key codes
 set timeoutlen=100              " Timeout after 100 msec
 set splitright                  " Predilige vertical split on the right
-let g:proj_flags='mstvcg'       " 'Project' flags
-let g:proj_file='.config/vimproject'
-let g:proj_split='vs'           " Split vertically
-set helplang=en
-
-if has("gui_running") || &t_Co >= 88
-    set cursorline              " Highlight the current line
-endif
-colorscheme wombat256
-set background=dark
-
-let &termencoding=&encoding
-set encoding=utf-8
 
 set listchars=tab:↔­,trail:·,precedes:⇐,extends:⇒
 set list
@@ -46,13 +22,7 @@ set nonumber
 set ruler
 set laststatus=2
 
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-
 set autoindent
-set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 
@@ -67,12 +37,25 @@ set backspace=indent,eol,start
 set backupdir=$HOME/.vim/tmp/backup
 set backup
 set writebackup
+                                " Custom bindings for Vimux
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vx :VimuxInterruptRunner<CR>
+
+let g:proj_flags='mstvcg'       " 'Project' flags
+let g:proj_file='.config/vimproject'
+let g:proj_split='vs'           " Split vertically
 
 filetype plugin indent on
 syntax enable
 
+" Any private customizations go into vimrc-private
 if filereadable($HOME . "/.vimrc-private")
+    " Kept for backward compatibility
     source $HOME/.vimrc-private
+else
+    runtime vimrc-private
 endif
 
 " Append the git active branch to the status line
@@ -85,13 +68,6 @@ let g:lightline = {
 \         'gitbranch': 'gitbranch#name',
 \     },
 \ }
-
-
-" Make the primary selection ("* register) persistent on exit.
-" Requires xsel installed.
-if executable("xsel")
-    autocmd VimLeave * call system("xsel -i", getreg('*'))
-endif
 
 let &cpo=s:cpo_save
 unlet s:cpo_save
