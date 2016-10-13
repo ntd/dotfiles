@@ -86,5 +86,12 @@ let g:lightline = {
 \     },
 \ }
 
+
+" Make the primary selection ("* register) persistent on exit.
+" Requires xsel installed.
+if executable("xsel")
+    autocmd VimLeave * call system("xsel -i", getreg('*'))
+endif
+
 let &cpo=s:cpo_save
 unlet s:cpo_save
