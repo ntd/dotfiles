@@ -41,3 +41,6 @@ if ($?prompt) then
 		bindkey -k down history-search-forward
 	endif
 endif
+
+# Homeshick for C shell
+alias homeshick "source $HOME/.homesick/repos/homeshick/bin/homeshick.csh"
