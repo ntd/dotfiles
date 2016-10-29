@@ -1,5 +1,3 @@
-gtk-icon-theme-name = "menta"
-gtk-theme-name = "BlueMenta"
 gtk-font-name = "Cantarell 11"
 
 style "vimfix" {
