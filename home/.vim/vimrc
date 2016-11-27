@@ -25,6 +25,8 @@ set laststatus=2
 set autoindent
 set shiftwidth=4
 set softtabstop=4
+set foldnestmax=1
+set foldminlines=5
 
 if version >= 730
     set colorcolumn=72
