@@ -1,8 +1,8 @@
 " Vim filetype plugin
 " Language:     CSS
 " Maintainer:   Nicola Fontana <ntd at entidi.it>
-" Last Change:  13 april 2016
-" Version:      2.0
+" Last Change:  27 November 2016
+" Version:      2.1
 
-set expandtab
-set shiftwidth=2
+setlocal expandtab
+setlocal shiftwidth=2
