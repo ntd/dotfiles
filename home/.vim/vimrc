@@ -18,7 +18,7 @@ set list
 set showmode
 set showcmd
 set showmatch
-set nonumber
+set relativenumber
 set ruler
 set laststatus=2
 
