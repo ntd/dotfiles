@@ -1,0 +1,6 @@
+data.location=~/docs/task
+
+urgency.blocking.coefficient=2.0
+urgency.blocked.coefficient=-8.0
+
+include /usr/share/doc/task/rc/dark-blue-256.theme
