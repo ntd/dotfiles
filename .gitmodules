@@ -61,3 +61,6 @@
 [submodule "vim-bundles/vim-lua"]
 	path = vim-bundles/vim-lua
 	url = git://github.com/tbastos/vim-lua.git
+[submodule "vim-bundles/vdebug"]
+	path = vim-bundles/vdebug
+	url = git://github.com/joonty/vdebug.git
