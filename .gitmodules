@@ -1,66 +1,88 @@
 [submodule "vim-bundles/vim-pathogen"]
 	path = vim-bundles/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+	ignore = untracked
 [submodule "vim-bundles/vim-align"]
 	path = vim-bundles/vim-align
 	url = git://github.com/tsaleh/vim-align.git
+	ignore = untracked
 [submodule "vim-bundles/vim-project"]
 	path = vim-bundles/vim-project
 	url = git://github.com/ntd/vim-project.git
+	ignore = untracked
 [submodule "vim-bundles/vim-ledger"]
 	path = vim-bundles/vim-ledger
 	url = git://github.com/cypok/vim-ledger.git
+	ignore = untracked
 [submodule "vim-bundles/gtk-vim-syntax"]
 	path = vim-bundles/gtk-vim-syntax
 	url = git://github.com/vim-scripts/gtk-vim-syntax.git
+	ignore = untracked
 [submodule "vim-bundles/clibs.vim"]
 	path = vim-bundles/clibs.vim
 	url = git://github.com/vim-scripts/clibs.vim.git
+	ignore = untracked
 [submodule "vim-bundles/gnome-doc.vim"]
 	path = vim-bundles/gnome-doc.vim
 	url = git://github.com/vim-scripts/gnome-doc.vim.git
+	ignore = untracked
 [submodule "vim-bundles/PHP-Indenting-for-VIm"]
 	path = vim-bundles/PHP-Indenting-for-VIm
 	url = git://github.com/2072/PHP-Indenting-for-VIm.git
+	ignore = untracked
 [submodule "vim-bundles/matchit.zip"]
 	path = vim-bundles/matchit.zip
 	url = git://github.com/vim-scripts/matchit.zip.git
+	ignore = untracked
 [submodule "vim-bundles/vim-wombat"]
 	path = vim-bundles/vim-wombat
 	url = git://github.com/cschlueter/vim-wombat.git
+	ignore = untracked
 [submodule "vim-bundles/vim-misc"]
 	path = vim-bundles/vim-misc
 	url = git://github.com/xolox/vim-misc.git
+	ignore = untracked
 [submodule "vim-bundles/vim-lua-ftplugin"]
 	path = vim-bundles/vim-lua-ftplugin
 	url = git://github.com/xolox/vim-lua-ftplugin.git
+	ignore = untracked
 [submodule "vim-bundles/lightline.vim"]
 	path = vim-bundles/lightline.vim
 	url = git://github.com/itchyny/lightline.vim.git
+	ignore = untracked
 [submodule "vim-bundles/vim-gitbranch"]
 	path = vim-bundles/vim-gitbranch
 	url = git://github.com/itchyny/vim-gitbranch.git
+	ignore = untracked
 [submodule "vim-bundles/vim-phpqa"]
 	path = vim-bundles/vim-phpqa
 	url = git://github.com/joonty/vim-phpqa.git
+	ignore = untracked
 [submodule "vim-bundles/vim-ss"]
 	path = vim-bundles/vim-ss
 	url = git://github.com/phalkunz/vim-ss.git
+	ignore = untracked
 [submodule "vim-bundles/tlib_vim"]
 	path = vim-bundles/tlib_vim
 	url = git://github.com/tomtom/tlib_vim.git
+	ignore = untracked
 [submodule "vim-bundles/vim-addon-mw-utils"]
 	path = vim-bundles/vim-addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+	ignore = untracked
 [submodule "vim-bundles/vim-snipmate"]
 	path = vim-bundles/vim-snipmate
 	url = git://github.com/garbas/vim-snipmate.git
+	ignore = untracked
 [submodule "vim-bundles/vim-snippets"]
 	path = vim-bundles/vim-snippets
 	url = git://github.com/honza/vim-snippets.git
+	ignore = untracked
 [submodule "vim-bundles/vim-lua"]
 	path = vim-bundles/vim-lua
 	url = git://github.com/tbastos/vim-lua.git
+	ignore = untracked
 [submodule "vim-bundles/vdebug"]
 	path = vim-bundles/vdebug
 	url = git://github.com/joonty/vdebug.git
+	ignore = untracked
