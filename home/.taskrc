@@ -5,4 +5,7 @@ default.priority=M
 urgency.blocking.coefficient=2.0
 urgency.blocked.coefficient=-8.0
 
+weekstart=Monday
+journal.time=on
+
 include /usr/share/doc/task/rc/dark-blue-256.theme
