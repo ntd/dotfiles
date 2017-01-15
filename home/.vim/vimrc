@@ -2,6 +2,8 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 
+let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
+
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
 " Common (view) settings go into vimpagerrc
