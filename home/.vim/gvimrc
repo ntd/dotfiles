@@ -1,4 +1,4 @@
-set guifont=Terminus\ 15
+set guifont=xos4\ Terminus\ 15
 set guioptions=aegit
 set mouse=a
 
