@@ -34,10 +34,6 @@
 	path = vim-bundles/matchit.zip
 	url = git://github.com/vim-scripts/matchit.zip.git
 	ignore = untracked
-[submodule "vim-bundles/vim-wombat"]
-	path = vim-bundles/vim-wombat
-	url = git://github.com/cschlueter/vim-wombat.git
-	ignore = untracked
 [submodule "vim-bundles/vim-misc"]
 	path = vim-bundles/vim-misc
 	url = git://github.com/xolox/vim-misc.git
@@ -85,4 +81,8 @@
 [submodule "vim-bundles/vdebug"]
 	path = vim-bundles/vdebug
 	url = git://github.com/joonty/vdebug.git
+	ignore = untracked
+[submodule "vim-bundles/vim-koala"]
+	path = vim-bundles/vim-koala
+	url = git://github.com/jonathanpatt/vim-koala.git
 	ignore = untracked

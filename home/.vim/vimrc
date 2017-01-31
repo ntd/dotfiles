@@ -1,13 +1,10 @@
-if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 
+runtime vimpagerrc              " Common (view) settings go into vimpagerrc
+
 let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
-
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
-
-" Common (view) settings go into vimpagerrc
-runtime vimpagerrc
 
 set modeline
 set notimeout                   " Don't timeout on mappings
@@ -31,29 +28,24 @@ set expandtab
 set foldnestmax=1
 set foldminlines=5
 
-if version >= 730
-    set colorcolumn=72
-endif
 set wrap
 set textwidth=72
 set hidden
 set backspace=indent,eol,start
 
+if exists("&colorcolumn")
+    set colorcolumn=72          " Canonical right column
+endif
+
 set backupdir=$HOME/.vim/tmp/backup
 set backup
 set writebackup
-                                " Custom bindings for Vimux
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
-map <Leader>vx :VimuxInterruptRunner<CR>
 
 let g:proj_flags='mstvcg'       " 'Project' flags
 let g:proj_file='.config/vimproject'
 let g:proj_split='vs'           " Split vertically
 
 filetype plugin indent on
-syntax enable
 
 " Any private customizations go into vimrc-private
 if filereadable($HOME . "/.vimrc-private")
