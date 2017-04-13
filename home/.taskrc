@@ -11,8 +11,11 @@ urgency.uda.effort.H.coefficient=-2
 urgency.uda.effort.M.coefficient=0
 urgency.uda.effort.L.coefficient=2
 urgency.uda.effort.T.coefficient=4
+
 report.next.columns=id,start.age,entry.age,depends,priority,effort,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency
 report.next.labels=ID,Active,Age,Deps,P,E,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.completed.columns=uuid.short,end,priority,effort,project,tags,description
+report.completed.labels=UUID,Completed,P,E,Project,Tags,Description
 
 urgency.blocking.coefficient=2.0
 urgency.blocked.coefficient=-8.0
