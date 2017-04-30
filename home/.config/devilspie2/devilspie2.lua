@@ -23,13 +23,8 @@ end
 
 if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' then
     set_window_workspace(1)
-    -- The 'Pref' check is a hack to avoid maximizing the preference
-    -- dialog of xfce4-terminal (which BTW is *not* a dialog).
-    -- Better would be to check for a transient parent... after having
-    -- implemented that on devilspie2 I would use something like:
-    -- if get_window_property('WM_TRANSIENT_FOR') ~= '' then
+    -- Maximize only the main windows (not the preference dialog)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
-    --if type ~= 'WINDOW_TYPE_DIALOG' and name:sub(1,4) ~= 'Pref' then
         undecorate_window()
         maximize()
     end
@@ -62,4 +57,9 @@ if class == 'xpad' and role then
     set_window_above(true)
     pin_window()
     stick_window()
+end
+
+if class == 'skypeforlinux' then
+    pin_window()
+    set_skip_tasklist(true)
 end
