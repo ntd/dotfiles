@@ -76,6 +76,15 @@ else
     runtime vimrc-private
 endif
 
+" Vdebug customizations
+let g:vdebug_options = {
+\     'watch_window_style': 'compact',
+\ }
+let g:vdebug_features = {
+\     'max_data': 1024,
+\     'max_children': 128,
+\ }
+
 " Append the git active branch to the status line
 let g:lightline = {
 \     'active': {
