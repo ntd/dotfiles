@@ -33,7 +33,7 @@ set textwidth=72                " Canonical right column
 set hidden
 set backspace=indent,eol,start
 
-if !&colorcolumn
+if exists('&colorcolumn')
     set colorcolumn=72
 endif
 
@@ -48,17 +48,18 @@ if maparg('<C-L>', 'n') ==# ''  " Use <C-L> to clear search highlighting
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-if !&scrolloff
+if exists('&scrolloff')
   set scrolloff=1
 endif
-if !&sidescrolloff
+if exists('&sidescrolloff')
   set sidescrolloff=5
 endif
 set display+=lastline
 set sessionoptions-=options
 
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j          " Delete comment character when
+                                " joining commented lines
 endif
 
 
@@ -69,7 +70,7 @@ let g:proj_split='vs'           " Split vertically
 filetype plugin indent on
 
 " Any private customizations go into vimrc-private
-if filereadable($HOME . "/.vimrc-private")
+if filereadable($HOME . '/.vimrc-private')
     " Kept for backward compatibility
     source $HOME/.vimrc-private
 else
