@@ -85,6 +85,7 @@ let g:vdebug_features = {
 \     'max_data': 1024,
 \     'max_children': 128,
 \ }
+autocmd BufNew DebuggerStack set nowrap
 
 " Append the git active branch to the status line
 let g:lightline = {
