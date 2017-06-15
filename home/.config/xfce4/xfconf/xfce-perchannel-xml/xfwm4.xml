@@ -73,15 +73,10 @@
     <property name="wrap_windows" type="bool" value="true"/>
     <property name="wrap_workspaces" type="bool" value="false"/>
     <property name="workspace_names" type="array">
-      <value type="string" value="Spazio di lavoro 1"/>
-      <value type="string" value="Spazio di lavoro 2"/>
-      <value type="string" value="Spazio di lavoro 3"/>
-      <value type="string" value="Spazio di lavoro 4"/>
-      <value type="string" value="Spazio di lavoro 5"/>
-      <value type="string" value="Spazio di lavoro 6"/>
-      <value type="string" value="Spazio di lavoro 7"/>
-      <value type="string" value="Spazio di lavoro 8"/>
-      <value type="string" value="Spazio di lavoro 9"/>
+      <value type="string" value="Terminal"/>
+      <value type="string" value="Web"/>
+      <value type="string" value="Mail"/>
+      <value type="string" value="Spare"/>
     </property>
   </property>
 </channel>
