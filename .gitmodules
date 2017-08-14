@@ -2,10 +2,6 @@
 	path = vim-bundles/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
 	ignore = untracked
-[submodule "vim-bundles/vim-align"]
-	path = vim-bundles/vim-align
-	url = git://github.com/tsaleh/vim-align.git
-	ignore = untracked
 [submodule "vim-bundles/vim-project"]
 	path = vim-bundles/vim-project
 	url = git://github.com/ntd/vim-project.git
