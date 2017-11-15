@@ -7,4 +7,9 @@ tnoremap <c-w>k <c-\><c-n><c-w>k
 tnoremap <c-w>j <c-\><c-n><c-w>j
 tnoremap <c-w>w <c-\><c-n>
 
+" Use ESC for leaving insert mode in terminal buffer
+:tnoremap <Esc> <C-\><C-n>
+
+au TermOpen * setlocal norelativenumber
+
 runtime vimrc
