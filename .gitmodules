@@ -85,3 +85,6 @@
 [submodule "vim-bundles/tabular"]
 	path = vim-bundles/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "vim-bundles/vim-sleuth"]
+	path = vim-bundles/vim-sleuth
+	url = git://github.com/tpope/vim-sleuth.git
