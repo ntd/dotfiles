@@ -46,4 +46,4 @@ endif
 runtime vimpagerrc-private
 
 " Make : more accessible on italian layout
-noremap , :
+noremap ò :
