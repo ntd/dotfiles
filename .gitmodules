@@ -88,3 +88,6 @@
 [submodule "vim-bundles/vim-sleuth"]
 	path = vim-bundles/vim-sleuth
 	url = git://github.com/tpope/vim-sleuth.git
+[submodule "vim-bundles/ctrlp.vim"]
+	path = vim-bundles/ctrlp.vim
+	url = git://github.com/ctrlpvim/ctrlp.vim.git
