@@ -13,10 +13,19 @@ debug_print(
     'Type:     ' .. type     .. '\n'
 )
 
+-- Workaround because this code does not work:
+--     maximize()
+--     debug_print(get_window_is_maximized() -- Print false
+local is_maximized = get_window_is_maximized()
+function real_maximize()
+    maximize()
+    is_maximized = true
+end
+
 if class == 'Firefox' then
     set_window_workspace(2)
     if instance == 'Navigator' then
-        maximize()
+        real_maximize()
     end
 end
 
@@ -24,7 +33,7 @@ if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' then
     set_window_workspace(1)
     -- Maximize only the main windows (not the preference dialogs)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
-        maximize()
+        real_maximize()
     end
 end
 
@@ -36,12 +45,12 @@ if class == 'Claws-mail' then
     set_window_workspace(3)
     change_workspace(3)
     if role == 'mainwindow' then
-        maximize()
+        real_maximize()
     end
 end
 
 if class == 'crawl-tiles' then
-    maximize()
+    real_maximize()
 end
 
 if class == 'Zim' then
@@ -61,6 +70,6 @@ if class == 'skypeforlinux' then
     set_skip_tasklist(true)
 end
 
-if get_window_is_maximized() then
+if is_maximized then
     undecorate_window()
 end
