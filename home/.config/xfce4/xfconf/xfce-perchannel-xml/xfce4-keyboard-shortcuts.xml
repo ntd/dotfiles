@@ -33,7 +33,7 @@
       <property name="&lt;Super&gt;m" type="string" value="exo-open --launch MailReader"/>
       <property name="&lt;Super&gt;w" type="string" value="exo-open --launch WebBrowser"/>
       <property name="&lt;Super&gt;Escape" type="string" value="xfce4-popup-applicationsmenu"/>
-      <property name="&lt;Super&gt;period" type="string" value="/usr/bin/galculator"/>
+      <property name="&lt;Super&gt;period" type="string" value="/usr/bin/gnome-calculator"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -127,6 +127,7 @@
       <property name="&lt;Super&gt;j" type="string" value="cycle_reverse_windows_key"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;h" type="string" value="move_window_prev_workspace_key"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="move_window_next_workspace_key"/>
+      <property name="&lt;Super&gt;space" type="string" value="popup_menu_key"/>
     </property>
   </property>
   <property name="providers" type="array">
