@@ -27,9 +27,12 @@ _prefix_lua_path () {
     # with its /usr/local/ version (if relevant)
     $lua -e "local k, v = {}, {}
 	     for p in $var:gmatch('[^;]+') do
-		 local l = (p:gsub('/usr/local/', '/usr/'):gsub('/usr/', '/usr/local/'))
+		 local s = (p:gsub('/usr/local/', '/usr/'))
+		 local h = (s:gsub('/usr/', '$HOME/.luarocks/'))
+		 local l = (s:gsub('/usr/', '/usr/local/'))
+		 if not k[h] then k[h] = true v[#v+1] = h end
 		 if not k[l] then k[l] = true v[#v+1] = l end
-		 if not k[p] then k[p] = true v[#v+1] = p end
+		 if not k[s] then k[s] = true v[#v+1] = s end
 	     end print(table.concat(v, ';'))"
 }
 
