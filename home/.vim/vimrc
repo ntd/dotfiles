@@ -6,6 +6,9 @@ runtime vimpagerrc              " Common (view) settings go into vimpagerrc
 let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
+map dn ]c			" Map customizations
+map dp [c
+
 set modeline
 set notimeout                   " Don't timeout on mappings
 set ttimeout                    " Do timeout on terminal key codes
