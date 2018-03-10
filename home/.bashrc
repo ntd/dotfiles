@@ -16,8 +16,15 @@ fi
 
 # OpenResty customizations
 if [ -d "/opt/openresty" ]; then
-    export PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
+    PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
 fi
+
+# Include luarocks binary in search path
+if [ -d "$HOME/.luarocks/bin" ]; then
+    PATH=$HOME/.luarocks/bin:$PATH
+fi
+
+export PATH
 
 _prefix_lua_path () {
     local lua=$1
