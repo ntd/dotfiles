@@ -29,7 +29,7 @@ if class == 'Firefox' then
     end
 end
 
-if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' then
+if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' then
     set_window_workspace(1)
     -- Maximize only the main windows (not the preference dialogs)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
