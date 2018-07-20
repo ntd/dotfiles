@@ -28,7 +28,8 @@ highlight! link DiffAdd    DiffChange
 highlight! link DiffDelete DiffChange
 highlight! link DiffText   MatchParen
 
-set mouse=                      " Let copy&paste with mouse work
+" Let copy&paste with mouse work
+set mouse=
 set helplang=en
 set incsearch
 set hlsearch
@@ -47,3 +48,13 @@ runtime vimpagerrc-private
 
 " Make : more accessible on italian layout
 noremap ò :
+
+" Word movement commands
+nnoremap wh B
+nnoremap wj }
+nnoremap wk {
+nnoremap wl W
+vnoremap wh B
+vnoremap wj }
+vnoremap wk {
+vnoremap wl W
