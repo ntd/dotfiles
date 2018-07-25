@@ -91,3 +91,6 @@
 [submodule "vim-bundles/ctrlp.vim"]
 	path = vim-bundles/ctrlp.vim
 	url = git://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim-bundles/vim-enhanced-diff"]
+	path = vim-bundles/vim-enhanced-diff
+	url = git://github.com/chrisbra/vim-diff-enhanced.git
