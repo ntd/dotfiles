@@ -15,7 +15,7 @@ debug_print(
 
 -- Workaround because this code does not work:
 --     maximize()
---     debug_print(get_window_is_maximized() -- Print false
+--     debug_print(get_window_is_maximized()) -- Print false
 local is_maximized = get_window_is_maximized()
 function real_maximize()
     maximize()
@@ -31,7 +31,6 @@ end
 
 if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' then
     set_window_workspace(1)
-    -- Maximize only the main windows (not the preference dialogs)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
         real_maximize()
     end
@@ -41,10 +40,10 @@ if class == 'mpv' then
     set_window_fullscreen(true)
 end
 
-if class == 'Claws-mail' then
+if class == 'Claws-mail' or class == 'Evolution' then
     set_window_workspace(3)
     change_workspace(3)
-    if role == 'mainwindow' then
+    if role == 'mainwindow' or get_window_property('WM_TRANSIENT_FOR') == '' then
         real_maximize()
     end
 end
