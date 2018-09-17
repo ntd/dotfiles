@@ -94,3 +94,6 @@
 [submodule "vim-bundles/vim-enhanced-diff"]
 	path = vim-bundles/vim-enhanced-diff
 	url = git://github.com/chrisbra/vim-diff-enhanced.git
+[submodule "vim-bundles/mesonic"]
+	path = vim-bundles/mesonic
+	url = git://github.com/igankevich/mesonic.git
