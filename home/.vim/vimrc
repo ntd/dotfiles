@@ -6,10 +6,16 @@ runtime vimpagerrc              " Common (view) settings go into vimpagerrc
 let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
-" Map customizations
-nmap dn ]c
-nmap dN [c
-nmap du :diffupdate<CR>
+                                " vimdiff remapping
+nnoremap dn ]c
+nnoremap dN [c
+nnoremap du :diffupdate<CR>
+
+                                " New keybindings for buffer switching
+nnoremap bh <C-W>h
+nnoremap bj <C-W>j
+nnoremap bk <C-W>k
+nnoremap bl <C-W>l
 
 set modeline
 set notimeout                   " Don't timeout on mappings

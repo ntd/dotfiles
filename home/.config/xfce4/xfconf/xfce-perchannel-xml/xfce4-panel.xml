@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=960;y=33"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="1"/>
+        <value type="int" value="2"/>
+        <value type="int" value="3"/>
+        <value type="int" value="4"/>
+        <value type="int" value="5"/>
+        <value type="int" value="6"/>
+        <value type="int" value="7"/>
+      </property>
+      <property name="mode" type="uint" value="2"/>
+      <property name="size" type="uint" value="64"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="length-adjust" type="bool" value="false"/>
+      <property name="nrows" type="uint" value="1"/>
+      <property name="background-style" type="uint" value="0"/>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="100"/>
+      <property name="disable-struts" type="bool" value="false"/>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-1" type="string" value="whiskermenu"/>
+    <property name="plugin-2" type="string" value="dockbarx">
+      <property name="orient" type="string" value="left"/>
+      <property name="expand" type="bool" value="true"/>
+      <property name="offset" type="int" value="0"/>
+    </property>
+    <property name="plugin-3" type="string" value="systray">
+      <property name="names-visible" type="array">
+        <value type="string" value="gmpc"/>
+        <value type="string" value="telegramdesktop"/>
+        <value type="string" value="volumeicon"/>
+        <value type="string" value="orage"/>
+        <value type="string" value="nota"/>
+        <value type="string" value="sonata"/>
+        <value type="string" value="cbatticon"/>
+        <value type="string" value="claws-mail"/>
+      </property>
+      <property name="show-frame" type="bool" value="false"/>
+      <property name="size-max" type="uint" value="48"/>
+    </property>
+    <property name="plugin-4" type="string" value="xfce4-notes-plugin"/>
+    <property name="plugin-5" type="string" value="pager">
+      <property name="rows" type="uint" value="4"/>
+      <property name="workspace-scrolling" type="bool" value="true"/>
+      <property name="miniature-view" type="bool" value="true"/>
+    </property>
+    <property name="plugin-6" type="string" value="cpugraph"/>
+    <property name="plugin-7" type="string" value="clock">
+      <property name="mode" type="uint" value="2"/>
+      <property name="timezone" type="string" value="Europe/Rome"/>
+      <property name="digital-format" type="string" value="&lt;span font_desc=&quot;Roboto Condensed Bold 14&quot;&gt;%R&lt;/span&gt;"/>
+    </property>
+    <property name="notes" type="empty">
+      <property name="new-window" type="empty">
+        <property name="always-on-top" type="bool" value="true"/>
+        <property name="sticky" type="bool" value="false"/>
+        <property name="width" type="int" value="270"/>
+        <property name="height" type="int" value="337"/>
+      </property>
+      <property name="global" type="empty">
+        <property name="font-description" type="string" value="Roboto Condensed, Light 13"/>
+        <property name="skip-taskbar-hint" type="bool" value="true"/>
+      </property>
+    </property>
+  </property>
+</channel>
