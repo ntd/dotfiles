@@ -11,12 +11,6 @@ nnoremap dn ]c
 nnoremap dN [c
 nnoremap du :diffupdate<CR>
 
-                                " New keybindings for buffer switching
-nnoremap bh <C-W>h
-nnoremap bj <C-W>j
-nnoremap bk <C-W>k
-nnoremap bl <C-W>l
-
 set modeline
 set notimeout                   " Don't timeout on mappings
 set ttimeout                    " Do timeout on terminal key codes
