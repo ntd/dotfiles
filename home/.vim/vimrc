@@ -22,7 +22,9 @@ set list
 set showmode
 set showcmd
 set showmatch
-set relativenumber
+if v:version >= 703
+  set relativenumber
+endif
 set ruler                       " Ignored because of lightline
 set laststatus=2
 
