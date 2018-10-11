@@ -84,15 +84,21 @@ else
     runtime vimrc-private
 endif
 
-" Vdebug customizations
-let g:vdebug_options = {
-\     'watch_window_style': 'compact',
-\ }
-let g:vdebug_features = {
-\     'max_data': 1024,
-\     'max_children': 128,
-\ }
-autocmd BufNew DebuggerStack set nowrap
+if has('python3')
+  " Vdebug customizations
+  let g:vdebug_options = {
+  \     'watch_window_style': 'compact',
+  \ }
+  let g:vdebug_features = {
+  \     'max_data': 1024,
+  \     'max_children': 128,
+  \ }
+  autocmd BufNew DebuggerStack set nowrap
+else
+  " Skip Vdebug loading if python is not available to avoid annoying
+  " messages (see https://github.com/vim-vdebug/vdebug/pull/297)
+  let g:is_vdebug_loaded=1
+endif
 
 " Append the git active branch to the status line
 let g:lightline = {
