@@ -16,12 +16,13 @@ setlocal comments=sr:/*,mb:*,ex:*/,://
 nmap <silent> l :if foldclosed(".")>0\|exe "normal! za"\|else\|exe "normal! l"\|endif<CR>
 
 if has("cscope")
-  setlocal cspc=2
   nmap <Space>j :scs find g <C-R>=expand("<cword>")<CR><CR>
   nmap <Space>k :scs find s <C-R>=expand("<cword>")<CR><CR>
   nmap <Space>l :scs find d <C-R>=expand("<cword>")<CR><CR>
   nmap <Space>h :scs find c <C-R>=expand("<cword>")<CR><CR>
 
+  setlocal cscopepathcomp=2
+  setlocal nocscopeverbose
   au BufEnter */cpml-*	cscope add /home/nicola/sandbox/cscopes/cpml.cscope
   au BufEnter */adg-*	cscope add /home/nicola/sandbox/cscopes/adg.cscope
 endif
