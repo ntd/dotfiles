@@ -4,6 +4,9 @@
 # Show all GLib log messages for debugging purpose
 export G_MESSAGES_DEBUG=all
 
+# Try to use the GTK+ theme on Qt5
+export QT_QPA_PLATFORMTHEME=gtk2
+
 # Workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1056820
 export NO_AT_BRIDGE=1
 
