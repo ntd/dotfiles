@@ -22,11 +22,17 @@ function real_maximize()
     is_maximized = true
 end
 
-if class == 'Firefox' then
+if class == 'Firefox' or class == 'keepassxc' then
     set_window_workspace(2)
     if instance == 'Navigator' then
         real_maximize()
     end
+end
+
+-- This must be configured to show a tray icon
+if class == 'keepassx' then
+    pin_window()
+    set_skip_tasklist(true)
 end
 
 if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' then
@@ -64,7 +70,8 @@ if class == 'xpad' and role then
     stick_window()
 end
 
-if class == 'skypeforlinux' then
+-- This must be configured to show a tray icon
+if class == 'skypeforlinux' or class == 'TelegramDesktop' then
     pin_window()
     set_skip_tasklist(true)
 end
