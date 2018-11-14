@@ -22,7 +22,7 @@ function real_maximize()
     is_maximized = true
 end
 
-if class == 'Firefox' or class == 'keepassxc' then
+if class == 'Firefox' then
     set_window_workspace(2)
     if instance == 'Navigator' then
         real_maximize()
@@ -30,7 +30,7 @@ if class == 'Firefox' or class == 'keepassxc' then
 end
 
 -- This must be configured to show a tray icon
-if class == 'keepassx' then
+if class == 'keepassxc' then
     pin_window()
     set_skip_tasklist(true)
 end
