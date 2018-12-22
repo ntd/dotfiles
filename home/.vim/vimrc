@@ -16,11 +16,11 @@ nnoremap tH :leftabove vsplit<CR>
 nnoremap tJ :rightbelow split<CR>
 nnoremap tK :leftabove split<CR>
 nnoremap tL :rightbelow vsplit<CR>
-nnoremap tD :hide<CR>
 nnoremap th <C-W>h
 nnoremap tj <C-W>j
 nnoremap tk <C-W>k
 nnoremap tl <C-W>l
+nnoremap tx :hide<CR>
 
                                 " Tab management
 nnoremap Th :tabprevious<CR>
