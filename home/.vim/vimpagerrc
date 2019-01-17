@@ -19,14 +19,16 @@ endif
 if exists('&termguicolors')
     set termguicolors
 endif
+syntax enable
 set background=dark
 colorscheme koala
-syntax enable
 
-" Improve colorscheme on vimdiff (otherwise almost unusable)
-highlight! link DiffAdd    DiffChange
-highlight! link DiffDelete DiffChange
-highlight! link DiffText   MatchParen
+" Not sure the following section is still relevant: commenting it out
+" for now, for easily reverting in case the problem is still present
+"" Improve colorscheme on vimdiff (otherwise almost unusable)
+"highlight! link DiffAdd    DiffChange
+"highlight! link DiffDelete DiffChange
+"highlight! link DiffText   MatchParen
 
 " Let copy&paste with mouse work
 set mouse=
