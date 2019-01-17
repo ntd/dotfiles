@@ -97,3 +97,6 @@
 [submodule "vim-bundles/mesonic"]
 	path = vim-bundles/mesonic
 	url = git://github.com/igankevich/mesonic.git
+[submodule "vim-bundles/vim-surround"]
+	path = vim-bundles/vim-surround
+	url = git://github.com/tpope/vim-surrount
