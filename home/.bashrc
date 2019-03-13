@@ -8,6 +8,14 @@ else
     alias ll='ls -GhlF'
 fi
 
+# Multitail shortcuts
+alias mt='multitail --config ~/.config/multitail.conf --basename'
+ssmt () {
+    mt	-CS ss -s 2 -P l \
+	/var/log/silverstripe/$1.log \
+	/var/log/nginx/error.$1.log
+}
+
 # Homeshick scripts
 if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
     source "$HOME/.homesick/repos/homeshick/homeshick.sh"
