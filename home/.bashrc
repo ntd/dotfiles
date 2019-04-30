@@ -16,6 +16,9 @@ ssmt () {
 	/var/log/nginx/error.$1.log
 }
 
+# Redis shortcut
+alias redis-cli='/usr/bin/redis-cli -s /run/redis/redis.sock'
+
 # Homeshick scripts
 if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
     source "$HOME/.homesick/repos/homeshick/homeshick.sh"
@@ -80,6 +83,9 @@ switch_to_lua () {
 
 # Enable the configuration for the default Lua
 switch_to_lua lua
+
+# Required by pinentry programs
+export GPG_TTY=$(/usr/bin/tty)
 
 # Source local customizations here, if present, so
 # they can override any previous setting
