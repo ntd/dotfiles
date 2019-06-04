@@ -32,6 +32,10 @@ colorscheme koala
 
 " Let copy&paste with mouse work
 set mouse=
+
+" Leave some context lines while searching
+set scrolloff=8
+
 set helplang=en
 set incsearch
 set hlsearch
@@ -56,7 +60,3 @@ nnoremap wh B
 nnoremap wj }
 nnoremap wk {
 nnoremap wl W
-vnoremap wh B
-vnoremap wj }
-vnoremap wk {
-vnoremap wl W
