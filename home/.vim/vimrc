@@ -71,12 +71,6 @@ if maparg('<C-L>', 'n') ==# ''  " Use <C-L> to clear search highlighting
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-if exists('&scrolloff')
-  set scrolloff=1
-endif
-if exists('&sidescrolloff')
-  set sidescrolloff=5
-endif
 set display+=lastline
 set sessionoptions-=options
 

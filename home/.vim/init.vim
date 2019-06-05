@@ -13,3 +13,4 @@ tnoremap <c-w>w <c-\><c-n>
 au TermOpen * setlocal norelativenumber
 
 runtime vimrc
+runtime gvimrc
