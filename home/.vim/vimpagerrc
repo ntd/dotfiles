@@ -33,8 +33,13 @@ colorscheme koala
 " Let copy&paste with mouse work
 set mouse=
 
-" Leave some context lines while searching
-set scrolloff=8
+" Leave some context rows/lines while moving around
+if exists('&scrolloff')
+  set scrolloff=8
+endif
+if exists('&sidescrolloff')
+  set sidescrolloff=8
+endif
 
 set helplang=en
 set incsearch
