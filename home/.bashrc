@@ -8,6 +8,19 @@ else
     alias ll='ls -GhlF'
 fi
 
+_ps1_branch () {
+    local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    local rv=$?
+    [ $branch ] && printf "\e[31m%s\e[0m " $branch
+    return $rv
+}
+_ps1_status () {
+    local rv=$?
+    [ $rv = 0 ] && printf "\e[32m✔\e[m " || printf "\e[31m✘\e[m "
+    return $rv
+}
+PS1='$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ '
+
 # Multitail shortcuts
 alias mt='multitail --config ~/.config/multitail.conf --basename'
 ssmt () {
