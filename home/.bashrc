@@ -9,9 +9,13 @@ else
 fi
 
 _ps1_branch () {
-    local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     local rv=$?
-    [ $branch ] && printf "\e[31m%s\e[0m " $branch
+    local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    local color
+    if [ $branch ]; then
+        git diff --quiet && color="32" || color="31"
+        printf "\e[%dm%s\e[0m " $color $branch
+    fi
     return $rv
 }
 _ps1_status () {
