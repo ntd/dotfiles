@@ -32,7 +32,7 @@
 ; (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary><Shift>v")
 ; (gtk_accel_path "<Actions>/terminal-window/paste-selection" "")
 ; (gtk_accel_path "<Actions>/terminal-window/preferences" "")
-; (gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary>Page_Up")
+(gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Alt>h")
 ; (gtk_accel_path "<Actions>/terminal-window/read-only" "")
 ; (gtk_accel_path "<Actions>/terminal-window/reset" "")
 ; (gtk_accel_path "<Actions>/terminal-window/reset-and-clear" "")
