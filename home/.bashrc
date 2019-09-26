@@ -8,19 +8,27 @@ else
     alias ll='ls -GhlF'
 fi
 
+# Enhancements over stock bash prompt:
+# - a green check or a red cross suggests the last exit code
+# - the current time is always shown, for quick and dirty profiling
+# - the current branch of the git repository (if any) is shown
+# - the git branch is green if clean or red if dirty
+# - an asterisk after the branch highlights there is a pending push
+_ps1_status () {
+    local rv=$?
+    [ $rv = 0 ] && printf "\e[32m✔\e[m " || printf "\e[31m✘\e[m "
+    return $rv
+}
 _ps1_branch () {
     local rv=$?
     local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     local color
+    local sync
     if [ $branch ]; then
-        git diff --quiet && color="32" || color="31"
-        printf "\e[%dm%s\e[0m " $color $branch
+	git diff --quiet && color="32" || color="31"
+	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
+	printf "\e[%dm%s%s\e[0m " "$color" "$branch" "$sync"
     fi
-    return $rv
-}
-_ps1_status () {
-    local rv=$?
-    [ $rv = 0 ] && printf "\e[32m✔\e[m " || printf "\e[31m✘\e[m "
     return $rv
 }
 PS1='$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ '
