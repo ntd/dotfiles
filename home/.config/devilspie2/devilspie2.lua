@@ -27,51 +27,42 @@ if class == 'Firefox' then
     if instance == 'Navigator' then
         real_maximize()
     end
-end
-
--- This must be configured to show a tray icon
-if class == 'keepassxc' then
+elseif class == 'keepassxc' then
+    -- This must be configured to show a tray icon
     pin_window()
     set_skip_tasklist(true)
-end
-
-if class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' then
+    maximize_window_horisontally()
+elseif class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' then
     set_window_workspace(1)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
         real_maximize()
     end
-end
-
-if class == 'mpv' then
+elseif class == 'mpv' then
     set_window_fullscreen(true)
-end
-
-if class == 'Claws-mail' or class == 'Evolution' then
+elseif class == 'Claws-mail' or class == 'Evolution' then
     set_window_workspace(3)
     change_workspace(3)
+    -- I use a trayicon on both
+    set_skip_tasklist(true)
     if role == 'mainwindow' or get_window_property('WM_TRANSIENT_FOR') == '' then
         real_maximize()
     end
-end
-
-if class == 'crawl-tiles' then
+elseif class == 'crawl-tiles' then
     real_maximize()
-end
-
-if class == 'Zim' then
+elseif class == 'Zim' then
     set_window_workspace(4)
     change_workspace(4)
     maximize_horizontally()
-end
-
-if class == 'xpad' and role then
+elseif class == 'xpad' and role then
     set_window_above(true)
     pin_window()
     stick_window()
-end
-
--- This must be configured to show a tray icon
-if class == 'skypeforlinux' or class == 'TelegramDesktop' then
+elseif class == 'Transmission-gtk' then
+    -- I use a trayicon instead
+    set_skip_tasklist(true)
+    maximize_window_horisontally()
+elseif class == 'skypeforlinux' or class == 'TelegramDesktop' then
+    -- I use a trayicon on both
     pin_window()
     set_skip_tasklist(true)
 end
