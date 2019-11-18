@@ -16,7 +16,7 @@ fi
 # - an asterisk after the branch highlights there is a pending push
 _ps1_status () {
     local rv=$?
-    [ $rv = 0 ] && printf "\e[32m✔\e[m " || printf "\e[31m✘\e[m "
+    [ $rv = 0 ] && printf "\[\e[32m\]✔\[\e[m\] " || printf "\e[31m✘\e[m "
     return $rv
 }
 _ps1_branch () {
@@ -27,11 +27,15 @@ _ps1_branch () {
     if [ $branch ]; then
 	git diff --quiet && color="32" || color="31"
 	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
-	printf "\e[%dm%s%s\e[0m " "$color" "$branch" "$sync"
+	printf "\[\e[%dm\]%s%s\[\e[m\] " "$color" "$branch" "$sync"
     fi
     return $rv
 }
-PS1='$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ '
+_ps1_command () {
+    PS1="$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ "
+}
+shopt -u promptvars
+PROMPT_COMMAND=_ps1_command
 
 # Multitail shortcuts
 alias mt='multitail --config ~/.config/multitail.conf --basename'
