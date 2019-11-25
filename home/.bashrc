@@ -14,9 +14,23 @@ fi
 # - the current branch of the git repository (if any) is shown
 # - the git branch is green if clean or red if dirty
 # - an asterisk after the branch highlights there is a pending push
+_colorecho () {
+    local color=$1
+    local text=$2
+    printf "\[\e[%dm\]%s\[\e[m\] " "$color" "$text"
+}
 _ps1_status () {
     local rv=$?
-    [ $rv = 0 ] && printf "\[\e[32m\]✔\[\e[m\] " || printf "\e[31m✘\e[m "
+    local color
+    local symbol
+    if [ $rv = 0 ]; then
+	color=32
+	symbol='✔'
+    else
+	color=31
+	symbol='✘'
+    fi
+    _colorecho $color $symbol
     return $rv
 }
 _ps1_branch () {
@@ -27,7 +41,7 @@ _ps1_branch () {
     if [ $branch ]; then
 	git diff --quiet && color="32" || color="31"
 	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
-	printf "\[\e[%dm\]%s%s\[\e[m\] " "$color" "$branch" "$sync"
+	_colorecho $color "$branch$sync"
     fi
     return $rv
 }
