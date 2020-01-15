@@ -2,7 +2,7 @@
 # for every interactive bash opened
 
 # ls compatibility: BSD uses -G, GNU uses --color
-if ls --color >/dev/null 2>&1; then
+if ls --color >/dev/null 2> /dev/null; then
     alias ll='ls -hl --color'
 else
     alias ll='ls -GhlF'
@@ -39,7 +39,7 @@ _ps1_branch () {
     local color
     local sync
     if [ $branch ]; then
-	git diff --quiet && color="32" || color="31"
+	git diff --quiet 2> /dev/null && color="32" || color="31"
 	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
 	_colorecho $color "$branch$sync"
     fi
@@ -115,7 +115,7 @@ switch_to_lua () {
     unset LUA LUA_PATH LUA_CPATH
 
     # Use the absolute path to the binary, if not specified
-    [ -x "$lua" ] || lua=$(command -v 2>/dev/null $lua)
+    [ -x "$lua" ] || lua=$(command -v $lua 2> /dev/null)
     [ -x "$lua" ] || return 1
 
     # Redefine the relevant environmental variables
