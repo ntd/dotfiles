@@ -54,7 +54,7 @@ PROMPT_COMMAND=_ps1_command
 # Multitail shortcuts
 alias mt='multitail --config ~/.config/multitail.conf --basename'
 ssmt () {
-    mt	-CS ss -s 2 -P l \
+    mt	-s 2\
 	/var/log/silverstripe/$1.log \
 	/var/log/nginx/error.$1.log
 }
