@@ -78,10 +78,6 @@
 	path = vim-bundles/vdebug
 	url = git://github.com/joonty/vdebug.git
 	ignore = untracked
-[submodule "vim-bundles/vim-koala"]
-	path = vim-bundles/vim-koala
-	url = git://github.com/jonathanpatt/vim-koala.git
-	ignore = untracked
 [submodule "vim-bundles/tabular"]
 	path = vim-bundles/tabular
 	url = git://github.com/godlygeek/tabular.git
