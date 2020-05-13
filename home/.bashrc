@@ -68,6 +68,8 @@ if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
     source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
 
+PATH="$PATH:$HOME/.local/bin"
+
 # OpenResty customizations
 if [ -d "/opt/openresty" ]; then
     PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
