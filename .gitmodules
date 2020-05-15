@@ -62,14 +62,6 @@
 	path = vim-bundles/vim-addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
 	ignore = untracked
-[submodule "vim-bundles/vim-snipmate"]
-	path = vim-bundles/vim-snipmate
-	url = git://github.com/garbas/vim-snipmate.git
-	ignore = untracked
-[submodule "vim-bundles/vim-snippets"]
-	path = vim-bundles/vim-snippets
-	url = git://github.com/honza/vim-snippets.git
-	ignore = untracked
 [submodule "vim-bundles/vim-lua"]
 	path = vim-bundles/vim-lua
 	url = git://github.com/tbastos/vim-lua.git
@@ -99,3 +91,7 @@
 [submodule "vim-bundles/papercolor-theme"]
 	path = vim-bundles/papercolor-theme
 	url = git://github.com/NLKNguyen/papercolor-theme.git
+[submodule "vim-bundles/coc.nvim"]
+	path = vim-bundles/coc.nvim
+	url = git://github.com/neoclide/coc.nvim
+	branch = release
