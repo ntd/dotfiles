@@ -8,6 +8,3 @@
 let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codecoverage_autorun = 0
-
-" Disable some dumb PHP aliasing
-let g:snipMate.scope_aliases.php = ''
