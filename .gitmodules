@@ -58,10 +58,6 @@
 	path = vim-bundles/tlib_vim
 	url = git://github.com/tomtom/tlib_vim.git
 	ignore = untracked
-[submodule "vim-bundles/vim-addon-mw-utils"]
-	path = vim-bundles/vim-addon-mw-utils
-	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
-	ignore = untracked
 [submodule "vim-bundles/vim-lua"]
 	path = vim-bundles/vim-lua
 	url = git://github.com/tbastos/vim-lua.git
