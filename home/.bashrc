@@ -8,6 +8,12 @@ else
     alias ll='ls -GhlF'
 fi
 
+# Use neovim instead of vim, if installed
+if test -x /usr/bin/nvim; then
+    alias vim='/usr/bin/nvim'
+    alias vimdiff='/usr/bin/nvim -d'
+fi
+
 # Enhancements over stock bash prompt:
 # - a green check or a red cross suggests the last exit code
 # - the current time is always shown, for quick and dirty profiling
