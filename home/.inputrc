@@ -1,1 +1,10 @@
 set editing-mode vi
+
+# Line cursor in editing mode, block cursor in command mode
+set vi-ins-mode-string \1\e[5 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+set show-mode-in-prompt on
+
+# Allow to clear screen with <Ctrl><L> in insert mode
+set keymap vi-insert
+Control-l: clear-screen
