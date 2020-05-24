@@ -71,6 +71,9 @@ if maparg('<C-L>', 'n') ==# ''  " Use <C-L> to clear search highlighting
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
+" Do not restart from BOF when searching
+set nowrapscan
+
 set display+=lastline
 set sessionoptions-=options
 
