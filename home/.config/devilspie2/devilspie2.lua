@@ -32,7 +32,7 @@ elseif class == 'keepassxc' then
     pin_window()
     set_skip_tasklist(true)
     maximize_window_horisontally()
-elseif class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' then
+elseif class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' or class == 'kitty' then
     set_window_workspace(1)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
         real_maximize()
