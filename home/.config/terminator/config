@@ -1,0 +1,80 @@
+[global_config]
+  handle_size = 8
+  window_state = maximise
+  enabled_plugins = ,
+  title_font = Source Code Variable Medium 17
+[keybindings]
+  zoom_in = <Alt>KP_Add
+  zoom_out = <Alt>KP_Subtract
+  zoom_normal = <Alt>0
+  new_tab = <Alt>n
+  cycle_next = <Alt>Tab
+  cycle_prev = <Shift><Alt>Tab
+  go_next = None
+  go_prev = None
+  rotate_cw = None
+  rotate_ccw = None
+  split_horiz = <Alt>Return
+  split_vert = <Alt>space
+  close_term = None
+  toggle_scrollbar = None
+  page_up = <Shift><Alt>k
+  page_down = <Shift><Alt>j
+  line_up = <Alt>k
+  line_down = <Alt>j
+  close_window = None
+  resize_up = <Shift><Alt>Up
+  resize_down = <Shift><Alt>Down
+  resize_left = <Shift><Alt>Left
+  resize_right = <Shift><Alt>Right
+  move_tab_right = <Primary><Alt>l
+  move_tab_left = <Primary><Alt>h
+  toggle_zoom = None
+  next_tab = <Alt>l
+  prev_tab = <Alt>h
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+  reset = None
+  reset_clear = None
+  hide_window = None
+  group_all = None
+  ungroup_all = None
+  group_tab = None
+  ungroup_tab = None
+  new_window = <Alt>w
+  new_terminator = None
+  broadcast_off = None
+  broadcast_group = None
+  broadcast_all = None
+  insert_number = None
+  insert_padded = None
+  layout_launcher = None
+  help = None
+[profiles]
+  [[default]]
+    background_color = "#300a24"
+    cursor_color = "#aaaaaa"
+    font = Source Code Variable Medium 17
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 10000
+    use_system_font = False
+    use_theme_colors = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
