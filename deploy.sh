@@ -9,7 +9,7 @@ if test -x "$dconf"; then
     for dump in "$HOME"/.homesick/repos/dotfiles/home/.config/dconf/*.dump; do
         path=$(sed -E 's|^.*/(.*).dump$|/\1/|; s|\.|/|g' <<< "$dump")
         if test -n "$("$dconf" list $path)"; then
-            "$dconf" load < $dump
+            "$dconf" load $path < $dump
         fi
     done
 fi
