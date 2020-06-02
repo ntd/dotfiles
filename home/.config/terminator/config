@@ -1,11 +1,15 @@
 [global_config]
   handle_size = 8
   window_state = maximise
+  borderless = True
+  extra_styling = False
+  inactive_color_offset = 0.7027027027027027
   enabled_plugins = ,
+  always_split_with_profile = True
   title_font = Source Code Variable Medium 17
 [keybindings]
-  zoom_in = <Alt>KP_Add
-  zoom_out = <Alt>KP_Subtract
+  zoom_in = <Alt>plus
+  zoom_out = <Alt>minus
   zoom_normal = <Alt>0
   new_tab = <Alt>n
   cycle_next = <Alt>Tab
@@ -55,19 +59,22 @@
   broadcast_all = None
   insert_number = None
   insert_padded = None
+  edit_tab_title = <Primary><Alt>n
   layout_launcher = None
   help = None
 [profiles]
   [[default]]
+    allow_bold = False
     background_color = "#300a24"
     cursor_color = "#aaaaaa"
-    font = Source Code Variable Medium 17
+    font = Source Code Variable 17
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 10000
     use_system_font = False
     use_theme_colors = True
+    copy_on_selection = True
 [layouts]
   [[default]]
     [[[window0]]]
