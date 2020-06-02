@@ -14,6 +14,18 @@ if test -x /usr/bin/nvim; then
     alias vimdiff='/usr/bin/nvim -d'
 fi
 
+# Source VTE specific script, if found
+if test -r /etc/profile.d/vte.sh; then
+    source /etc/profile.d/vte.sh
+fi
+
+# Ensure the __vte_osc7 function is defined
+if ! declare -f __vte_osc7 > /dev/null; then
+    __vte_osc7 () {
+	:
+    }
+fi
+
 # Enhancements over stock bash prompt:
 # - a green check or a red cross suggests the last exit code
 # - the current time is always shown, for quick and dirty profiling
@@ -52,7 +64,7 @@ _ps1_branch () {
     return $rv
 }
 _ps1_command () {
-    PS1="$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ "
+    PS1="$(__vte_osc7)$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ "
 }
 shopt -u promptvars
 PROMPT_COMMAND=_ps1_command
