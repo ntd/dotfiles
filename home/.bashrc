@@ -19,7 +19,7 @@ if test -r /etc/profile.d/vte.sh; then
     source /etc/profile.d/vte.sh
 fi
 
-# Ensure the __vte_osc7 function is defined
+# Ensure __vte_osc7, used by PROMPT_COMMAND, is defined
 if ! declare -f __vte_osc7 > /dev/null; then
     __vte_osc7 () {
 	:
@@ -33,9 +33,7 @@ fi
 # - the git branch is green if clean or red if dirty
 # - an asterisk after the branch highlights there is a pending push
 _colorecho () {
-    local color=$1
-    local text=$2
-    printf "\[\e[%dm\]%s\[\e[m\] " "$color" "$text"
+    printf "\[\e[%dm\]%s\[\e[m\]" "$1" "$2"
 }
 _ps1_status () {
     local rv=$?
@@ -52,19 +50,18 @@ _ps1_status () {
     return $rv
 }
 _ps1_branch () {
-    local rv=$?
     local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     local color
     local sync
     if [ $branch ]; then
 	git diff --quiet 2> /dev/null && color="32" || color="31"
 	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
-	_colorecho $color "$branch$sync"
+	_colorecho $color "$branch$sync "
     fi
-    return $rv
 }
 _ps1_command () {
-    PS1="$(__vte_osc7)$(_ps1_status)\t $(_ps1_branch)\u@\h \W \$ "
+    PS1="$(_ps1_status) \t $(_ps1_branch)\u@\h \W \$ "
+    __vte_osc7
 }
 shopt -u promptvars
 PROMPT_COMMAND=_ps1_command
