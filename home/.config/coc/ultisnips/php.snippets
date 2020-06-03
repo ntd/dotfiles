@@ -1,0 +1,25 @@
+extends php
+
+snippet if "Conditional construct" b
+if ($1) {
+    $0
+}
+endsnippet
+
+snippet for "Numeric loop" b
+for (${1:$n} = 0; $1 < $2; ++$1) {
+    $0
+}
+endsnippet
+
+snippet foreach "Hash iteration" b
+foreach (${1:$list} as $key => $value) {
+    $0
+}
+endsnippet
+
+snippet doc "Generic documentation" b
+/**
+ * $0
+ */
+endsnippet

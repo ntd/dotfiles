@@ -1,0 +1,29 @@
+extends c
+
+snippet if "Conditional construct" b
+if ($1) {
+    $0
+}
+endsnippet
+
+snippet for "Numeric loop" b
+for (${1:n} = 0; $1 < $2; ++$1) {
+    $0
+}
+endsnippet
+
+snippet foreach "List iteration" b
+for (${1:l} = ${2:list}; $1 != NULL; $1 = $1->next) {
+    $0
+}
+endsnippet
+
+snippet docfunc "Function documentation" b
+/**
+ * $0
+ *
+ * Returns: $1
+ *
+ * Since: 1.0
+ **/
+endsnippet
