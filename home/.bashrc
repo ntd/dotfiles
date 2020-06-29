@@ -85,6 +85,10 @@ fi
 
 PATH="$PATH:$HOME/.local/bin"
 
+# Useful for running uninstalled GTK programs, as I always do: I keep
+# forgetting the name of this damned environment variable
+export GSETTINGS_SCHEMA_DIR=.
+
 # OpenResty customizations
 if [ -d "/opt/openresty" ]; then
     PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
