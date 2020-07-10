@@ -14,6 +14,9 @@ if test -x /usr/bin/nvim; then
     alias vimdiff='/usr/bin/nvim -d'
 fi
 
+# Taskwarrior VIM interface
+alias vit='vim +:TW'
+
 # Source VTE specific script, if found
 if test -r /etc/profile.d/vte.sh; then
     source /etc/profile.d/vte.sh
