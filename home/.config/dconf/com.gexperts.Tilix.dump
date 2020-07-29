@@ -1,11 +1,13 @@
 [/]
 auto-hide-mouse=true
+copy-on-select=true
 enable-wide-handle=true
 prompt-on-close=true
 quake-specific-monitor=0
 session-name='${activeTerminalTitle}'
 sidebar-on-right=false
 terminal-title-style='none'
+use-overlay-scrollbar=false
 use-tabs=true
 window-save-state=true
 window-state=132
@@ -19,7 +21,7 @@ session-add-auto='disabled'
 session-add-down='<Alt>Return'
 session-add-right='<Alt>space'
 session-close='disabled'
-session-name='<Primary><Alt>n'
+session-name='<Shift><Alt>n'
 session-open='disabled'
 session-resize-terminal-down='<Shift><Alt>Down'
 session-resize-terminal-left='<Shift><Alt>Left'
@@ -62,12 +64,14 @@ win-switch-to-session-9='disabled'
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 automatic-switch=@as []
 background-color='#272822'
+background-transparency-percent=0
 badge-color='#AC7EA8'
 badge-color-set=false
 badge-text=''
 bold-color-set=false
 cursor-blink-mode='on'
 cursor-colors-set=false
+dim-transparency-percent=44
 font='Source Code Variable 17'
 foreground-color='#F8F8F2'
 highlight-colors-set=false
