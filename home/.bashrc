@@ -14,6 +14,9 @@ if test -x /usr/bin/nvim; then
     alias vimdiff='/usr/bin/nvim -d'
 fi
 
+# See https://github.com/keepassxreboot/keepassxc/issues/5029#issuecomment-657490385
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
 # Taskwarrior VIM interface
 alias vit='vim +:TW'
 
