@@ -9,9 +9,18 @@ else
 fi
 
 # Use neovim instead of vim, if installed
-if test -x /usr/bin/nvim; then
-    alias vim='/usr/bin/nvim'
-    alias vimdiff='/usr/bin/nvim -d'
+if command -v nvim &> /dev/null; then
+    alias vim=$(command -v nvim)
+    alias vimdiff="$(command -v nvim) -d"
+fi
+
+# Set vimpager/nvimpager as default pager, if found
+if test -z "$PAGER"; then
+    if command -v vimpager &> /dev/null; then
+	export PAGER=$(command -v vimpager)
+    elif command -v nvimpager &> /dev/null; then
+	export PAGER=$(command -v nvimpager)
+    fi
 fi
 
 # See https://github.com/keepassxreboot/keepassxc/issues/5029#issuecomment-657490385
