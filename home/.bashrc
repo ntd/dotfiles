@@ -8,10 +8,14 @@ else
     alias ll='ls -GhlF'
 fi
 
-# Use neovim instead of vim, if installed
 if command -v nvim &> /dev/null; then
+    # Use neovim instead of vim, if installed
     alias vim=$(command -v nvim)
     alias vimdiff="$(command -v nvim) -d"
+    export EDITOR=$(command -v nvim)
+elif command -v vim &> /dev/null; then
+    # Use the VIM editor if installed
+    export EDITOR=$(command -v vim)
 fi
 
 # Set vimpager/nvimpager as default pager, if found
