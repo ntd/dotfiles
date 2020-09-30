@@ -11,6 +11,9 @@ else
     export QT_QPA_PLATFORMTHEME=gtk2
 fi
 
+# See https://github.com/keepassxreboot/keepassxc/issues/5029#issuecomment-657490385
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
 # Workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1056820
 export NO_AT_BRIDGE=1
 
@@ -18,9 +21,21 @@ export NO_AT_BRIDGE=1
 [ -z "$CFLAGS" ]     && export CFLAGS="-O2 -Wall"
 [ -z "$CXXFLAGS" ]   && export CXXFLAGS="$CFLAGS"
 
-# Set some external helper programs
-[ -z "$PAGER" ]      && export PAGER=$(command -v 2>/dev/null vimpager)
-[ -z "$EDITOR" ]     && export EDITOR=$(command -v 2>/dev/null vim)
+# Set the default editor
+if command -v nvim &> /dev/null; then
+    export EDITOR=$(command -v nvim)
+elif command -v vim &> /dev/null; then
+    export EDITOR=$(command -v vim)
+fi
+
+# Set vimpager/nvimpager as default pager, if found
+if test -z "$PAGER"; then
+    if command -v vimpager &> /dev/null; then
+	export PAGER=$(command -v vimpager)
+    elif command -v nvimpager &> /dev/null; then
+	export PAGER=$(command -v nvimpager)
+    fi
+fi
 
 # By default I use two Wine directories instead of $HOME/.wine:
 # $HOME/.win32 (32 bit) and $HOME/.win64 (64 bit, seldomly used).
@@ -62,8 +77,22 @@ _add_path GI_TYPELIB_PATH /usr/local/lib/girepository-1.0
 _add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
 _add_path XDG_DATA_DIRS   /usr/local/share
 
-# Add $HOME/bin to path
+# Add local paths
 _add_path PATH $HOME/bin
+_add_path PATH $HOME/.local/bin
+
+# Include luarocks path, if relevant
+if [ -d "$HOME/.luarocks/bin" ]; then
+    _add_path PATH $HOME/.luarocks/bin
+fi
+
+# OpenResty customizations
+if [ -d "/opt/openresty" ]; then
+    PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
+fi
+
+# Required by pinentry programs
+export GPG_TTY=$(/usr/bin/tty)
 
 # Source local customizations here, if present, so
 # they can override any previous setting

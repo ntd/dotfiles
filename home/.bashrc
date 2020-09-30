@@ -8,27 +8,11 @@ else
     alias ll='ls -GhlF'
 fi
 
-if command -v nvim &> /dev/null; then
-    # Use neovim instead of vim, if installed
+# Set vim related shortcuts
+if test -z "$(command -v vim)" -a -n "$(command -v nvim)"; then
     alias vim=$(command -v nvim)
     alias vimdiff="$(command -v nvim) -d"
-    export EDITOR=$(command -v nvim)
-elif command -v vim &> /dev/null; then
-    # Use the VIM editor if installed
-    export EDITOR=$(command -v vim)
 fi
-
-# Set vimpager/nvimpager as default pager, if found
-if test -z "$PAGER"; then
-    if command -v vimpager &> /dev/null; then
-	export PAGER=$(command -v vimpager)
-    elif command -v nvimpager &> /dev/null; then
-	export PAGER=$(command -v nvimpager)
-    fi
-fi
-
-# See https://github.com/keepassxreboot/keepassxc/issues/5029#issuecomment-657490385
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 # Taskwarrior VIM interface
 alias vit='vim +:TW'
@@ -102,24 +86,6 @@ if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
     source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
 
-PATH="$PATH:$HOME/.local/bin"
-
-# Useful for running uninstalled GTK programs, as I always do: I keep
-# forgetting the name of this damned environment variable
-export GSETTINGS_SCHEMA_DIR=.
-
-# OpenResty customizations
-if [ -d "/opt/openresty" ]; then
-    PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
-fi
-
-# Include luarocks binary in search path
-if [ -d "$HOME/.luarocks/bin" ]; then
-    PATH=$HOME/.luarocks/bin:$PATH
-fi
-
-export PATH
-
 _prefix_lua_path () {
     local lua=$1
     local var=$2
@@ -164,11 +130,10 @@ switch_to_lua () {
     export LUA_CPATH=$(_prefix_lua_path $lua package.cpath)
 }
 
-# Enable the configuration for the default Lua
-switch_to_lua lua
-
-# Required by pinentry programs
-export GPG_TTY=$(/usr/bin/tty)
+# Enable the configuration for the default Lua command
+if command -v lua &> /dev/null; then
+    switch_to_lua lua
+fi
 
 # Source local customizations here, if present, so
 # they can override any previous setting
