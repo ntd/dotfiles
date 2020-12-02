@@ -4,7 +4,6 @@ alias ll ls -GhlF
 
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin $HOME/bin)
 
-setenv LANG		en_US.UTF-8
 setenv MM_CHARSET	UTF-8
 
 setenv CFLAGS		"-O2 -Wall"
