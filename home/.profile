@@ -88,7 +88,7 @@ fi
 
 # OpenResty customizations
 if [ -d "/opt/openresty" ]; then
-    PATH=$PATH:/opt/openresty/bin:/opt/openresty/nginx/sbin
+    _add_path PATH /opt/openresty/bin:/opt/openresty/nginx/sbin
 fi
 
 # Required by pinentry programs
