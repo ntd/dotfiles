@@ -1,6 +1,9 @@
 # Sourced by any login shell, i.e. usually called by
 # the display manager after logging in
 
+# Source the user provided locale.conf, if present
+[ -r "$HOME/.config/locale.conf" ] && source "$HOME/.config/locale.conf"
+
 # Show all GLib log messages for debugging purpose
 export G_MESSAGES_DEBUG=all
 
