@@ -139,36 +139,40 @@ else
   inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-inoremap <silent> <expr><TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-inoremap          <expr><S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent> <expr><c-space> coc#refresh()
-nnoremap <silent> K               :call <SID>show_documentation()<CR>
-nmap <silent> dp    <Plug>(coc-diagnostic-prev)
-nmap <silent> dn    <Plug>(coc-diagnostic-next)
-nmap <silent> gd    <Plug>(coc-definition)
-nmap <silent> gy    <Plug>(coc-type-definition)
-nmap <silent> gi    <Plug>(coc-implementation)
-nmap <silent> gr    <Plug>(coc-references)
-nmap <leader> rn    <Plug>(coc-rename)
-xmap <leader> f     <Plug>(coc-format-selected)
-nmap <leader> f     <Plug>(coc-format-selected)
-xmap <leader> a     <Plug>(coc-codeaction-selected)
-nmap <leader> a     <Plug>(coc-codeaction-selected)
-nmap <leader> ac    <Plug>(coc-codeaction)
-nmap <leader> qf    <Plug>(coc-fix-current)
-xmap          if    <Plug>(coc-funcobj-i)
-omap          if    <Plug>(coc-funcobj-i)
-xmap          af    <Plug>(coc-funcobj-a)
-omap          af    <Plug>(coc-funcobj-a)
-xmap          ic    <Plug>(coc-classobj-i)
-omap          ic    <Plug>(coc-classobj-i)
-xmap          ac    <Plug>(coc-classobj-a)
-omap          ac    <Plug>(coc-classobj-a)
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-imap          <C-l> <Plug>(coc-snippets-expand)
-vmap          <C-j> <Plug>(coc-snippets-select)
-imap          <C-j> <Plug>(coc-snippets-expand-jump)
+" Configure vim-lsp
+if executable('clangd')
+  au User lsp_setup call lsp#register_server({
+  \     'name': 'clangd',
+  \     'cmd': {server_info->['clangd', '-background-index']},
+  \     'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+  \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gs <plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> gp <plug>(lsp-previous-diagnostic)
+  nmap <buffer> gn <plug>(lsp-next-diagnostic)
+  nmap <buffer> K <plug>(lsp-hover)
+  inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+  inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+  let g:lsp_format_sync_timeout = 1000
+  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " Append the git active branch to the status line
 let g:lightline = {
