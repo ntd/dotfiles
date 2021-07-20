@@ -1,4 +1,0 @@
-{
-    "coc.preferences.extensionUpdateCheck": "never",
-    "clangd.arguments": [ "--compile-commands-dir=build/" ],
-}
