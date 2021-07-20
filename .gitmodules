@@ -87,10 +87,6 @@
 [submodule "vim-bundles/papercolor-theme"]
 	path = vim-bundles/papercolor-theme
 	url = git://github.com/NLKNguyen/papercolor-theme.git
-[submodule "vim-bundles/coc.nvim"]
-	path = vim-bundles/coc.nvim
-	url = git://github.com/neoclide/coc.nvim
-	branch = release
 [submodule "vim-bundles/taskwarrior"]
 	path = vim-bundles/taskwarrior
 	url = git://github.com/xarthurx/taskwarrior.vim
