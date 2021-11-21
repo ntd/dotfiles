@@ -1,3 +1,4 @@
+#!/bin/csh
 umask 22
 
 alias ll ls -GhlF
@@ -42,4 +43,4 @@ if ($?prompt) then
 endif
 
 # Homeshick for C shell
-alias homeshick "source $HOME/.homesick/repos/homeshick/bin/homeshick.csh"
+alias homeshick "source $HOME/.homesick/repos/homeshick/homeshick.csh"
