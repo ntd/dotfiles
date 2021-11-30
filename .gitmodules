@@ -93,3 +93,9 @@
 [submodule "vim-bundles/vim-lsp"]
 	path = vim-bundles/vim-lsp
 	url = git://github.com/prabirshrestha/vim-lsp
+[submodule "vim-bundles/gitsigns.nvim"]
+	path = vim-bundles/gitsigns.nvim
+	url = git://github.com/lewis6991/gitsigns.nvim.git
+[submodule "vim-bundles/plenary.nvim"]
+	path = vim-bundles/plenary.nvim
+	url = git://github.com/nvim-lua/plenary.nvim.git
