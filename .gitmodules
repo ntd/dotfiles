@@ -102,3 +102,6 @@
 [submodule "vim-bundles/lualine.nvim"]
 	path = vim-bundles/lualine.nvim
 	url = git://github.com/nvim-lualine/lualine.nvim
+[submodule "vim-bundles/nvim-lspconfig"]
+	path = vim-bundles/nvim-lspconfig
+	url = git://github.com/neovim/nvim-lspconfig
