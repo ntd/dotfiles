@@ -14,8 +14,16 @@ tnoremap('<c-w>w', '<c-\\><c-n>')
 tnoremap('<Esc>', '<C-\\><C-n>')
 
 vim.cmd [[
-	au TermOpen * setlocal norelativenumber
-	runtime vimrc
+    au TermOpen * setlocal norelativenumber
+    let g:loaded_lightline = 1
+    runtime vimrc
 ]]
 
 require('gitsigns').setup()
+
+require('lualine').setup({
+    options = {
+        icons_enabled = false,
+        theme = 'horizon',
+    },
+})
