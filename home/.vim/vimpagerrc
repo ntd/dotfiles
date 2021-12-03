@@ -58,3 +58,6 @@ nnoremap wh B
 nnoremap wj }
 nnoremap wk {
 nnoremap wl W
+
+" See https://github.com/lucc/nvimpager/issues/58
+let g:no_man_maps = v:true
