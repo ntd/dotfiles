@@ -19,11 +19,16 @@ vim.cmd [[
     runtime vimrc
 ]]
 
-require('gitsigns').setup()
+require('gitsigns').setup {
+    keymaps = {
+        ['n dn'] = { expr = true, "&diff ? ']c' : '<cmd>lua require \"gitsigns.actions\".next_hunk()<CR>'" },
+        ['n dp'] = { expr = true, "&diff ? '[c' : '<cmd>lua require \"gitsigns.actions\".prev_hunk()<CR>'" },
+    },
+}
 
-require('lualine').setup({
+require('lualine').setup {
     options = {
         icons_enabled = false,
         theme = 'horizon',
     },
-})
+}
