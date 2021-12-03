@@ -12,12 +12,9 @@ if exists('&termguicolors')
     set termguicolors
 endif
 
-" Before pathogen#infect: https://github.com/igankevich/mesonic/issues/14
+" Must be enabled before pathogen#infect:
+" https://github.com/igankevich/mesonic/issues/14
 syntax enable
-
-" Enable pathogen 'package manager'
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
 
 if has('gui_running') || &t_Co >= 88
     set cursorline              " Highlight the current line

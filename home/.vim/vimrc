@@ -3,6 +3,10 @@ set cpo&vim
 
 runtime vimpagerrc              " Common (view) settings go into vimpagerrc
 
+" Enable pathogen 'package manager'
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
 let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
