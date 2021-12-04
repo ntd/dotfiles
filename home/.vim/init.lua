@@ -1,12 +1,15 @@
 -- NeoVIM specific features
-local function map(mode, kbd, cmd, opts)
-    if not opts then
-        opts = {
-            noremap = true,
-            silent = true,
-        }
+
+-- Helper map function
+-- Provide more sensible defaults and support multimodes setup.
+local function map(modes, kbd, cmd, opts, mapper)
+    opts = opts or {}
+    opts.silent = opts.silent or true
+    opts.noremap = opts.noremap or true
+    mapper = mapper or vim.api.nvim_set_keymap
+    for mode in modes:gmatch('.') do
+        mapper(mode, kbd, cmd, opts)
     end
-    vim.api.nvim_set_keymap(mode, kbd, cmd, opts)
 end
 
 -- Remap exit shortcuts for terminal buffer
@@ -18,6 +21,7 @@ map('t', '<c-w>w', '<c-\\><c-n>')
 -- Use ESC for leaving insert mode in terminal buffer
 map('t', '<Esc>', '<C-\\><C-n>')
 
+-- Chain up old vim customizations
 vim.cmd [[
     au TermOpen * setlocal norelativenumber
     " Use lualine instead of lightline.vim
@@ -26,6 +30,27 @@ vim.cmd [[
     let g:lsp_loaded = 1
     runtime vimrc
 ]]
+
+-- Remap <Tab> <S-Tab> to provide better completion experience
+do
+    local function space_before()
+        local col = vim.fn.col('.') - 1
+        return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+    end
+    local function t(str)
+        return vim.api.nvim_replace_termcodes(str, true, true, true)
+    end
+    function tab_complete()
+        local remap = vim.fn.pumvisible() == 1 or not space_before()
+        return t(remap and '<C-n>' or '<Tab>')
+    end
+    function s_tab_complete ()
+        local remap = vim.fn.pumvisible() == 1
+        return t(remap and '<C-p>' or '<S-Tab>')
+    end
+    map('si', '<Tab>',   'v:lua.tab_complete()',   { expr = true })
+    map('si', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+end
 
 require('gitsigns').setup {
     keymaps = {
@@ -42,25 +67,20 @@ require('lualine').setup {
 }
 
 local function lsp_buffer_customization(client, buffer)
-    local function map_lua(kbd, lua, opts)
-        local cmd = '<cmd>lua ' .. lua .. '<CR>'
-        if not opts then
-            opts = {
-                noremap = true,
-                silent = true,
-            }
+    local function luamap(kbd, lua)
+        local function mapper(mode, kbd, cmd, opts)
+            return vim.api.nvim_buf_set_keymap(buffer, mode, kbd, cmd, opts)
         end
-        vim.api.nvim_buf_set_keymap(buffer, 'n', kbd, cmd, opts)
+        map('n', kbd, '<cmd>lua ' .. lua .. '<CR>', nil, mapper)
     end
-    map_lua('gd',         'vim.lsp.buf.definition()')
-    map_lua('gs',         'vim.lsp.buf.incoming_calls()')
-    map_lua('gr',         'vim.lsp.buf.references()')
-    map_lua('gi',         'vim.lsp.buf.implementation()')
-    map_lua('gt',         'vim.lsp.buf.type_definition()')
-    map_lua('<leader>rn', 'vim.lsp.buf.rename()')
-    map_lua('gp',         'vim.lsp.diagnostic.goto_prev()')
-    map_lua('gn',         'vim.lsp.diagnostic.goto_next()')
-    map_lua('K',          'vim.lsp.buf.hover()')
+    luamap('gd', 'vim.lsp.buf.definition()')
+    luamap('gs', 'vim.lsp.buf.references()')
+    luamap('gr', 'vim.lsp.buf.rename()')
+    luamap('gi', 'vim.lsp.buf.implementation()')
+    luamap('gt', 'vim.lsp.buf.type_definition()')
+    luamap('gp', 'vim.lsp.diagnostic.goto_prev()')
+    luamap('gn', 'vim.lsp.diagnostic.goto_next()')
+    luamap('K',  'vim.lsp.buf.hover()')
 end
 require('lspconfig').clangd.setup {
     on_attach = lsp_buffer_customization,
