@@ -40,16 +40,16 @@ do
     local function t(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
     end
-    function tab_complete()
+    function CompletionTab()
         local remap = vim.fn.pumvisible() == 1 or not space_before()
         return t(remap and '<C-n>' or '<Tab>')
     end
-    function s_tab_complete ()
+    function CompletionSTab()
         local remap = vim.fn.pumvisible() == 1
         return t(remap and '<C-p>' or '<S-Tab>')
     end
-    map('si', '<Tab>',   'v:lua.tab_complete()',   { expr = true })
-    map('si', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+    map('si', '<Tab>',   'v:lua.CompletionTab()',  { expr = true })
+    map('si', '<S-Tab>', 'v:lua.CompletionSTab()', { expr = true })
 end
 
 require('gitsigns').setup {
@@ -84,4 +84,19 @@ local function lsp_buffer_customization(client, buffer)
 end
 require('lspconfig').clangd.setup {
     on_attach = lsp_buffer_customization,
+}
+require('lspconfig').psalm.setup {
+    on_attach = lsp_buffer_customization,
+}
+require('lspconfig').sumneko_lua.setup {
+    cmd = { 'lua-language-server' },
+    on_attach = lsp_buffer_customization,
+    settings = {
+        Lua = {
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
 }
