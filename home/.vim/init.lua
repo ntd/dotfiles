@@ -54,8 +54,11 @@ end
 
 require('gitsigns').setup {
     keymaps = {
-        ['n dn'] = { expr = true, "&diff ? ']c' : '<cmd>lua require \"gitsigns.actions\".next_hunk()<CR>'" },
-        ['n dp'] = { expr = true, "&diff ? '[c' : '<cmd>lua require \"gitsigns.actions\".prev_hunk()<CR>'" },
+        ['n dn'] = { expr = true, "&diff ? 'dn' : '<cmd>lua require \"gitsigns.actions\".next_hunk()<CR>'" },
+        ['n dp'] = { expr = true, "&diff ? 'dp' : '<cmd>lua require \"gitsigns.actions\".prev_hunk()<CR>'" },
+        ['n do'] = { expr = true, "&diff ? 'do' : '<cmd>lua require \"gitsigns.actions\".stage_hunk()<CR>'" },
+        ['n du'] = { expr = true, "&diff ? 'du' : '<cmd>lua require \"gitsigns.actions\".reset_hunk()<CR>'" },
+        ['n dK'] = { expr = true, "&diff ? 'dK' : '<cmd>lua require \"gitsigns.actions\".preview_hunk()<CR>'" },
     },
 }
 
