@@ -47,9 +47,6 @@ if executable('xsel')
     autocmd VimLeave * call system("xsel -i", getreg('*'))
 endif
 
-" Load local customizations, if any
-runtime vimpagerrc-private
-
 " Make : more accessible on italian layout
 noremap ò :
 
@@ -58,3 +55,9 @@ nnoremap wh B
 nnoremap wj }
 nnoremap wk {
 nnoremap wl W
+
+" Ignore built folders
+set wildignore+=*/.git/*,*/node_modules/*,*/build/*
+
+" Load local customizations, if any
+runtime vimpagerrc-private
