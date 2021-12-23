@@ -88,9 +88,8 @@ end
 require('lspconfig').clangd.setup {
     on_attach = lsp_buffer_customization,
 }
-require('lspconfig').psalm.setup {
-    on_attach = lsp_buffer_customization,
-}
+-- Disabling PHP support for now (psalm) because it seems to be
+-- a lot of troubles for little gain.
 require('lspconfig').sumneko_lua.setup {
     cmd = { 'lua-language-server' },
     on_attach = lsp_buffer_customization,
