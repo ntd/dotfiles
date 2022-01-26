@@ -95,6 +95,9 @@ require('lspconfig').sumneko_lua.setup {
     on_attach = lsp_buffer_customization,
     settings = {
         Lua = {
+            workspace = {
+                preloadFileSize = 200,
+            },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
                 enable = false,
