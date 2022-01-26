@@ -24,3 +24,4 @@ weekstart=Monday
 journal.time=on
 
 include /usr/share/doc/task/rc/dark-blue-256.theme
+news.version=2.6.0
