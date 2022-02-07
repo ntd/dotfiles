@@ -27,6 +27,9 @@ if class == 'Firefox' then
     if instance == 'Navigator' then
         real_maximize()
     end
+elseif class == 'Luakit' then
+    set_window_workspace(2)
+    real_maximize()
 elseif class == 'keepassxc' then
     -- This must be configured to show a tray icon
     pin_window()
