@@ -1,4 +1,4 @@
--- NeoVIM specific features
+-- NeoVIM >= 0.5.0 specific features
 
 -- Helper map function
 -- Provide more sensible defaults and support multimodes setup.
@@ -22,14 +22,7 @@ map('t', '<c-w>w', '<c-\\><c-n>')
 map('t', '<Esc>', '<C-\\><C-n>')
 
 -- Chain up old vim customizations
-vim.cmd [[
-    au TermOpen * setlocal norelativenumber
-    " Use lualine instead of lightline.vim
-    let g:loaded_lightline = 1
-    " Use nvim-lspconfig instead of vim-lsp
-    let g:lsp_loaded = 1
-    runtime vimrc
-]]
+vim.cmd 'runtime vimrc'
 
 -- Remap <Tab> <S-Tab> to provide better completion experience
 do
