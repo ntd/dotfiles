@@ -14,6 +14,9 @@ if test -z "$(command -v vim)" -a -n "$(command -v nvim)"; then
     alias vimdiff="$(command -v nvim) -d"
 fi
 
+# I always keep forgetting how to force password authentication in SSH
+alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+
 # Taskwarrior VIM interface
 alias vit='vim +:TW'
 
