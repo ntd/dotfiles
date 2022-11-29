@@ -90,9 +90,6 @@
 [submodule "vim-bundles/taskwarrior"]
 	path = vim-bundles/taskwarrior
 	url = git@github.com:xarthurx/taskwarrior.vim
-[submodule "vim-bundles/vim-lsp"]
-	path = vim-bundles/vim-lsp
-	url = git@github.com:prabirshrestha/vim-lsp
 [submodule "vim-bundles/gitsigns.nvim"]
 	path = vim-bundles/gitsigns.nvim
 	url = git@github.com:lewis6991/gitsigns.nvim.git
