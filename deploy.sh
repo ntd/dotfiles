@@ -20,3 +20,5 @@ if test "$SHELL" = "/bin/bash"; then
 elif test "$SHELL" = "/bin/csh"; then
     exec $HOME/.cshrc
 fi
+
+true
