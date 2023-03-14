@@ -16,7 +16,7 @@ fi
 
 echo Sourcing the new initialization script
 if test "$SHELL" = "/bin/bash"; then
-    source $HOME/.bashrc
+    . $HOME/.bashrc
 elif test "$SHELL" = "/bin/csh"; then
     exec $HOME/.cshrc
 fi
