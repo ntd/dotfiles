@@ -24,6 +24,12 @@ map('t', '<Esc>', '<C-\\><C-n>')
 -- Chain up old vim customizations
 vim.cmd 'runtime vimrc'
 
+vim.api.nvim_create_autocmd({ 'VimLeave' }, {
+    callback = function ()
+        vim.fn.jobstart('notify-send "hello"', { detach = true })
+    end,
+})
+
 -- Remap <Tab> <S-Tab> to provide better completion experience
 do
     local function space_before()
