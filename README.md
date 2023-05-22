@@ -1,8 +1,8 @@
-My personal configuration files for different distro. My main desktop is
-Archlinux although I use XUbuntu on my notebook and Debian or CentOS for
-servers. I also have some old Ubuntu hanging around.
+My personal configuration files for different distros. My main desktop is
+ArchLinux but I also have different Ubuntu flavours installed on notebooks
+and a bunch of Debian-based distros scattered around the world.
 
-The files are maintained under a git repository handled by
+These files are maintained under a git repository handled by
 [homeshick](https://github.com/andsens/homeshick). To deploy:
 
     git clone git@github.com:andsens/homeshick.git $HOME/.homesick/repos/homeshick
