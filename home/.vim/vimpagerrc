@@ -41,12 +41,6 @@ set ignorecase
 set smartcase
 set tabstop=8
 
-" Make the primary selection ("* register) persistent on exit.
-" Requires xsel installed.
-if executable('xsel')
-    autocmd VimLeave * call system("xsel -i", getreg('*'))
-endif
-
 " Make : more accessible on italian layout
 noremap ò :
 
