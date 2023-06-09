@@ -1,1 +1,0 @@
-(if (is (window_class) "luakit") (begin (undecorate) (maximize)))
