@@ -21,8 +21,8 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export NO_AT_BRIDGE=1
 
 # Set compiler flags, if not previously set
-[ -z "$CFLAGS" ]     && export CFLAGS="-O2 -Wall"
-[ -z "$CXXFLAGS" ]   && export CXXFLAGS="$CFLAGS"
+[ -z "$CFLAGS" ]   && export CFLAGS="-O2 -Wall"
+[ -z "$CXXFLAGS" ] && export CXXFLAGS="$CFLAGS"
 
 # Set the default editor
 if command -v nvim &> /dev/null; then
@@ -31,12 +31,12 @@ elif command -v vim &> /dev/null; then
     export EDITOR=$(command -v vim)
 fi
 
-# Set vimpager/nvimpager as default pager, if found
+# Set nvimpager/vimpager as default pager, if found
 if test -z "$PAGER"; then
-    if command -v vimpager &> /dev/null; then
-	export PAGER=$(command -v vimpager)
-    elif command -v nvimpager &> /dev/null; then
+    if command -v nvimpager &> /dev/null; then
 	export PAGER=$(command -v nvimpager)
+    elif command -v vimpager &> /dev/null; then
+	export PAGER=$(command -v vimpager)
     fi
 fi
 
@@ -85,18 +85,14 @@ _add_path PATH $HOME/bin
 _add_path PATH $HOME/.local/bin
 
 # Include luarocks path, if relevant
-if [ -d "$HOME/.luarocks/bin" ]; then
-    _add_path PATH $HOME/.luarocks/bin
-fi
+[ -d "$HOME/.luarocks/bin" ] && _add_path PATH $HOME/.luarocks/bin
 
 # OpenResty customizations
-if [ -d "/opt/openresty" ]; then
-    _add_path PATH /opt/openresty/bin:/opt/openresty/nginx/sbin
-fi
+[ -d "/opt/openresty" ] && _add_path PATH /opt/openresty/bin:/opt/openresty/nginx/sbin
 
 # Required by pinentry programs
 export GPG_TTY=$(/usr/bin/tty)
 
-# Source local customizations here, if present, so
-# they can override any previous setting
+# Source local customizations here, if presents,
+# so they can override any previous setting
 [ -r "$HOME/.profile-private" ] && source "$HOME/.profile-private"
