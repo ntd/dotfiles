@@ -145,3 +145,5 @@ fi
 # Source local customizations here, if presents,
 # so they can override any previous setting
 [ -r "$HOME/.bashrc-private" ] && source "$HOME/.bashrc-private"
+
+:
