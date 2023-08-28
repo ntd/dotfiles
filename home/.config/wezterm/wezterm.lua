@@ -14,7 +14,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 16
 
 -- WINDOW PADDINGS
-config.window_padding =  {
+config.window_padding = {
   left = 4,
   right = 0,
   top = 4,
@@ -27,16 +27,11 @@ local cs = wezterm.color.get_builtin_schemes()[config.color_scheme]
 -- TERMINAL BACKGROUND
 config.background = {
   {
-    source = {
-      Color = cs.background,
-    },
+    source = { Color = cs.background },
     width = '100%',
     height = '100%',
-  },
-  {
-    source = {
-      File = '/home/nicola/docs/palude.jpeg',
-    },
+  }, {
+    source = { File = '/home/nicola/docs/palude.jpeg' },
     repeat_x = 'NoRepeat',
     repeat_y = 'NoRepeat',
     opacity = 0.2,
