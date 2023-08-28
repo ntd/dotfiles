@@ -12,9 +12,6 @@ config.hide_tab_bar_if_only_one_tab = true
 
 -- FONT SELECTION
 config.font_size = 16
-config.font = wezterm.font {
-  family = 'Fira Mono',
-};
 
 -- WINDOW PADDINGS
 config.window_padding =  {
