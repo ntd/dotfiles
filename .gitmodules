@@ -87,9 +87,6 @@
 [submodule "vim-bundles/papercolor-theme"]
 	path = vim-bundles/papercolor-theme
 	url = git@github.com:NLKNguyen/papercolor-theme.git
-[submodule "vim-bundles/taskwarrior"]
-	path = vim-bundles/taskwarrior
-	url = git@github.com:xarthurx/taskwarrior.vim
 [submodule "vim-bundles/gitsigns.nvim"]
 	path = vim-bundles/gitsigns.nvim
 	url = git@github.com:lewis6991/gitsigns.nvim.git

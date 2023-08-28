@@ -21,8 +21,8 @@ alias sudo='sudo '
 # I always keep forgetting how to force password authentication in SSH
 alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
 
-# Taskwarrior VIM interface
-alias vit='vim +:TW'
+# Taskwarrior interface
+alias vit='taskwarrior-tui'
 
 # Source VTE specific script, if found
 if test -r /etc/profile.d/vte.sh; then
