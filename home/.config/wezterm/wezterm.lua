@@ -160,7 +160,7 @@ config.keys = {
     key = '0',
     action = a.ResetFontSize,
   }, {
-    mods = 'CTRL|ALT',
+    mods = 'SHIFT|ALT',
     key = 'l',
     action = a.ClearScrollback 'ScrollbackAndViewport',
   }, {
