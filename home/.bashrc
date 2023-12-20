@@ -30,16 +30,18 @@ if test -r /etc/profile.d/vte.sh; then
 fi
 
 # Ensure __vte_osc7, used by PROMPT_COMMAND, is defined
-if ! declare -f __vte_osc7 > /dev/null; then
-    __vte_osc7 () {
-	:
-    }
+if ! declare -F __vte_osc7 > /dev/null; then
+    if test -x /usr/lib/vte-urlencode-cwd; then
+	__vte_osc7 () {
+	    printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "$(/usr/lib/vte-urlencode-cwd)"
+	}
+    else
+	# Naive approach... better than nothing
+	__vte_osc7 () {
+	    printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "${PWD:-/...}"
+	}
+    fi
 fi
-
-# Hostname change trigger, used by e.g. Tilix to switch to a different
-# profile on SSH connections:
-# https://github.com/gnunn1/tilix/wiki/Automatic-(Triggered)-Profile-Switching
-printf "\033]7;file://%s/\007" "${HOSTNAME:-}"
 
 # Enhancements over stock bash prompt:
 # - a green check or a red cross suggests the last exit code
