@@ -1,101 +1,101 @@
 [submodule "vim-bundles/vim-pathogen"]
 	path = vim-bundles/vim-pathogen
-	url = git@github.com:tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen.git
 	ignore = untracked
 [submodule "vim-bundles/vim-project"]
 	path = vim-bundles/vim-project
-	url = git@github.com:ntd/vim-project.git
+	url = https://github.com/ntd/vim-project.git
 	ignore = untracked
 [submodule "vim-bundles/vim-ledger"]
 	path = vim-bundles/vim-ledger
-	url = git@github.com:cypok/vim-ledger.git
+	url = https://github.com/cypok/vim-ledger.git
 	ignore = untracked
 [submodule "vim-bundles/gtk-vim-syntax"]
 	path = vim-bundles/gtk-vim-syntax
-	url = git@github.com:vim-scripts/gtk-vim-syntax.git
+	url = https://github.com/vim-scripts/gtk-vim-syntax.git
 	ignore = untracked
 [submodule "vim-bundles/clibs.vim"]
 	path = vim-bundles/clibs.vim
-	url = git@github.com:vim-scripts/clibs.vim.git
+	url = https://github.com/vim-scripts/clibs.vim.git
 	ignore = untracked
 [submodule "vim-bundles/gnome-doc.vim"]
 	path = vim-bundles/gnome-doc.vim
-	url = git@github.com:vim-scripts/gnome-doc.vim.git
+	url = https://github.com/vim-scripts/gnome-doc.vim.git
 	ignore = untracked
 [submodule "vim-bundles/PHP-Indenting-for-VIm"]
 	path = vim-bundles/PHP-Indenting-for-VIm
-	url = git@github.com:2072/PHP-Indenting-for-VIm.git
+	url = https://github.com/2072/PHP-Indenting-for-VIm.git
 	ignore = untracked
 [submodule "vim-bundles/matchit.zip"]
 	path = vim-bundles/matchit.zip
-	url = git@github.com:vim-scripts/matchit.zip.git
+	url = https://github.com/vim-scripts/matchit.zip.git
 	ignore = untracked
 [submodule "vim-bundles/vim-misc"]
 	path = vim-bundles/vim-misc
-	url = git@github.com:xolox/vim-misc.git
+	url = https://github.com/xolox/vim-misc.git
 	ignore = untracked
 [submodule "vim-bundles/vim-lua-ftplugin"]
 	path = vim-bundles/vim-lua-ftplugin
-	url = git@github.com:xolox/vim-lua-ftplugin.git
+	url = https://github.com/xolox/vim-lua-ftplugin.git
 	ignore = untracked
 [submodule "vim-bundles/lightline.vim"]
 	path = vim-bundles/lightline.vim
-	url = git@github.com:itchyny/lightline.vim.git
+	url = https://github.com/itchyny/lightline.vim.git
 	ignore = untracked
 [submodule "vim-bundles/vim-gitbranch"]
 	path = vim-bundles/vim-gitbranch
-	url = git@github.com:itchyny/vim-gitbranch.git
+	url = https://github.com/itchyny/vim-gitbranch.git
 	ignore = untracked
 [submodule "vim-bundles/vim-phpqa"]
 	path = vim-bundles/vim-phpqa
-	url = git@github.com:joonty/vim-phpqa.git
+	url = https://github.com/joonty/vim-phpqa.git
 	ignore = untracked
 [submodule "vim-bundles/vim-ss"]
 	path = vim-bundles/vim-ss
-	url = git@github.com:phalkunz/vim-ss.git
+	url = https://github.com/phalkunz/vim-ss.git
 	ignore = untracked
 [submodule "vim-bundles/tlib_vim"]
 	path = vim-bundles/tlib_vim
-	url = git@github.com:tomtom/tlib_vim.git
+	url = https://github.com/tomtom/tlib_vim.git
 	ignore = untracked
 [submodule "vim-bundles/vim-lua"]
 	path = vim-bundles/vim-lua
-	url = git@github.com:tbastos/vim-lua.git
+	url = https://github.com/tbastos/vim-lua.git
 	ignore = untracked
 [submodule "vim-bundles/vdebug"]
 	path = vim-bundles/vdebug
-	url = git@github.com:joonty/vdebug.git
+	url = https://github.com/joonty/vdebug.git
 	ignore = untracked
 [submodule "vim-bundles/tabular"]
 	path = vim-bundles/tabular
-	url = git@github.com:godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "vim-bundles/vim-sleuth"]
 	path = vim-bundles/vim-sleuth
-	url = git@github.com:tpope/vim-sleuth.git
+	url = https://github.com/tpope/vim-sleuth.git
 [submodule "vim-bundles/ctrlp.vim"]
 	path = vim-bundles/ctrlp.vim
-	url = git@github.com:ctrlpvim/ctrlp.vim.git
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "vim-bundles/vim-enhanced-diff"]
 	path = vim-bundles/vim-enhanced-diff
-	url = git@github.com:chrisbra/vim-diff-enhanced.git
+	url = https://github.com/chrisbra/vim-diff-enhanced.git
 [submodule "vim-bundles/mesonic"]
 	path = vim-bundles/mesonic
-	url = git@github.com:igankevich/mesonic.git
+	url = https://github.com/igankevich/mesonic.git
 [submodule "vim-bundles/vim-surround"]
 	path = vim-bundles/vim-surround
-	url = git@github.com:tpope/vim-surround
+	url = https://github.com/tpope/vim-surround
 [submodule "vim-bundles/papercolor-theme"]
 	path = vim-bundles/papercolor-theme
-	url = git@github.com:NLKNguyen/papercolor-theme.git
+	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule "vim-bundles/gitsigns.nvim"]
 	path = vim-bundles/gitsigns.nvim
-	url = git@github.com:lewis6991/gitsigns.nvim.git
+	url = https://github.com/lewis6991/gitsigns.nvim.git
 [submodule "vim-bundles/plenary.nvim"]
 	path = vim-bundles/plenary.nvim
-	url = git@github.com:nvim-lua/plenary.nvim.git
+	url = https://github.com/nvim-lua/plenary.nvim.git
 [submodule "vim-bundles/lualine.nvim"]
 	path = vim-bundles/lualine.nvim
-	url = git@github.com:nvim-lualine/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim
 [submodule "vim-bundles/nvim-lspconfig"]
 	path = vim-bundles/nvim-lspconfig
-	url = git@github.com:neovim/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
