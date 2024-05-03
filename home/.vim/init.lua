@@ -12,6 +12,13 @@ local function map(modes, kbd, cmd, opts, mapper)
     end
 end
 
+-- Split handling
+vim.o.splitbelow = true
+vim.o.splitright = true
+map('n', '<CR>', '<cmd>split<CR>')
+map('n', ' ', '<cmd>vsplit<CR>')
+map('n', 'X', '<cmd>quit<CR>')
+
 -- Remap exit shortcuts for terminal buffer
 map('t', '<c-w>h', '<c-\\><c-n><c-w>h')
 map('t', '<c-w>l', '<c-\\><c-n><c-w>l')
