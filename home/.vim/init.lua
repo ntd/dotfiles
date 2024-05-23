@@ -53,13 +53,34 @@ do
 end
 
 require('gitsigns').setup {
-    keymaps = {
-        ['n dn'] = { expr = true, "&diff ? 'dn' : '<cmd>lua require \"gitsigns.actions\".next_hunk()<CR>'" },
-        ['n dp'] = { expr = true, "&diff ? 'dp' : '<cmd>lua require \"gitsigns.actions\".prev_hunk()<CR>'" },
-        ['n do'] = { expr = true, "&diff ? 'do' : '<cmd>lua require \"gitsigns.actions\".stage_hunk()<CR>'" },
-        ['n du'] = { expr = true, "&diff ? 'du' : '<cmd>lua require \"gitsigns.actions\".reset_hunk()<CR>'" },
-        ['n dK'] = { expr = true, "&diff ? 'dK' : '<cmd>lua require \"gitsigns.actions\".preview_hunk()<CR>'" },
-    },
+    on_attach = function (bufnr)
+        local gitsigns = require('gitsigns')
+
+        local function luamap(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+        end
+
+        luamap('n', 'dn', function()
+            if vim.wo.diff then
+                vim.cmd.normal({']c', bang = true})
+            else
+                gitsigns.nav_hunk('next')
+            end
+        end)
+
+        luamap('n', 'dp', function()
+            if vim.wo.diff then
+                vim.cmd.normal({'[c', bang = true})
+            else
+                gitsigns.nav_hunk('prev')
+            end
+        end)
+        luamap('n', 'do', gitsigns.stage_hunk)
+        luamap('n', 'du', gitsigns.reset_hunk)
+        luamap('n', 'dK', gitsigns.preview_hunk)
+    end,
 }
 
 require('lualine').setup {
@@ -81,27 +102,18 @@ local function lsp_buffer_customization(client, buffer)
     luamap('gr', 'vim.lsp.buf.rename()')
     luamap('gi', 'vim.lsp.buf.implementation()')
     luamap('gt', 'vim.lsp.buf.type_definition()')
-    luamap('gp', 'vim.lsp.diagnostic.goto_prev()')
-    luamap('gn', 'vim.lsp.diagnostic.goto_next()')
+    luamap('gp', 'vim.diagnostic.goto_prev()')
+    luamap('gn', 'vim.diagnostic.goto_next()')
     luamap('K',  'vim.lsp.buf.hover()')
 end
+
 require('lspconfig').clangd.setup {
     on_attach = lsp_buffer_customization,
 }
+
 -- Disabling PHP support for now (psalm) because it seems to be
 -- a lot of troubles for little gain.
-require('lspconfig').sumneko_lua.setup {
-    cmd = { 'lua-language-server' },
+
+require('lspconfig').lua_ls.setup {
     on_attach = lsp_buffer_customization,
-    settings = {
-        Lua = {
-            workspace = {
-                preloadFileSize = 200,
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
 }
