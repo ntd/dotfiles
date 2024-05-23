@@ -15,8 +15,8 @@ end
 -- Split handling
 vim.o.splitbelow = true
 vim.o.splitright = true
-map('n', '<CR>', '<cmd>split<CR>')
-map('n', ' ', '<cmd>vsplit<CR>')
+map('n', '_', '<cmd>split<CR>')
+map('n', '|', '<cmd>vsplit<CR>')
 map('n', 'X', '<cmd>quit<CR>')
 
 -- Remap exit shortcuts for terminal buffer
