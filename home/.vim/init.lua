@@ -92,11 +92,12 @@ require('lualine').setup {
 
 local function lsp_buffer_customization(client, buffer)
     local function luamap(kbd, lua)
-        local function mapper(mode, kbd, cmd, opts)
-            return vim.api.nvim_buf_set_keymap(buffer, mode, kbd, cmd, opts)
+        local function mapper(mode, mkbd, cmd, opts)
+            return vim.api.nvim_buf_set_keymap(buffer, mode, mkbd, cmd, opts)
         end
         map('n', kbd, '<cmd>lua ' .. lua .. '<CR>', nil, mapper)
     end
+    luamap('gD', 'vim.lsp.buf.declaration()')
     luamap('gd', 'vim.lsp.buf.definition()')
     luamap('gs', 'vim.lsp.buf.references()')
     luamap('gr', 'vim.lsp.buf.rename()')
@@ -117,3 +118,7 @@ require('lspconfig').clangd.setup {
 require('lspconfig').lua_ls.setup {
     on_attach = lsp_buffer_customization,
 }
+
+-- Without this line the language servers must be started manually with
+-- `:LspStart` even with the autostart flag on:
+vim.api.nvim_exec_autocmds('FileType', {})
