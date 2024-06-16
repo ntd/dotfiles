@@ -62,24 +62,12 @@ require('gitsigns').setup {
             vim.keymap.set(mode, l, r, opts)
         end
 
-        luamap('n', 'dn', function()
-            if vim.wo.diff then
-                vim.cmd.normal({']c', bang = true})
-            else
-                gitsigns.nav_hunk('next')
-            end
-        end)
-
-        luamap('n', 'dp', function()
-            if vim.wo.diff then
-                vim.cmd.normal({'[c', bang = true})
-            else
-                gitsigns.nav_hunk('prev')
-            end
-        end)
-        luamap('n', 'do', gitsigns.stage_hunk)
-        luamap('n', 'du', gitsigns.reset_hunk)
-        luamap('n', 'dK', gitsigns.preview_hunk)
+        luamap('n', 'gk', function () gitsigns.nav_hunk('prev') end)
+        luamap('n', 'gj', function () gitsigns.nav_hunk('next') end)
+        luamap('n', 'gv', gitsigns.select_hunk)
+        luamap('n', 'gl', gitsigns.stage_hunk)
+        luamap('n', 'gh', gitsigns.reset_hunk)
+        luamap('n', 'gK', gitsigns.preview_hunk)
     end,
 }
 

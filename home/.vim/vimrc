@@ -11,9 +11,11 @@ let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
                                 " vimdiff remapping
-nnoremap dn ]c
-nnoremap dN [c
-nnoremap du :diffupdate<CR>
+nnoremap -j ]c
+nnoremap -k [c
+nnoremap -h :diffget<CR>
+nnoremap -l :diffput<CR>
+nnoremap -u :diffupdate!<CR>
 
                                 " Split management
 nnoremap tH :leftabove vsplit<CR>
