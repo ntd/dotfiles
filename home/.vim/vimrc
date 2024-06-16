@@ -11,28 +11,28 @@ let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
                                 " vimdiff remapping
-nnoremap -j ]c
-nnoremap -k [c
-nnoremap -h :diffget<CR>
-nnoremap -l :diffput<CR>
-nnoremap -u :diffupdate!<CR>
+noremap <silent>-j ]c
+noremap <silent>-k [c
+noremap -h :diffget<CR>
+noremap -l :diffput<CR>
+noremap <silent>-u :diffupdate!<CR>
 
                                 " Split management
-nnoremap tH :leftabove vsplit<CR>
-nnoremap tJ :rightbelow split<CR>
-nnoremap tK :leftabove split<CR>
-nnoremap tL :rightbelow vsplit<CR>
-nnoremap th <C-W>h
-nnoremap tj <C-W>j
-nnoremap tk <C-W>k
-nnoremap tl <C-W>l
-nnoremap tx :hide<CR>
+noremap tH :leftabove vsplit<CR>
+noremap tJ :rightbelow split<CR>
+noremap tK :leftabove split<CR>
+noremap tL :rightbelow vsplit<CR>
+noremap <silent>th <C-W>h
+noremap <silent>tj <C-W>j
+noremap <silent>tk <C-W>k
+noremap <silent>tl <C-W>l
+noremap tx :hide<CR>
 
                                 " Tab management
-nnoremap Th :tabprevious<CR>
-nnoremap Tj :tabclose<CR>
-nnoremap Tk :tabnew<CR>
-nnoremap Tl :tabnext<CR>
+noremap <silent>Th :tabprevious<CR>
+noremap <silent>Tj :tabclose<CR>
+noremap Tk :tabnew<CR>
+noremap Tl :tabnext<CR>
 
 set modeline
 set notimeout                   " Don't timeout on mappings
@@ -58,8 +58,12 @@ set autoindent
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
+                                " Folding defaults
 set foldnestmax=1
 set foldminlines=5
+noremap <silent>zl :foldopen<CR>
+noremap <silent>zh :foldclose<CR>
 
 set wrap
 set textwidth=72                " Canonical right column
@@ -78,7 +82,7 @@ set writebackup
 " Directly borrowed from https://github.com/tpope/vim-sensible
 set incsearch
 if maparg('<C-L>', 'n') ==# ''  " Use <C-L> to clear search highlighting
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+  noremap <silent><C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 " Do not restart from BOF when searching
