@@ -49,6 +49,7 @@ set shortmess+=c
 
 if v:version >= 703
   set relativenumber
+  set number
 endif
 set ruler                       " Ignored because of lightline
 set laststatus=2
