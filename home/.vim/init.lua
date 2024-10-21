@@ -107,6 +107,10 @@ require('lspconfig').lua_ls.setup {
     on_attach = lsp_buffer_customization,
 }
 
+require('lspconfig').zls.setup {
+    on_attach = lsp_buffer_customization,
+}
+
 -- Without this line the language servers must be started manually with
 -- `:LspStart` even with the autostart flag on:
 vim.api.nvim_exec_autocmds('FileType', {})
