@@ -9,9 +9,14 @@ config.color_scheme = 'Monokai (dark) (terminal.sexy)'
 config.cursor_thickness = 4
 config.scrollback_lines = 10000
 config.hide_tab_bar_if_only_one_tab = true
+config.window_decorations = "NONE"
+config.inactive_pane_hsb = {
+  brightness = 0.35,
+}
+config.text_background_opacity = 0.2
 
 -- FONT SELECTION
-config.font_size = 16
+config.font_size = 17
 
 -- WINDOW PADDINGS
 config.window_padding = {
@@ -105,12 +110,12 @@ config.keys = {
 
   -- Pane management
   {
-    mods = 'ALT',
-    key = 'Enter',
+    mods = 'CTRL|ALT',
+    key = 'DownArrow',
     action = a.SplitVertical { domain = 'CurrentPaneDomain' },
   }, {
-    mods = 'ALT',
-    key = 'Space',
+    mods = 'CTRL|ALT',
+    key = 'RightArrow',
     action = a.SplitHorizontal { domain = 'CurrentPaneDomain' },
   }, {
     mods = 'ALT',
