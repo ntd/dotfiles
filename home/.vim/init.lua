@@ -19,21 +19,8 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 
--- Split handling
-vim.o.splitbelow = true
-vim.o.splitright = true
-map('n', '_', '<cmd>split<CR>')
-map('n', '|', '<cmd>vsplit<CR>')
-map('n', 'T_', '<cmd>split<bar>terminal<CR>')
-map('n', 'T|', '<cmd>vsplit<bar>terminal<CR>')
-map('n', 'X', '<cmd>quit<CR>')
-
--- Remap exit shortcuts for terminal buffer
-map('t', '<c-w>h', '<c-\\><c-n><c-w>h')
-map('t', '<c-w>l', '<c-\\><c-n><c-w>l')
-map('t', '<c-w>k', '<c-\\><c-n><c-w>k')
-map('t', '<c-w>j', '<c-\\><c-n><c-w>j')
-map('t', '<c-w>w', '<c-\\><c-n>')
+-- Quickly switch this buffer to a terminal
+map('nvo', 'tt', '<cmd>terminal<CR>')
 -- Use ESC for leaving insert mode in terminal buffer
 map('t', '<Esc>', '<C-\\><C-n>')
 
