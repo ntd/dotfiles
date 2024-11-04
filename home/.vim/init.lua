@@ -48,7 +48,7 @@ do
     map('si', '<S-Tab>', 'v:lua.CompletionSTab()', { expr = true })
 end
 
-if vim.fn.has('nvim-0.7') == 1 then
+if vim.fn.has('nvim-0.8') == 1 then
     -- GitSigns does not have proper neovim version check
     vim.cmd 'packadd gitsigns.nvim'
     require('gitsigns').setup {
