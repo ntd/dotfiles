@@ -48,24 +48,27 @@ do
     map('si', '<S-Tab>', 'v:lua.CompletionSTab()', { expr = true })
 end
 
-require('gitsigns').setup {
-    on_attach = function (bufnr)
-        local gitsigns = require('gitsigns')
+if vim.fn.has('nvim-0.7') == 1 then
+    -- GitSigns does not have proper neovim version check
+    require('gitsigns').setup {
+        on_attach = function (bufnr)
+            local gitsigns = require('gitsigns')
 
-        local function luamap(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-        end
+            local function luamap(mode, l, r, opts)
+                opts = opts or {}
+                opts.buffer = bufnr
+                vim.keymap.set(mode, l, r, opts)
+            end
 
-        luamap('n', 'gk', function () gitsigns.nav_hunk('prev') end)
-        luamap('n', 'gj', function () gitsigns.nav_hunk('next') end)
-        luamap('n', 'gv', gitsigns.select_hunk)
-        luamap('n', 'gl', gitsigns.stage_hunk)
-        luamap('n', 'gh', gitsigns.reset_hunk)
-        luamap('n', 'gK', gitsigns.preview_hunk)
-    end,
-}
+            luamap('n', 'gk', function () gitsigns.nav_hunk('prev') end)
+            luamap('n', 'gj', function () gitsigns.nav_hunk('next') end)
+            luamap('n', 'gv', gitsigns.select_hunk)
+            luamap('n', 'gl', gitsigns.stage_hunk)
+            luamap('n', 'gh', gitsigns.reset_hunk)
+            luamap('n', 'gK', gitsigns.preview_hunk)
+        end,
+    }
+end
 
 require('lualine').setup {
     options = {
@@ -74,39 +77,45 @@ require('lualine').setup {
     },
 }
 
-local function lsp_buffer_customization(client, buffer)
-    local function luamap(kbd, lua)
-        local function mapper(mode, mkbd, cmd, opts)
-            return vim.api.nvim_buf_set_keymap(buffer, mode, mkbd, cmd, opts)
+if vim.fn.has('nvim-0.8') == 1 then
+    local function lsp_buffer_customization(client, buffer)
+        local function luamap(kbd, lua)
+            local function mapper(mode, mkbd, cmd, opts)
+                return vim.api.nvim_buf_set_keymap(buffer, mode, mkbd, cmd, opts)
+            end
+            map('n', kbd, '<cmd>lua ' .. lua .. '<CR>', nil, mapper)
         end
-        map('n', kbd, '<cmd>lua ' .. lua .. '<CR>', nil, mapper)
+        luamap('gD', 'vim.lsp.buf.declaration()')
+        luamap('gd', 'vim.lsp.buf.definition()')
+        luamap('gs', 'vim.lsp.buf.references()')
+        luamap('gr', 'vim.lsp.buf.rename()')
+        luamap('gi', 'vim.lsp.buf.implementation()')
+        luamap('gt', 'vim.lsp.buf.type_definition()')
+        luamap('gp', 'vim.diagnostic.goto_prev()')
+        luamap('gn', 'vim.diagnostic.goto_next()')
+        luamap('K',  'vim.lsp.buf.hover()')
     end
-    luamap('gD', 'vim.lsp.buf.declaration()')
-    luamap('gd', 'vim.lsp.buf.definition()')
-    luamap('gs', 'vim.lsp.buf.references()')
-    luamap('gr', 'vim.lsp.buf.rename()')
-    luamap('gi', 'vim.lsp.buf.implementation()')
-    luamap('gt', 'vim.lsp.buf.type_definition()')
-    luamap('gp', 'vim.diagnostic.goto_prev()')
-    luamap('gn', 'vim.diagnostic.goto_next()')
-    luamap('K',  'vim.lsp.buf.hover()')
+
+    require('lspconfig').clangd.setup {
+        on_attach = lsp_buffer_customization,
+    }
+
+    -- Disabling PHP support for now (psalm) because it seems to be
+    -- a lot of troubles for little gain.
+
+    require('lspconfig').lua_ls.setup {
+        on_attach = lsp_buffer_customization,
+    }
+
+    require('lspconfig').zls.setup {
+        on_attach = lsp_buffer_customization,
+    }
+
+    -- Without this line the language servers must be started manually with
+    -- `:LspStart` even with the autostart flag on:
+    vim.api.nvim_exec_autocmds('FileType', {})
+else
+    -- Silent warning message because of missing function:
+    -- I *know* lsp is not properly supported on old NeoVIM, thank you!
+    vim.notify_once = function () end
 end
-
-require('lspconfig').clangd.setup {
-    on_attach = lsp_buffer_customization,
-}
-
--- Disabling PHP support for now (psalm) because it seems to be
--- a lot of troubles for little gain.
-
-require('lspconfig').lua_ls.setup {
-    on_attach = lsp_buffer_customization,
-}
-
-require('lspconfig').zls.setup {
-    on_attach = lsp_buffer_customization,
-}
-
--- Without this line the language servers must be started manually with
--- `:LspStart` even with the autostart flag on:
-vim.api.nvim_exec_autocmds('FileType', {})
