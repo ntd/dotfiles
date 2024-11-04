@@ -50,6 +50,7 @@ end
 
 if vim.fn.has('nvim-0.7') == 1 then
     -- GitSigns does not have proper neovim version check
+    vim.cmd.packadd('gitsigns.nvim')
     require('gitsigns').setup {
         on_attach = function (bufnr)
             local gitsigns = require('gitsigns')
@@ -70,6 +71,7 @@ if vim.fn.has('nvim-0.7') == 1 then
     }
 end
 
+vim.cmd.packadd('lualine.nvim')
 require('lualine').setup {
     options = {
         icons_enabled = false,
@@ -78,7 +80,7 @@ require('lualine').setup {
 }
 
 if vim.fn.has('nvim-0.8') == 1 then
-    local function lsp_buffer_customization(client, buffer)
+    local function lsp_buffer_customization(_, buffer)
         local function luamap(kbd, lua)
             local function mapper(mode, mkbd, cmd, opts)
                 return vim.api.nvim_buf_set_keymap(buffer, mode, mkbd, cmd, opts)
@@ -114,7 +116,7 @@ if vim.fn.has('nvim-0.8') == 1 then
     -- Without this line the language servers must be started manually with
     -- `:LspStart` even with the autostart flag on:
     vim.api.nvim_exec_autocmds('FileType', {})
-else
+elseif not vim.notify_once then
     -- Silent warning message because of missing function:
     -- I *know* lsp is not properly supported on old NeoVIM, thank you!
     vim.notify_once = function () end

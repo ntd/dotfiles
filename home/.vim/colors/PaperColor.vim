@@ -1,1 +1,1 @@
-../bundle/papercolor-theme/colors/PaperColor.vim
+../pack/vendor/opt/papercolor-theme/colors/PaperColor.vim

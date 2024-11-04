@@ -54,10 +54,6 @@
 	path = vim-bundles/vim-ss
 	url = https://github.com/phalkunz/vim-ss.git
 	ignore = untracked
-[submodule "vim-bundles/tlib_vim"]
-	path = vim-bundles/tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-	ignore = untracked
 [submodule "vim-bundles/vim-lua"]
 	path = vim-bundles/vim-lua
 	url = https://github.com/tbastos/vim-lua.git
@@ -90,9 +86,6 @@
 [submodule "vim-bundles/gitsigns.nvim"]
 	path = vim-bundles/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim.git
-[submodule "vim-bundles/plenary.nvim"]
-	path = vim-bundles/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
 [submodule "vim-bundles/lualine.nvim"]
 	path = vim-bundles/lualine.nvim
 	url = https://github.com/nvim-lualine/lualine.nvim

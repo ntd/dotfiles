@@ -3,12 +3,40 @@ set cpo&vim
 
 runtime vimpagerrc              " Common (view) settings go into vimpagerrc
 
-" Enable pathogen 'package manager'
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-
 let g:netrw_dirhistmax=0        " Avoid .netrwhist creation
 set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
+
+if has('nvim') || v:version >= 800
+    " Enable builtin packages on modern Vim/NeoVim
+    packadd! PHP-Indenting-for-VIm
+    packadd! clibs.vim
+    packadd! ctrlp.vim
+    packadd! gnome-doc.vim
+    packadd! gtk-vim-syntax
+    packadd! matchit.zip
+    packadd! mesonic
+    packadd! tabular
+    packadd! vdebug
+    packadd! vim-enhanced-diff
+    packadd! vim-gitbranch
+    packadd! vim-ledger
+    packadd! vim-lua-ftplugin
+    packadd! vim-lua
+    packadd! vim-misc
+    packadd! vim-phpqa
+    packadd! vim-project
+    packadd! vim-sleuth
+    packadd! vim-ss
+    packadd! vim-surround
+    if !has('nvim')
+        " Plain Vim-only dependencies
+        packadd lightline.vim
+    endif
+else
+    " Enable pathogen only on old Vim
+    runtime pack/vendor/opt/vim-pathogen/autoload/pathogen.vim
+    call pathogen#infect('pack/vendor/opt/{}')
+endif
 
                                 " vimdiff remapping
 noremap <silent>-j ]c
