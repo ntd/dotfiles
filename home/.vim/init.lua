@@ -50,7 +50,7 @@ end
 
 if vim.fn.has('nvim-0.7') == 1 then
     -- GitSigns does not have proper neovim version check
-    vim.cmd.packadd('gitsigns.nvim')
+    vim.cmd 'packadd gitsigns.nvim'
     require('gitsigns').setup {
         on_attach = function (bufnr)
             local gitsigns = require('gitsigns')
@@ -71,7 +71,7 @@ if vim.fn.has('nvim-0.7') == 1 then
     }
 end
 
-vim.cmd.packadd('lualine.nvim')
+vim.cmd 'packadd lualine.nvim'
 require('lualine').setup {
     options = {
         icons_enabled = false,
