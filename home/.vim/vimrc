@@ -56,9 +56,10 @@ noremap <silent>tl <C-W>l
 noremap tx :hide<CR>
 
                                 " Tab management
-noremap <silent>Th :tabprevious<CR>
-noremap <silent>Tj :tabclose<CR>
-noremap Tk :tabnew<CR>
+noremap TL :tabnew<CR>
+noremap TH :-tabnew<CR>
+noremap Tx :tabclose<CR>
+noremap Th :tabprevious<CR>
 noremap Tl :tabnext<CR>
 
 set modeline
