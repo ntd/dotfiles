@@ -4,9 +4,6 @@
 # Source the user provided locale.conf, if present
 [ -r "$HOME/.config/locale.conf" ] && source "$HOME/.config/locale.conf"
 
-# Show all GLib log messages for debugging purpose
-export G_MESSAGES_DEBUG=all
-
 # Enable proper Qt5 style if possible
 if [ -x "/usr/bin/qt5ct" ]; then
     export QT_QPA_PLATFORMTHEME=qt5ct
