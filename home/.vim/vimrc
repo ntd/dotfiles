@@ -45,15 +45,19 @@ noremap -h :diffget<CR>
 noremap -l :diffput<CR>
 
                                 " Split management
-noremap tH :leftabove vsplit<CR>
-noremap tJ :rightbelow split<CR>
-noremap tK :leftabove split<CR>
-noremap tL :rightbelow vsplit<CR>
-noremap <silent>th <C-W>h
-noremap <silent>tj <C-W>j
-noremap <silent>tk <C-W>k
-noremap <silent>tl <C-W>l
-noremap tx :hide<CR>
+noremap tH <cmd>leftabove vsplit<CR>
+noremap tJ <cmd>rightbelow split<CR>
+noremap tK <cmd>leftabove split<CR>
+noremap tL <cmd>rightbelow vsplit<CR>
+noremap <silent>th <cmd>wincmd h<CR>
+noremap <silent>tj <cmd>wincmd j<CR>
+noremap <silent>tk <cmd>wincmd k<CR>
+noremap <silent>tl <cmd>wincmd l<CR>
+noremap tx <cmd>hide<CR>
+noremap <silent>t<right> <cmd>10wincmd ><CR>
+noremap <silent>t<left>  <cmd>10wincmd <<CR>
+noremap <silent>t<up>    <cmd>5wincmd +<CR>
+noremap <silent>t<down>  <cmd>5wincmd -<CR>
 
                                 " Tab management
 noremap TL :tabnew<CR>
