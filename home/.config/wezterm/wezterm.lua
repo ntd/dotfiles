@@ -16,7 +16,7 @@ config.inactive_pane_hsb = {
 config.text_background_opacity = 0.2
 
 -- FONT SELECTION
-config.font_size = 17
+config.font_size = 18
 
 -- WINDOW PADDINGS
 config.window_padding = {
