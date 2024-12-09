@@ -105,18 +105,8 @@ elseif not vim.notify_once then
     vim.notify_once = function () end
 end
 
--- Basic half-working termdebug support
--- XXX: these bindings should be enabled only inside a Termdebug buffer
+-- Basic termdebug support
 vim.cmd 'packadd termdebug'
-map('nvo', 'dbk',  '<cmd>Evaluate<CR>')
-map('nvo', 'dbc',  '<cmd>Continue<CR>')
-map('nvo', 'dbb',  '<cmd>Break<CR>')
-map('nvo', 'dbj', '<cmd>Over<CR>')
-map('nvo', 'dbl', '<cmd>Step<CR>')
-map('nvo', 'dbr',  '<cmd>Run<CR>')
-map('nvo', 'dbf',  '<cmd>Finish<CR>')
-map('nvo', 'dbu',  '<cmd>Until<CR>')
-map('nvo', 'dbx',  '<cmd>Stop<CR>')
 vim.g.termdebug_config = {
     wide = 1,
     map_K = 0,
@@ -124,3 +114,34 @@ vim.g.termdebug_config = {
     variables_window = 1,
     variables_window_height = 10,
 }
+
+do
+    local keybindings = {
+        ['<F2>']  = '<cmd>Break<CR>',
+        ['<F3>']  = '<cmd>Clear<CR>',
+        ['<F5>']  = '<cmd>Step<CR>',
+        ['<F6>']  = '<cmd>Over<CR>',
+        ['<F7>']  = '<cmd>Continue<CR>',
+        ['<F8>']  = '<cmd>Until<CR>',
+        ['<F9>']  = '<cmd>Run<CR>',
+        ['<F10>'] = '<cmd>Finish<CR>',
+        ['<F11>'] = '<cmd>Stop<CR>',
+        ['<F12>'] = '<cmd>Evaluate<CR>',
+    }
+    vim.api.nvim_create_autocmd('User', {
+        pattern = 'TermdebugStartPost',
+        callback = function ()
+            for key, cmd in pairs(keybindings) do
+                map('nvo', key, cmd)
+            end
+        end
+    })
+    vim.api.nvim_create_autocmd('User', {
+        pattern = 'TermdebugStopPost',
+        callback = function ()
+            for key in pairs(keybindings) do
+                vim.keymap.del({'n', 'v', 'o'}, key)
+            end
+        end
+    })
+end
