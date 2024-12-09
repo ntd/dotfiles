@@ -24,7 +24,6 @@ if has('nvim') || v:version >= 800
     packadd! vim-lua
     packadd! vim-misc
     packadd! vim-phpqa
-    packadd! vim-project
     packadd! vim-sleuth
     packadd! vim-ss
     packadd! vim-surround
