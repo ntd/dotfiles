@@ -62,7 +62,7 @@ noremap <silent>t<down>  <cmd>5wincmd -<CR>
                                 " Tab management
 noremap TL :tabnew<CR>
 noremap TH :-tabnew<CR>
-noremap Tx :tabclose<CR>
+noremap TX :tabclose<CR>
 noremap Th :tabprevious<CR>
 noremap Tl :tabnext<CR>
 
