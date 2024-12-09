@@ -104,3 +104,23 @@ elseif not vim.notify_once then
     -- I *know* lsp is not properly supported on old NeoVIM, thank you!
     vim.notify_once = function () end
 end
+
+-- Basic half-working termdebug support
+-- XXX: these bindings should be enabled only inside a Termdebug buffer
+vim.cmd 'packadd termdebug'
+map('nvo', 'dbk',  '<cmd>Evaluate<CR>')
+map('nvo', 'dbc',  '<cmd>Continue<CR>')
+map('nvo', 'dbb',  '<cmd>Break<CR>')
+map('nvo', 'dbj', '<cmd>Over<CR>')
+map('nvo', 'dbl', '<cmd>Step<CR>')
+map('nvo', 'dbr',  '<cmd>Run<CR>')
+map('nvo', 'dbf',  '<cmd>Finish<CR>')
+map('nvo', 'dbu',  '<cmd>Until<CR>')
+map('nvo', 'dbx',  '<cmd>Stop<CR>')
+vim.g.termdebug_config = {
+    wide = 1,
+    map_K = 0,
+    sign = '+',
+    variables_window = 1,
+    variables_window_height = 10,
+}
