@@ -1,15 +1,11 @@
 -- NeoVIM >= 0.5.0 specific features
 
--- Helper map function
--- Provide more sensible defaults and support multimodes setup.
-local function map(modes, kbd, cmd, opts, mapper)
+local function map(modestring, kbd, cmd, opts)
+    local modes = {}
+    for mode in modestring:gmatch('.') do table.insert(modes, mode) end
     opts = opts or {}
     opts.silent = opts.silent or true
-    opts.noremap = opts.noremap or true
-    mapper = mapper or vim.api.nvim_set_keymap
-    for mode in modes:gmatch('.') do
-        mapper(mode, kbd, cmd, opts)
-    end
+    vim.keymap.set(modes, kbd, cmd, opts)
 end
 
 -- Disable unused providers
@@ -36,37 +32,29 @@ do
     local function t(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
     end
-    function CompletionTab()
+    map('si', '<Tab>', function()
         local remap = vim.fn.pumvisible() == 1 or not space_before()
         return t(remap and '<C-n>' or '<Tab>')
-    end
-    function CompletionSTab()
+    end, { expr = true })
+    map('si', '<S-Tab>', function()
         local remap = vim.fn.pumvisible() == 1
         return t(remap and '<C-p>' or '<S-Tab>')
-    end
-    map('si', '<Tab>',   'v:lua.CompletionTab()',  { expr = true })
-    map('si', '<S-Tab>', 'v:lua.CompletionSTab()', { expr = true })
+    end, { expr = true })
 end
 
 if vim.fn.has('nvim-0.8') == 1 then
     -- GitSigns does not have proper neovim version check
     vim.cmd 'packadd gitsigns.nvim'
     require('gitsigns').setup {
-        on_attach = function (bufnr)
+        on_attach = function (buffer)
             local gitsigns = require('gitsigns')
-
-            local function luamap(mode, l, r, opts)
-                opts = opts or {}
-                opts.buffer = bufnr
-                vim.keymap.set(mode, l, r, opts)
-            end
-
-            luamap('n', 'gk', function () gitsigns.nav_hunk('prev') end)
-            luamap('n', 'gj', function () gitsigns.nav_hunk('next') end)
-            luamap('n', 'gv', gitsigns.select_hunk)
-            luamap('n', 'gl', gitsigns.stage_hunk)
-            luamap('n', 'gh', gitsigns.reset_hunk)
-            luamap('n', 'gK', gitsigns.preview_hunk)
+            local opts = { buffer = buffer }
+            map('n', 'gk', function () gitsigns.nav_hunk('prev') end, opts)
+            map('n', 'gj', function () gitsigns.nav_hunk('next') end, opts)
+            map('n', 'gv', gitsigns.select_hunk, opts)
+            map('n', 'gl', gitsigns.stage_hunk, opts)
+            map('n', 'gh', gitsigns.reset_hunk, opts)
+            map('n', 'gK', gitsigns.preview_hunk, opts)
         end,
     }
 end
@@ -81,21 +69,16 @@ require('lualine').setup {
 
 if vim.fn.has('nvim-0.8') == 1 then
     local function lsp_buffer_customization(_, buffer)
-        local function luamap(kbd, lua)
-            local function mapper(mode, mkbd, cmd, opts)
-                return vim.api.nvim_buf_set_keymap(buffer, mode, mkbd, cmd, opts)
-            end
-            map('n', kbd, '<cmd>lua ' .. lua .. '<CR>', nil, mapper)
-        end
-        luamap('gD', 'vim.lsp.buf.declaration()')
-        luamap('gd', 'vim.lsp.buf.definition()')
-        luamap('gs', 'vim.lsp.buf.references()')
-        luamap('gr', 'vim.lsp.buf.rename()')
-        luamap('gi', 'vim.lsp.buf.implementation()')
-        luamap('gt', 'vim.lsp.buf.type_definition()')
-        luamap('gp', 'vim.diagnostic.goto_prev()')
-        luamap('gn', 'vim.diagnostic.goto_next()')
-        luamap('K',  'vim.lsp.buf.hover()')
+        local opts = { buffer = buffer }
+        map('n', 'gD', vim.lsp.buf.declaration, opts)
+        map('n', 'gd', vim.lsp.buf.definition, opts)
+        map('n', 'gs', vim.lsp.buf.references, opts)
+        map('n', 'gr', vim.lsp.buf.rename, opts)
+        map('n', 'gi', vim.lsp.buf.implementation, opts)
+        map('n', 'gt', vim.lsp.buf.type_definition, opts)
+        map('n', 'gp', vim.diagnostic.goto_prev, opts)
+        map('n', 'gn', vim.diagnostic.goto_next, opts)
+        map('n', 'K',  vim.lsp.buf.hover, opts)
     end
 
     require('lspconfig').clangd.setup {
