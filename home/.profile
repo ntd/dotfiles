@@ -14,6 +14,10 @@ fi
 # See https://github.com/keepassxreboot/keepassxc/issues/5029#issuecomment-657490385
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
+# `opcua-client`, based on PyQT 5, seems to ignore the DPI settings:
+# just use a sensible value (override in `.profile-private` if needed)
+export QT_FONT_DPI=144
+
 # Workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1056820
 export NO_AT_BRIDGE=1
 
