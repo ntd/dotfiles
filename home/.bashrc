@@ -1,6 +1,11 @@
 # Sourced only by non-login bash, i.e. called
 # for every interactive bash opened
 
+# Ghostty integration
+if [ -n "$GHOSTTY_RESOURCES_DIR" ]; then
+    source "$GHOSTTY_RESOURCES_DIR/shell-integration/bash/ghostty.bash"
+fi
+
 # ls compatibility: BSD uses -G, GNU uses --color
 if ls --color >/dev/null 2> /dev/null; then
     alias ll='ls -hl --color'
