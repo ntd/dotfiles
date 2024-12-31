@@ -58,10 +58,10 @@ _ps1_status () {
     local symbol
     if [ $rv = 0 ]; then
 	color=32
-	symbol='✔'
+	symbol='✓'
     else
 	color=31
-	symbol='✘'
+	symbol='✗'
     fi
     _colorecho $color $symbol
     return $rv
