@@ -1,0 +1,26 @@
+window-width = 9999
+window-height = 9999
+window-padding-x = 4
+window-padding-y = 4
+theme = Wombat
+shell-integration = bash
+background-opacity = 0.85
+unfocused-split-opacity = 0.6
+font-family = "JetBrains Mono Light"
+font-size = 18
+cursor-style = block
+mouse-hide-while-typing = true
+
+keybind = alt+n=new_tab
+keybind = alt+h=previous_tab
+keybind = alt+l=next_tab
+keybind = alt+k=scroll_page_lines:-1
+keybind = alt+j=scroll_page_lines:+1
+keybind = alt+shift+k=scroll_page_up
+keybind = alt+shift+j=scroll_page_down
+keybind = ctrl+alt+h=move_tab:-1
+keybind = ctrl+alt+l=move_tab:+1
+keybind = ctrl+alt+left=new_split:left
+keybind = ctrl+alt+right=new_split:right
+keybind = ctrl+alt+up=new_split:up
+keybind = ctrl+alt+down=new_split:down
