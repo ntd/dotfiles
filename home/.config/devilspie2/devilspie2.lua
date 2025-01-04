@@ -13,10 +13,9 @@ debug_print(
     'Type:     ' .. type     .. '\n'
 )
 
--- Workaround because this code does not work:
---     maximize()
---     debug_print(get_window_is_maximized()) -- Print false
 local is_maximized = get_window_is_maximized()
+
+-- Workaround because get_window_is_maximized() always returns `false`
 function real_maximize()
     maximize()
     is_maximized = true
