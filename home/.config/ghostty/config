@@ -2,6 +2,7 @@ window-width = 9999
 window-height = 9999
 window-padding-x = 4
 window-padding-y = 4
+window-decoration = false
 theme = Wombat
 shell-integration = bash
 background-opacity = 0.85
