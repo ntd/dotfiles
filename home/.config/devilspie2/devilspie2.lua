@@ -24,12 +24,12 @@ debug_print(
 local is_maximized = get_window_is_maximized()
 
 -- Workaround because get_window_is_maximized() always returns `false`
-function real_maximize()
+local function real_maximize()
     maximize()
     is_maximized = true
 end
 
-function put_in_workspace(n)
+local function put_in_workspace(n)
     set_window_workspace(n)
 
     -- Change workspace or focus the window only **after** arranging
@@ -40,6 +40,20 @@ function put_in_workspace(n)
         --     BadMatch (invalid parameter attributes)
         -- focus_window()
     end
+end
+
+local function is_terminal()
+    local valid_classes = {
+        ['Roxterm'] = true,
+        ['Xfce4-terminal'] = true,
+        ['Lxterminal'] = true,
+        ['terminology'] = true,
+        ['kitty'] = true,
+        ['org.wezfurlong.wezterm'] = true,
+        ['Tilix'] = true,
+        ['com.mitchellh.ghostty'] = true,
+    }
+    return valid_classes[class] or false
 end
 
 if class == 'Firefox' then
@@ -55,7 +69,7 @@ elseif class == 'keepassxc' then
     pin_window()
     set_skip_tasklist(true)
     maximize_window_horisontally()
-elseif class == 'Roxterm' or class == 'Xfce4-terminal' or class == 'Lxterminal' or class == 'terminology' or class == 'kitty' or class == 'org.wezfurlong.wezterm' then
+elseif is_terminal() then
     put_in_workspace(1)
     if get_window_property('WM_TRANSIENT_FOR') == '' then
         real_maximize()
