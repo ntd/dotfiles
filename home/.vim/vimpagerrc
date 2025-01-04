@@ -18,6 +18,9 @@ syntax enable
 
 if has('gui_running') || &t_Co >= 88
     set cursorline              " Highlight the current line
+    set guifont=JetBrains\ Mono\ Light:h18
+    set guioptions=aegit
+    set mouse=a
 endif
 
 set background=dark
