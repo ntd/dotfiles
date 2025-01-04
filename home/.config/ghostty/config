@@ -5,8 +5,8 @@ window-padding-y = 4
 window-decoration = false
 theme = Wombat
 shell-integration = bash
-background-opacity = 0.85
-unfocused-split-opacity = 0.6
+background-opacity = 0.9
+unfocused-split-opacity = 0.5
 font-family = "JetBrains Mono Light"
 font-size = 18
 cursor-style = block
@@ -30,6 +30,10 @@ keybind = alt+right=goto_split:right
 # See https://github.com/ghostty-org/ghostty/pull/3427
 keybind = alt+up=goto_split:top
 keybind = alt+down=goto_split:bottom
+keybind = shift+alt+left=resize_split:left,80
+keybind = shift+alt+right=resize_split:right,80
+keybind = shift+alt+up=resize_split:up,50
+keybind = shift+alt+down=resize_split:down,50
 keybind = alt+z=toggle_split_zoom
 keybind = alt+\=toggle_tab_overview
 keybind = alt+enter=write_scrollback_file:open
