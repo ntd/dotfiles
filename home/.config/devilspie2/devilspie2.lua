@@ -32,9 +32,11 @@ end
 local function put_in_workspace(n)
     set_window_workspace(n)
 
-    -- Change workspace or focus the window only **after** arranging
-    -- the desktop environment for the first time
-    if elapsed > 5 then
+    -- Change workspace and focus the window only **after** arranging
+    -- the desktop environment for the first time. I start a firefox
+    -- instance with a 5 seconds delay, so consider the desktop
+    -- environment "arranged" only after 10 seconds.
+    if elapsed > 10 then
         change_workspace(n)
         -- XXX: crashes the application with the following error:
         --     BadMatch (invalid parameter attributes)
