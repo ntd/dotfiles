@@ -21,6 +21,12 @@ keybind = alt+shift+k=scroll_page_up
 keybind = alt+shift+j=scroll_page_down
 keybind = ctrl+alt+h=move_tab:-1
 keybind = ctrl+alt+l=move_tab:+1
+keybind = alt+kp_add=increase_font_size:1
+keybind = alt+kp_subtract=decrease_font_size:1
+keybind = alt+kp_enter=reset_font_size
+keybind = ctrl+alt+plus=increase_font_size:1
+keybind = ctrl+alt+minus=decrease_font_size:1
+keybind = ctrl+alt+enter=reset_font_size
 keybind = ctrl+alt+left=new_split:left
 keybind = ctrl+alt+right=new_split:right
 keybind = ctrl+alt+up=new_split:up
