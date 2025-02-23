@@ -5,7 +5,6 @@ alttab-switcher-enforce-primary-monitor=false
 alttab-switcher-style='icons+preview'
 alttab-switcher-warp-mouse-pointer=false
 cinnamon-settings-advanced=true
-command-history=[]
 desklet-snap-interval=25
 desktop-effects-close-effect='traditional'
 desktop-effects-close-time=120
