@@ -27,12 +27,6 @@ if test -z "$PAGER"; then
     fi
 fi
 
-# By default I use two Wine directories instead of $HOME/.wine:
-# $HOME/.win32 (32 bit) and $HOME/.win64 (64 bit, seldomly used).
-# This falls back on using the 32 bit version.
-[ -z "$WINEARCH" ]   && export WINEARCH=win32
-[ -z "$WINEPREFIX" ] && export WINEPREFIX=$HOME/.win32
-
 # Add a path ($2) to a variable ($1) with a `:' separated list of paths
 _add_path () {
     local var=$1
