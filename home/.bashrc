@@ -26,6 +26,9 @@ alias sudo='sudo '
 # I always keep forgetting how to force password authentication in SSH
 alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
 
+# Avoid duplicates in .bash_history
+export HISTCONTROL=ignoreboth:erasedups
+
 # Taskwarrior interface
 alias vit='taskwarrior-tui'
 
