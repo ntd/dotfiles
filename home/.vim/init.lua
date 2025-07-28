@@ -1,5 +1,11 @@
 -- NeoVIM >= 0.5.0 specific features
 
+local function prequire(m)
+    local ok, err = pcall(require, m)
+    if not ok then return nil, err end
+    return err
+end
+
 local function map(modestring, kbd, cmd, opts)
     local modes = {}
     for mode in modestring:gmatch('.') do table.insert(modes, mode) end
@@ -45,60 +51,70 @@ end
 if vim.fn.has('nvim-0.8') == 1 then
     -- GitSigns does not have proper neovim version check
     vim.cmd 'packadd gitsigns.nvim'
-    require('gitsigns').setup {
-        on_attach = function (buffer)
-            local gitsigns = require('gitsigns')
-            local opts = { buffer = buffer }
-            map('n', 'gk', function () gitsigns.nav_hunk('prev') end, opts)
-            map('n', 'gj', function () gitsigns.nav_hunk('next') end, opts)
-            map('n', 'gv', gitsigns.select_hunk, opts)
-            map('n', 'gl', gitsigns.stage_hunk, opts)
-            map('n', 'gh', gitsigns.reset_hunk, opts)
-            map('n', 'gK', gitsigns.preview_hunk, opts)
-        end,
-    }
+    local gitsigns = prequire 'gitsigns'
+    if gitsigns then
+        gitsigns.setup {
+            on_attach = function (buffer)
+                local opts = { buffer = buffer }
+                map('n', 'gk', function () gitsigns.nav_hunk('prev') end, opts)
+                map('n', 'gj', function () gitsigns.nav_hunk('next') end, opts)
+                map('n', 'gv', gitsigns.select_hunk, opts)
+                map('n', 'gl', gitsigns.stage_hunk, opts)
+                map('n', 'gh', gitsigns.reset_hunk, opts)
+                map('n', 'gK', gitsigns.preview_hunk, opts)
+            end,
+        }
+    end
 end
 
 vim.cmd 'packadd lualine.nvim'
-require('lualine').setup {
-    options = {
-        icons_enabled = false,
-        theme = 'horizon',
-    },
-}
+do
+    local lualine = prequire 'lualine'
+    if lualine then
+        lualine.setup {
+        options = {
+            icons_enabled = false,
+            theme = 'horizon',
+            },
+        }
+    end
+end
 
 if vim.fn.has('nvim-0.8') == 1 then
-    local function lsp_buffer_customization(_, buffer)
-        local opts = { buffer = buffer }
-        map('n', 'gD', vim.lsp.buf.declaration, opts)
-        map('n', 'gd', vim.lsp.buf.definition, opts)
-        map('n', 'gs', vim.lsp.buf.references, opts)
-        map('n', 'gr', vim.lsp.buf.rename, opts)
-        map('n', 'gi', vim.lsp.buf.implementation, opts)
-        map('n', 'gt', vim.lsp.buf.type_definition, opts)
-        map('n', 'gp', vim.diagnostic.goto_prev, opts)
-        map('n', 'gn', vim.diagnostic.goto_next, opts)
-        map('n', 'K',  vim.lsp.buf.hover, opts)
+    local lspconfig = prequire 'lspconfig'
+    if lspconfig then
+        local function lsp_buffer_customization(_, buffer)
+            local opts = { buffer = buffer }
+            map('n', 'gD', vim.lsp.buf.declaration, opts)
+            map('n', 'gd', vim.lsp.buf.definition, opts)
+            map('n', 'gs', vim.lsp.buf.references, opts)
+            map('n', 'gr', vim.lsp.buf.rename, opts)
+            map('n', 'gi', vim.lsp.buf.implementation, opts)
+            map('n', 'gt', vim.lsp.buf.type_definition, opts)
+            map('n', 'gp', vim.diagnostic.goto_prev, opts)
+            map('n', 'gn', vim.diagnostic.goto_next, opts)
+            map('n', 'K',  vim.lsp.buf.hover, opts)
+        end
+
+        lspconfig.clangd.setup {
+            on_attach = lsp_buffer_customization,
+        }
+
+        -- Disabling PHP support for now (psalm) because it seems to be
+        -- a lot of troubles for little gain.
+
+        lspconfig.lua_ls.setup {
+            on_attach = lsp_buffer_customization,
+        }
+
+        lspconfig.zls.setup {
+            on_attach = lsp_buffer_customization,
+        }
+
+        -- Without this line the language servers must be started manually with
+        -- `:LspStart` even with the autostart flag on:
+        vim.api.nvim_exec_autocmds('FileType', {})
     end
-
-    require('lspconfig').clangd.setup {
-        on_attach = lsp_buffer_customization,
-    }
-
-    -- Disabling PHP support for now (psalm) because it seems to be
-    -- a lot of troubles for little gain.
-
-    require('lspconfig').lua_ls.setup {
-        on_attach = lsp_buffer_customization,
-    }
-
-    require('lspconfig').zls.setup {
-        on_attach = lsp_buffer_customization,
-    }
-
-    -- Without this line the language servers must be started manually with
-    -- `:LspStart` even with the autostart flag on:
-    vim.api.nvim_exec_autocmds('FileType', {})
 elseif not vim.notify_once then
     -- Silent warning message because of missing function:
     -- I *know* lsp is not properly supported on old NeoVIM, thank you!
