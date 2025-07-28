@@ -122,7 +122,7 @@ elseif not vim.notify_once then
 end
 
 -- Basic termdebug support
-vim.cmd 'packadd termdebug'
+vim.cmd 'packadd! termdebug'
 vim.g.termdebug_config = {
     wide = 1,
     map_K = 0,
