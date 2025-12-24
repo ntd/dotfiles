@@ -13,24 +13,36 @@ else
     alias ll='ls -GhlF'
 fi
 
-# Set vim related shortcuts
-if test -z "$(command -v vim)" -a -n "$(command -v nvim)"; then
-    alias vim=$(command -v nvim)
-    alias vimdiff="$(command -v nvim) -d"
+# Set NeoVIM related shortcuts if stock VIM is not present
+if test -z "$(command -v vim)"; then
+    cmd="$(command -v nvim)"
+    if test -n "$cmd"; then
+	alias vim="$cmd"
+	alias vimdiff="$cmd -d"
+    fi
 fi
 
 # Dumb workaround to make aliases work with `sudo`:
 # https://wiki.archlinux.org/title/Sudo#Passing_aliases
-alias sudo='sudo '
+cmd="$(command -v sudo)"
+if test -n "$cmd"; then
+    alias sudo="$cmd "
+fi
 
 # I always keep forgetting how to force password authentication in SSH
-alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+cmd="$(command -v ssh)"
+if test -n "$cmd"; then
+    alias sshp="$cmd -o PreferredAuthentications=password -o PubkeyAuthentication=no"
+fi
 
 # Avoid duplicates in .bash_history
 export HISTCONTROL=ignoreboth:erasedups
 
 # Taskwarrior interface
-alias vit='taskwarrior-tui'
+cmd="$(command -v taskwarrior-tui)"
+if test -n "$cmd"; then
+    alias vit="$cmd"
+fi
 
 # Source VTE specific script, if found
 if test -r /etc/profile.d/vte.sh; then
@@ -92,15 +104,21 @@ shopt -u promptvars
 PROMPT_COMMAND=_ps1_command
 
 # Multitail shortcuts
-alias mt='multitail --config ~/.config/multitail.conf --basename'
-ssmt () {
-    mt	-s 2\
-	/var/log/silverstripe/$1.log \
-	/var/log/nginx/error.$1.log
-}
+cmd="$(command -v multitail)"
+if test -n "$cmd"; then
+    alias mt='multitail --config ~/.config/multitail.conf --basename'
+    ssmt () {
+	mt	-s 2\
+	    /var/log/silverstripe/$1.log \
+	    /var/log/nginx/error.$1.log
+	}
+fi
 
 # Redis shortcut
-alias redis-cli='/usr/bin/redis-cli -s /run/redis/redis.sock'
+cmd="$(command -v redis-cli)"
+if test -n "$cmd"; then
+    alias redis-cli="$cmd -s /run/redis/redis.sock"
+fi
 
 # Homeshick scripts
 if [ -e "$HOME/.homesick/repos/homeshick/homeshick.sh" ]; then
