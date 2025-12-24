@@ -49,7 +49,7 @@ if test -r /etc/profile.d/vte.sh; then
     source /etc/profile.d/vte.sh
 fi
 
-# Ensure __vte_osc7, used by PROMPT_COMMAND, is defined
+# Ensure __vte_osc7, used by PS1, is defined
 if ! declare -F __vte_osc7 > /dev/null; then
     if test -x /usr/lib/vte-urlencode-cwd; then
 	__vte_osc7 () {
@@ -70,7 +70,7 @@ fi
 # - the git branch is green if clean or red if dirty
 # - an asterisk after the branch highlights there is a pending push
 _colorecho () {
-    printf "\[\e[%dm\]%s\[\e[m\]" "$1" "$2"
+    printf "\033[%dm%s\033[m" "$1" "$2"
 }
 _ps1_status () {
     local rv=$?
@@ -96,12 +96,7 @@ _ps1_branch () {
 	_colorecho $color "$branch$sync "
     fi
 }
-_ps1_command () {
-    PS1="$(_ps1_status) \t $(_ps1_branch)\u@\h \W \$ "
-    __vte_osc7
-}
-shopt -u promptvars
-PROMPT_COMMAND=_ps1_command
+PS1='$(_ps1_status) \t $(_ps1_branch)\u@\h \W \$ $(__vte_osc7)'
 
 # Multitail shortcuts
 cmd="$(command -v multitail)"
