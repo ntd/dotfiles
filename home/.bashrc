@@ -49,28 +49,9 @@ if test -r /etc/profile.d/vte.sh; then
     source /etc/profile.d/vte.sh
 fi
 
-# Ensure __vte_osc7, used by PS1, is defined
-if ! declare -F __vte_osc7 > /dev/null; then
-    if test -x /usr/lib/vte-urlencode-cwd; then
-	__vte_osc7 () {
-	    printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "$(/usr/lib/vte-urlencode-cwd)"
-	}
-    else
-	# Naive approach... better than nothing
-	__vte_osc7 () {
-	    printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "${PWD:-/...}"
-	}
-    fi
-fi
-
-# Enhancements over stock bash prompt:
-# - a green check or a red cross suggests the last exit code
-# - the current time is always shown, for quick and dirty profiling
-# - the current branch of the git repository (if any) is shown
-# - the git branch is green if clean or red if dirty
-# - an asterisk after the branch highlights there is a pending push
-_colorecho () {
-    printf "\033[%dm%s\033[m" "$1" "$2"
+# Custom select graphic rendition on a specific string
+_SGR () {
+    printf "\033[%dm%s\033[0m" "$1" "$2"
 }
 _ps1_status () {
     local rv=$?
@@ -83,7 +64,7 @@ _ps1_status () {
 	color=31
 	symbol='✗'
     fi
-    _colorecho $color $symbol
+    _SGR $color $symbol
     return $rv
 }
 _ps1_branch () {
@@ -93,10 +74,16 @@ _ps1_branch () {
     if [ $branch ]; then
 	git diff --quiet 2> /dev/null && color="32" || color="31"
 	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
-	_colorecho $color "$branch$sync "
+	_SGR $color "$branch$sync "
     fi
 }
-PS1='$(_ps1_status) \t $(_ps1_branch)\u@\h \W \$ $(__vte_osc7)'
+# Enhancements over stock bash prompt:
+# - a green check or a red cross suggests the last exit code
+# - the current time is always shown, for quick and dirty profiling
+# - the current branch of the git repository (if any) is shown
+# - the git branch is green if clean or red if dirty
+# - an asterisk after the branch highlights there is a pending push
+PS1='$(_ps1_status) \t $(_ps1_branch)\u@\h \W \$ '
 
 # Multitail shortcuts
 cmd="$(command -v multitail)"
