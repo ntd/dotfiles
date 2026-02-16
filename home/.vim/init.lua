@@ -81,8 +81,18 @@ do
 end
 
 if vim.fn.has('nvim-0.8') == 1 then
-    local lspconfig = prequire 'lspconfig'
-    if lspconfig then
+    local language_server
+    if vim.lsp.config then
+        language_server = function (language, options)
+            vim.lsp.config(language, options)
+            vim.lsp.enable(language)
+        end
+    elseif prequire 'lspconfig' then
+        language_server = function (language, options)
+            package.loaded.lspconfig[language].setup(options)
+        end
+    end
+    if language_server then
         local function lsp_buffer_customization(_, buffer)
             local opts = { buffer = buffer }
             map('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -96,20 +106,20 @@ if vim.fn.has('nvim-0.8') == 1 then
             map('n', 'K',  vim.lsp.buf.hover, opts)
         end
 
-        lspconfig.clangd.setup {
+        language_server('clangd', {
             on_attach = lsp_buffer_customization,
-        }
+        })
 
         -- Disabling PHP support for now (psalm) because it seems to be
         -- a lot of troubles for little gain.
 
-        lspconfig.lua_ls.setup {
+        language_server('lua_ls', {
             on_attach = lsp_buffer_customization,
-        }
+        })
 
-        lspconfig.zls.setup {
+        language_server('zls', {
             on_attach = lsp_buffer_customization,
-        }
+        })
 
         -- Without this line the language servers must be started manually with
         -- `:LspStart` even with the autostart flag on:
