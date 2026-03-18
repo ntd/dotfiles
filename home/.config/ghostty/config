@@ -1,32 +1,49 @@
 window-width = 9999
 window-height = 9999
+maximize = true
 window-padding-x = 4
 window-padding-y = 4
-window-decoration = false
+window-decoration = none
 theme = Wombat
 shell-integration = bash
+shell-integration-features = ssh-env
+bell-features = system, border
 background-opacity = 0.9
 unfocused-split-opacity = 0.5
 font-family = "JetBrains Mono Light"
 font-size = 18
 cursor-style = block
 mouse-hide-while-typing = true
+selection-clear-on-typing = false
+selection-clear-on-copy = true
+notify-on-command-finish = unfocused
 
+keybind = ctrl+alt+r=reload_config
+
+# Tab management
 keybind = alt+n=new_tab
 keybind = alt+h=previous_tab
 keybind = alt+l=next_tab
+keybind = alt+\=toggle_tab_overview
+keybind = ctrl+alt+h=move_tab:-1
+keybind = ctrl+alt+l=move_tab:+1
+
+# Scrollback
 keybind = alt+k=scroll_page_lines:-1
 keybind = alt+j=scroll_page_lines:+1
 keybind = alt+shift+k=scroll_page_up
 keybind = alt+shift+j=scroll_page_down
-keybind = ctrl+alt+h=move_tab:-1
-keybind = ctrl+alt+l=move_tab:+1
-keybind = alt+kp_add=increase_font_size:1
-keybind = alt+kp_subtract=decrease_font_size:1
-keybind = alt+kp_enter=reset_font_size
-keybind = ctrl+alt+plus=increase_font_size:1
-keybind = ctrl+alt+minus=decrease_font_size:1
+keybind = alt+enter=write_scrollback_file:open
+
+# Font size
+keybind = alt+numpad_add=increase_font_size:1
+keybind = alt+numpad_subtract=decrease_font_size:1
+keybind = alt+numpad_enter=reset_font_size
+keybind = ctrl+alt++=increase_font_size:1
+keybind = ctrl+alt+-=decrease_font_size:1
 keybind = ctrl+alt+enter=reset_font_size
+
+# Splitting
 keybind = ctrl+alt+left=new_split:left
 keybind = ctrl+alt+right=new_split:right
 keybind = ctrl+alt+up=new_split:up
@@ -41,5 +58,3 @@ keybind = shift+alt+right=resize_split:right,80
 keybind = shift+alt+up=resize_split:up,50
 keybind = shift+alt+down=resize_split:down,50
 keybind = alt+z=toggle_split_zoom
-keybind = alt+\=toggle_tab_overview
-keybind = alt+enter=write_scrollback_file:open
