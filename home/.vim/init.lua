@@ -27,7 +27,7 @@ map('nvo', 'tt', '<cmd>terminal<CR>')
 map('t', '<Esc>', '<C-\\><C-n>')
 
 -- Chain up old vim customizations
-vim.cmd 'runtime vimrc'
+vim.cmd.runtime('vimrc')
 
 -- Remap <Tab> <S-Tab> to provide better completion experience
 do
@@ -50,7 +50,7 @@ end
 
 if vim.fn.has('nvim-0.8') == 1 then
     -- GitSigns does not have proper neovim version check
-    vim.cmd 'packadd gitsigns.nvim'
+    vim.cmd.packadd('gitsigns.nvim')
     local gitsigns = prequire 'gitsigns'
     if gitsigns then
         gitsigns.setup {
@@ -67,7 +67,7 @@ if vim.fn.has('nvim-0.8') == 1 then
     end
 end
 
-vim.cmd 'packadd lualine.nvim'
+vim.cmd.packadd('lualine.nvim')
 do
     local lualine = prequire 'lualine'
     if lualine then
@@ -132,7 +132,7 @@ elseif not vim.notify_once then
 end
 
 -- Basic termdebug support
-vim.cmd 'packadd! termdebug'
+vim.cmd.packadd('termdebug')
 vim.g.termdebug_config = {
     wide = 1,
     map_K = 0,
