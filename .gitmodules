@@ -52,3 +52,6 @@
 [submodule "vim-bundles/nvim-lspconfig"]
 	path = vim-bundles/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
+[submodule "vim-bundles/info.vim"]
+	path = vim-bundles/info.vim
+	url = https://gitlab.com/HiPhish/info.vim.git
