@@ -147,7 +147,6 @@ vim.g.termdebug_config = {
     variables_window = 1,
     variables_window_height = 10,
 }
-
 do
     local keybindings = {
         ['<F2>']  = '<cmd>Break<CR>',
@@ -181,3 +180,6 @@ do
         end
     })
 end
+
+-- Context support
+vim.cmd('packadd! nvim-treesitter-context')

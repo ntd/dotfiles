@@ -55,3 +55,6 @@
 [submodule "vim-bundles/info.vim"]
 	path = vim-bundles/info.vim
 	url = https://gitlab.com/HiPhish/info.vim.git
+[submodule "vim-bundles/nvim-treesitter-context"]
+	path = vim-bundles/nvim-treesitter-context
+	url = https://github.com/nvim-treesitter/nvim-treesitter-context.git
