@@ -8,28 +8,29 @@ set dir=$HOME/.vim/tmp/swap     " Directory for temporary files
 
 if has('nvim') || v:version >= 800
     " Enable builtin packages on modern Vim/NeoVim
-    packadd! PHP-Indenting-for-VIm
-    packadd! clibs.vim
     packadd! ctrlp.vim
-    packadd! gnome-doc.vim
-    packadd! gtk-vim-syntax
     packadd! matchit.zip
     packadd! mesonic
     packadd! tabular
     packadd! vdebug
     packadd! vim-enhanced-diff
-    packadd! vim-gitbranch
     packadd! vim-ledger
-    packadd! vim-lua-ftplugin
-    packadd! vim-lua
-    packadd! vim-misc
-    packadd! vim-phpqa
     packadd! vim-sleuth
-    packadd! vim-ss
     packadd! vim-surround
     if !has('nvim')
         " Plain Vim-only dependencies
-        packadd lightline.vim
+        packadd! vim-gitbranch
+        packadd! lightline.vim
+        " Append the git active branch to lightline
+        let g:lightline = {
+        \     'active': {
+        \         'left': [ [ 'mode', 'paste' ],
+        \                   [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \     },
+        \     'component_function': {
+        \         'gitbranch': 'gitbranch#name',
+        \     },
+        \ }
     endif
 else
     " Enable pathogen only on old Vim
@@ -40,30 +41,30 @@ endif
                                 " vimdiff remapping
 noremap <silent>-j ]c
 noremap <silent>-k [c
-noremap -h :diffget<CR>
-noremap -l :diffput<CR>
+noremap <silent>-h <cmd>diffget<CR>
+noremap <silent>-l <cmd>diffput<CR>
 
                                 " Split management
-noremap tH <cmd>leftabove vsplit<CR>
-noremap tJ <cmd>rightbelow split<CR>
-noremap tK <cmd>leftabove split<CR>
-noremap tL <cmd>rightbelow vsplit<CR>
-noremap <silent>th <cmd>wincmd h<CR>
-noremap <silent>tj <cmd>wincmd j<CR>
-noremap <silent>tk <cmd>wincmd k<CR>
-noremap <silent>tl <cmd>wincmd l<CR>
-noremap tx <cmd>hide<CR>
+noremap tH               <cmd>leftabove vsplit<CR>
+noremap tJ               <cmd>rightbelow split<CR>
+noremap tK               <cmd>leftabove split<CR>
+noremap tL               <cmd>rightbelow vsplit<CR>
+noremap <silent>th       <cmd>wincmd h<CR>
+noremap <silent>tj       <cmd>wincmd j<CR>
+noremap <silent>tk       <cmd>wincmd k<CR>
+noremap <silent>tl       <cmd>wincmd l<CR>
+noremap tx               <cmd>hide<CR>
 noremap <silent>t<right> <cmd>10wincmd ><CR>
 noremap <silent>t<left>  <cmd>10wincmd <<CR>
 noremap <silent>t<up>    <cmd>5wincmd +<CR>
 noremap <silent>t<down>  <cmd>5wincmd -<CR>
 
                                 " Tab management
-noremap TL :tabnew<CR>
-noremap TH :-tabnew<CR>
-noremap TX :tabclose<CR>
-noremap Th :tabprevious<CR>
-noremap Tl :tabnext<CR>
+noremap <silent>TL <cmd>tabnew<CR>
+noremap <silent>TH <cmd>-tabnew<CR>
+noremap <silent>Tx <cmd>tabclose<CR>
+noremap <silent>Th <cmd>tabprevious<CR>
+noremap <silent>Tl <cmd>tabnext<CR>
 
 set modeline
 set notimeout                   " Don't timeout on mappings
@@ -79,11 +80,11 @@ set hidden
 set updatetime=300
 set shortmess+=c
 
-if v:version >= 703
+if exists('&relativenumber')
   set relativenumber
   set number
 endif
-set ruler                       " Ignored because of lightline
+set ruler
 set laststatus=2
 
 set autoindent
@@ -94,8 +95,8 @@ set expandtab
                                 " Folding defaults
 set foldnestmax=1
 set foldminlines=5
-noremap <silent>zl :foldopen<CR>
-noremap <silent>zh :foldclose<CR>
+noremap <silent>zl <cmd>foldopen<CR>
+noremap <silent>zh <cmd>foldclose<CR>
 
 set wrap
 set textwidth=72                " Canonical right column
@@ -114,7 +115,7 @@ set writebackup
 " Directly borrowed from https://github.com/tpope/vim-sensible
 set incsearch
 if maparg('<C-L>', 'n') ==# ''  " Use <C-L> to clear search highlighting
-  noremap <silent><C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+  noremap <silent><C-L> <cmd>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 " Do not restart from BOF when searching
@@ -124,14 +125,9 @@ set display+=lastline
 set sessionoptions-=options
 
 if v:version > 703 || v:version == 703 && has('patch541')
-  set formatoptions+=j          " Delete comment character when
-                                " joining commented lines
+  " Delete comment character when joining commented lines
+  set formatoptions+=j
 endif
-
-
-let g:proj_flags='mstvcg'       " 'Project' flags
-let g:proj_file='.config/vimproject'
-let g:proj_split='vs'           " Split vertically
 
 filetype plugin indent on
 
@@ -163,24 +159,6 @@ if exists('*complete_info')
   inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
   inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-if has('nvim')
-  au TermOpen * setlocal norelativenumber
-  " Use lualine instead of lightline.vim
-  let g:loaded_lightline = 1
-else
-  " No need to disable lualine: it is a Lua-only module
-  " Append the git active branch to the status line
-  let g:lightline = {
-  \     'active': {
-  \         'left': [ [ 'mode', 'paste' ],
-  \                   [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \     },
-  \     'component_function': {
-  \         'gitbranch': 'gitbranch#name',
-  \     },
-  \ }
 endif
 
 if has('nvim-0.5')

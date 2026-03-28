@@ -25,9 +25,16 @@ vim.g.loaded_python3_provider = 0
 map('nvo', 'tt', '<cmd>terminal<CR>')
 -- Use ESC for leaving insert mode in terminal buffer
 map('t', '<Esc>', '<C-\\><C-n>')
+vim.api.nvim_create_autocmd('TermOpen', {
+    pattern = { '*' },
+    callback = function ()
+        vim.opt_local.relativenumber = false
+        vim.cmd.startinsert()
+    end
+})
 
 -- Chain up old vim customizations
-vim.cmd.runtime('vimrc')
+vim.cmd('runtime vimrc')
 
 -- Remap <Tab> <S-Tab> to provide better completion experience
 do
@@ -50,7 +57,7 @@ end
 
 if vim.fn.has('nvim-0.8') == 1 then
     -- GitSigns does not have proper neovim version check
-    vim.cmd.packadd('gitsigns.nvim')
+    vim.cmd('packadd! gitsigns.nvim')
     local gitsigns = prequire 'gitsigns'
     if gitsigns then
         gitsigns.setup {
@@ -67,15 +74,15 @@ if vim.fn.has('nvim-0.8') == 1 then
     end
 end
 
-vim.cmd.packadd('lualine.nvim')
+vim.cmd('packadd! lualine.nvim')
 do
     local lualine = prequire 'lualine'
     if lualine then
         lualine.setup {
-        options = {
-            icons_enabled = false,
-            theme = 'horizon',
-            },
+            options = {
+                icons_enabled = false,
+                theme = 'horizon',
+            }
         }
     end
 end
@@ -132,7 +139,7 @@ elseif not vim.notify_once then
 end
 
 -- Basic termdebug support
-vim.cmd.packadd('termdebug')
+vim.cmd('packadd! termdebug')
 vim.g.termdebug_config = {
     wide = 1,
     map_K = 0,
@@ -145,14 +152,17 @@ do
     local keybindings = {
         ['<F2>']  = '<cmd>Break<CR>',
         ['<F3>']  = '<cmd>Clear<CR>',
-        ['<F5>']  = '<cmd>Step<CR>',
-        ['<F6>']  = '<cmd>Over<CR>',
-        ['<F7>']  = '<cmd>Continue<CR>',
-        ['<F8>']  = '<cmd>Until<CR>',
-        ['<F9>']  = '<cmd>Run<CR>',
-        ['<F10>'] = '<cmd>Finish<CR>',
-        ['<F11>'] = '<cmd>Stop<CR>',
-        ['<F12>'] = '<cmd>Evaluate<CR>',
+        ['<F4>']  = '<cmd>Evaluate<CR>',
+
+        ['<F5>']  = '<cmd>Run<CR>',
+        ['<F6>']  = '<cmd>Continue<CR>',
+        ['<F7>']  = '<cmd>Finish<CR>',
+        ['<F8>']  = '<cmd>Arguments<CR>',
+
+        ['<F9>']  = '<cmd>Step<CR>',
+        ['<F10>'] = '<cmd>Over<CR>',
+        ['<F11>'] = '<cmd>Until<CR>',
+        ['<F12>'] = '<cmd>Stop<CR>',
     }
     vim.api.nvim_create_autocmd('User', {
         pattern = 'TermdebugStartPost',

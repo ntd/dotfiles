@@ -1,1 +1,1 @@
-set tw=66
+setlocal tw=66

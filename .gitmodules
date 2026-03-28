@@ -6,33 +6,9 @@
 	path = vim-bundles/vim-ledger
 	url = https://github.com/cypok/vim-ledger.git
 	ignore = untracked
-[submodule "vim-bundles/gtk-vim-syntax"]
-	path = vim-bundles/gtk-vim-syntax
-	url = https://github.com/vim-scripts/gtk-vim-syntax.git
-	ignore = untracked
-[submodule "vim-bundles/clibs.vim"]
-	path = vim-bundles/clibs.vim
-	url = https://github.com/vim-scripts/clibs.vim.git
-	ignore = untracked
-[submodule "vim-bundles/gnome-doc.vim"]
-	path = vim-bundles/gnome-doc.vim
-	url = https://github.com/vim-scripts/gnome-doc.vim.git
-	ignore = untracked
-[submodule "vim-bundles/PHP-Indenting-for-VIm"]
-	path = vim-bundles/PHP-Indenting-for-VIm
-	url = https://github.com/2072/PHP-Indenting-for-VIm.git
-	ignore = untracked
 [submodule "vim-bundles/matchit.zip"]
 	path = vim-bundles/matchit.zip
 	url = https://github.com/vim-scripts/matchit.zip.git
-	ignore = untracked
-[submodule "vim-bundles/vim-misc"]
-	path = vim-bundles/vim-misc
-	url = https://github.com/xolox/vim-misc.git
-	ignore = untracked
-[submodule "vim-bundles/vim-lua-ftplugin"]
-	path = vim-bundles/vim-lua-ftplugin
-	url = https://github.com/xolox/vim-lua-ftplugin.git
 	ignore = untracked
 [submodule "vim-bundles/lightline.vim"]
 	path = vim-bundles/lightline.vim
@@ -41,18 +17,6 @@
 [submodule "vim-bundles/vim-gitbranch"]
 	path = vim-bundles/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
-	ignore = untracked
-[submodule "vim-bundles/vim-phpqa"]
-	path = vim-bundles/vim-phpqa
-	url = https://github.com/joonty/vim-phpqa.git
-	ignore = untracked
-[submodule "vim-bundles/vim-ss"]
-	path = vim-bundles/vim-ss
-	url = https://github.com/phalkunz/vim-ss.git
-	ignore = untracked
-[submodule "vim-bundles/vim-lua"]
-	path = vim-bundles/vim-lua
-	url = https://github.com/tbastos/vim-lua.git
 	ignore = untracked
 [submodule "vim-bundles/vdebug"]
 	path = vim-bundles/vdebug
