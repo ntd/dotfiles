@@ -182,4 +182,7 @@ do
 end
 
 -- Context support
-vim.cmd('packadd! nvim-treesitter-context')
+if vim.fn.has('nvim-0.9') == 1 then
+    -- Do not error out on old NeoVIMs
+    vim.cmd('packadd! nvim-treesitter-context')
+end
