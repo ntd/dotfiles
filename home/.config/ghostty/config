@@ -50,7 +50,8 @@ keybind = ctrl+alt+up=new_split:up
 keybind = ctrl+alt+down=new_split:down
 keybind = alt+left=goto_split:left
 keybind = alt+right=goto_split:right
-# See https://github.com/ghostty-org/ghostty/pull/3427
+# Now should be up and down: see
+# https://github.com/ghostty-org/ghostty/pull/3427
 keybind = alt+up=goto_split:top
 keybind = alt+down=goto_split:bottom
 keybind = shift+alt+left=resize_split:left,80
