@@ -72,7 +72,7 @@ _ps1_branch () {
     local color
     local sync
     if [ $branch ]; then
-	git diff --quiet 2> /dev/null && color="32" || color="31"
+	git diff --quiet 2> /dev/null && color=32 || color=31
 	test -z "$(git cherry 2> /dev/null)" && sync='' || sync='*'
 	_SGR $color "$branch$sync "
     fi
