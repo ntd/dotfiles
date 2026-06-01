@@ -14,6 +14,27 @@ local function map(modestring, kbd, cmd, opts)
     vim.keymap.set(modes, kbd, cmd, opts)
 end
 
+-- netrw customization
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 0
+vim.g.netrw_sizestyle = 'h'
+vim.g.netrw_hide = 1
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function()
+        -- `netrw_gitignore#Hide` is available only after netrw has been
+        -- loaded, so using VimEnter event here to postpone the call
+        vim.g.netrw_list_hide = vim.fn['netrw_gitignore#Hide']() .. ',.git'
+    end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'netrw',
+    callback = function ()
+        if vim.fn.maparg('t', 'n') ~= '' then
+            vim.keymap.del('n', 't', { buf = 0 })
+        end
+    end
+})
+
 -- Disable unused providers
 vim.g.loaded_node_provider = 0
 vim.g.loaded_ruby_provider = 0
