@@ -30,7 +30,9 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = 'netrw',
     callback = function ()
         if vim.fn.maparg('t', 'n') ~= '' then
-            vim.keymap.del('n', 't', { buf = 0 })
+            -- The buffer option was renamed to `buf` in NeoVIM 0.11
+            local buffer = vim.fn.has('nvim-0.11') == 1 and 'buf' or 'buffer'
+            vim.keymap.del('n', 't', { [buffer] = 0 })
         end
     end
 })
