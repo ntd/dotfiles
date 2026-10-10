@@ -18,6 +18,8 @@ selection-clear-on-typing = false
 selection-clear-on-copy = true
 notify-on-command-finish = unfocused
 
+keybind = clear
+
 keybind = ctrl+alt+r=reload_config
 
 # Tab management
@@ -39,9 +41,6 @@ keybind = alt+enter=write_scrollback_file:open
 keybind = alt+numpad_add=increase_font_size:1
 keybind = alt+numpad_subtract=decrease_font_size:1
 keybind = alt+numpad_enter=reset_font_size
-keybind = ctrl+alt++=increase_font_size:1
-keybind = ctrl+alt+-=decrease_font_size:1
-keybind = ctrl+alt+enter=reset_font_size
 
 # Splitting
 keybind = ctrl+alt+left=new_split:left
