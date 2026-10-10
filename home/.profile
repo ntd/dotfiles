@@ -78,9 +78,6 @@ _add_path PATH "$HOME/.local/bin"
 # Required by pinentry programs
 export GPG_TTY=$(/usr/bin/tty)
 
-# Chain up `.bashrc`, if relevant
-[ -n "$BASH_VERSION" ] && . "$HOME/.bashrc"
-
 # Source local customizations here, if presents,
 # so they can override any previous setting
 [ -r "$HOME/.profile-private" ] && . "$HOME/.profile-private"
