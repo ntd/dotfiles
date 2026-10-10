@@ -2,7 +2,7 @@
 # the display manager after logging in
 
 # Source the user provided locale.conf, if present
-[ -r "$HOME/.config/locale.conf" ] && source "$HOME/.config/locale.conf"
+[ -r "$HOME/.config/locale.conf" ] && . "$HOME/.config/locale.conf"
 
 # Workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1056820
 export NO_AT_BRIDGE=1
@@ -12,17 +12,17 @@ export NO_AT_BRIDGE=1
 [ -z "$CXXFLAGS" ] && export CXXFLAGS="$CFLAGS"
 
 # Set the default editor
-if command -v nvim &> /dev/null; then
+if command -v nvim > /dev/null 2>&1; then
     export EDITOR=$(command -v nvim)
-elif command -v vim &> /dev/null; then
+elif command -v vim > /dev/null 2>&1; then
     export EDITOR=$(command -v vim)
 fi
 
 # Set nvimpager/vimpager as default pager, if found
 if test -z "$PAGER"; then
-    if command -v nvimpager &> /dev/null; then
+    if command -v nvimpager > /dev/null 2>&1; then
 	export PAGER=$(command -v nvimpager)
-    elif command -v vimpager &> /dev/null; then
+    elif command -v vimpager > /dev/null 2>&1; then
 	export PAGER=$(command -v vimpager)
     fi
 fi
@@ -31,24 +31,28 @@ fi
 _add_path () {
     local var=$1
     local path=$2
-    local paths=${!1}
+    local paths=$(eval "echo \$$1")
 
-    if [ -z "$paths" ]; then
-	# var is empty
-	eval "$var=$path"
-    elif [[ "$paths" = *$path* ]]; then
-	# path is already present in var
-	:
-    else
-	# Check for the unlocal version of path (i.e. without
-	# the /local component) to prepend it at the right place
-	local unlocal=${path/\/local/}
-	if [[ "$paths" = *$unlocal* ]]; then
-	    eval "$var=${paths/$unlocal/$path:$unlocal}"
-	else
+    # `unlocal` is $path without the `/local` component
+    local unlocal=$(echo "$path" | sed "s,/local/,/,")
+
+    case :$paths: in
+	::) # The variable is empty
+	    eval "$var=$path"
+	    ;;
+	*:$path:*)
+	    # The variable already contains $path
+	    :
+	    ;;
+	*:$unlocal:*)
+	    # The variable contains the unlocal version of $path:
+	    # add it to the right place, i.e. before its unlocal version
+	    eval "$var=$(echo "$paths" | sed "s,$unlocal,$path:$unlocal,")"
+	    ;;
+	*)  # No $path present: prepend it to everything
 	    eval "$var=$path:$paths"
-	fi
-    fi
+	    ;;
+    esac
 
     export $var
 }
@@ -62,11 +66,11 @@ _add_path MOZ_PLUGIN_PATH /usr/local/lib/mozilla/plugins
 _add_path XDG_DATA_DIRS   /usr/local/share
 
 # Add local paths
-_add_path PATH $HOME/bin
-_add_path PATH $HOME/.local/bin
+_add_path PATH "$HOME/bin"
+_add_path PATH "$HOME/.local/bin"
 
 # Include luarocks path, if relevant
-[ -d "$HOME/.luarocks/bin" ] && _add_path PATH $HOME/.luarocks/bin
+[ -d "$HOME/.luarocks/bin" ] && _add_path PATH "$HOME/.luarocks/bin"
 
 # OpenResty customizations
 [ -d "/opt/openresty" ] && _add_path PATH /opt/openresty/bin:/opt/openresty/nginx/sbin
@@ -75,10 +79,10 @@ _add_path PATH $HOME/.local/bin
 export GPG_TTY=$(/usr/bin/tty)
 
 # Chain up `.bashrc`, if relevant
-[ -n "$BASH_VERSION" ] && source "$HOME/.bashrc"
+[ -n "$BASH_VERSION" ] && . "$HOME/.bashrc"
 
 # Source local customizations here, if presents,
 # so they can override any previous setting
-[ -r "$HOME/.profile-private" ] && source "$HOME/.profile-private"
+[ -r "$HOME/.profile-private" ] && . "$HOME/.profile-private"
 
 :
