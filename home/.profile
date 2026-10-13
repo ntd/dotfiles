@@ -82,4 +82,7 @@ export GPG_TTY=$(/usr/bin/tty)
 # so they can override any previous setting
 [ -r "$HOME/.profile-private" ] && . "$HOME/.profile-private"
 
+# If this is an interactive shell, source .bashrc
+[ -n "$PS1" ] && . "$HOME/.bashrc"
+
 :
