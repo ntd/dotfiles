@@ -50,8 +50,11 @@ if test -r /etc/profile.d/vte.sh; then
 fi
 
 # Custom select graphic rendition on a specific string
+# Wrap every escape sequence in \001/\002: readline's zero-width
+# markers. \[ and \] would not work here, since they are only
+# recognized when literal in PS1, before command substitution.
 _SGR () {
-    printf "\033[%dm%s\033[0m" "$1" "$2"
+    printf "\001\033[%dm\002%s\001\033[0m\002" "$1" "$2"
 }
 _ps1_status () {
     local rv=$?
