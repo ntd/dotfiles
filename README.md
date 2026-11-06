@@ -7,4 +7,4 @@ These files are maintained under a git repository handled by
 
     git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
     $HOME/.homesick/repos/homeshick/bin/homeshick -b clone ntd/dotfiles
-    source $HOME/.homesick/repos/dotfiles/deploy.sh
+    . $HOME/.homesick/repos/dotfiles/deploy.sh
