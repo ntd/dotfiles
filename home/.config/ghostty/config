@@ -41,6 +41,10 @@ keybind = alt+enter=write_scrollback_file:open
 keybind = alt+numpad_add=increase_font_size:1
 keybind = alt+numpad_subtract=decrease_font_size:1
 keybind = alt+numpad_enter=reset_font_size
+# Not every PC has the numpad
+keybind = ctrl+alt+u=increase_font_size:1
+keybind = ctrl+alt+d=decrease_font_size:1
+keybind = ctrl+alt+0=reset_font_size
 
 # Splitting
 keybind = ctrl+alt+left=new_split:left
