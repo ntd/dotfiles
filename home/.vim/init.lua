@@ -209,3 +209,58 @@ if vim.fn.has('nvim-0.9') == 1 then
     -- Do not error out on old NeoVIMs
     vim.cmd('packadd! nvim-treesitter-context')
 end
+
+-- Return true if this is a GUI instance
+local function is_gui()
+  for _, ui in ipairs(vim.api.nvim_list_uis()) do
+    if not ui.stdout_tty and not ui.stdin_tty then
+      return true
+    end
+  end
+  return false
+end
+
+do
+    local original_font
+
+    local function font_set(name, size, options)
+        vim.o.guifont = ('%s:h%d%s'):format(name, size, options or '')
+    end
+
+    local function font_adjust(delta)
+        local font = vim.o.guifont
+        local name, size, options = font:match('^(.-):h(%d+)(.*)$')
+        if not size then return end
+
+        if not original_font then
+            original_font = font
+        end
+
+        font_set(name, size + delta, options)
+    end
+
+    local function font_reset()
+        if original_font then
+            vim.o.guifont = original_font
+        end
+    end
+
+    local function font_increase()
+        font_adjust(1)
+    end
+
+    local function font_decrease()
+        font_adjust(-1)
+    end
+
+    -- Same keybindings of the ghostty terminal
+    vim.api.nvim_create_autocmd('UIEnter', {
+        callback = function ()
+            if is_gui() then
+                map('nvo', '<C-M-u>', font_increase)
+                map('nvo', '<C-M-d>', font_decrease)
+                map('nvo', '<C-M-0>', font_reset)
+            end
+        end
+    })
+end
